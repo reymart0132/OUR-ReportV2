@@ -1,0 +1,121 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden !important;
+}
+.big-txt-ceu{
+    font-weight: 800;
+    color: #DC64A1;
+    font-size: 2.3em;
+}
+.big-txt-ceu3{
+    font-weight: 800;
+    color: #DC64A1;
+    font-size: 1.2em;
+}
+.big-txt-ceu2 {
+    color:rgb(22, 21, 66);
+}
+.container-fluid{
+padding: 0;
+margin: 0;
+}
+.bg-ceu {
+    background-color: rgb(22, 21, 66) !important;
+    border-color: rgb(22,21,66) !important;
+}
+
+.text-ceu{
+    color: rgb(251, 251, 251);
+}
+
+.text-ceu:hover{
+    color: rgb(234, 167, 201);
+    border-bottom: 1px solid pink;
+    transition: 1s;
+}
+a.active{
+    color: rgb(234, 167, 201) !important;
+    font-weight: bold;
+}
+
+header{
+    background-color:rgb(22, 21, 66);
+}
+.bg-registrar{
+    background-image: url(../img/bg.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.section1{
+    background-color: rgb(255, 255, 255);
+    min-height: 50vh;
+}
+.services{
+    display: inline-block;
+}
+.servc{
+
+}
+
+.inner{
+    text-align: center;
+    width: 100%;
+    margin: 2px;
+    background-color: aliceblue;
+    border-radius: 5px;
+    min-height: 30vh;
+}
+.itext{
+  font-size: .8em;
+}
+
+.bfooter{
+    background-color: rgb(22, 21, 66);
+    min-height: 5vh;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.ftext{
+    font-size: .6em;
+}
+.servc:hover{
+    scale: 105%;
+    transition: 1s;
+}
+
+.btn:hover{
+    color: #FFF;
+}
+
+.btn-hover.color-3 {
+    background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
+}
+
+.btn-hover {
+    width: 200px;
+    font-size: .9em;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 10px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
