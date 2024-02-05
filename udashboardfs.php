@@ -44,7 +44,7 @@ $user = new user();
                         <i class="fas fa-question-circle me-2"></i> Menu</a>
 
                     <div class="item mt-3">
-                        <a class="sub-btn bg-selected" href="udashboard"><i class="fa-solid fa-house"></i> Pending </a>
+                        <a class="sub-btn" href="udashboard"><i class="fa-solid fa-house"></i> Pending </a>
                     </div>
 
                     <!-- <div class="item">
@@ -52,7 +52,7 @@ $user = new user();
                     </div> -->
 
                     <div class="item">
-                        <a class="sub-btn" href="udashboardfs"><i class="fa-solid fa-star"></i> For Signature </a>
+                        <a class="sub-btn bg-selected" href="udashboardfs"><i class="fa-solid fa-star"></i> For Signature </a>
                     </div>
 
                     <script type="text/javascript">
@@ -114,7 +114,7 @@ $user = new user();
                 <div class="container-fluid p-5">
                     <div class="row">
                         <div class="col-md p-5 content">
-                            <?php $table->kcej_rTrans(); ?>
+                            <?php $table->kcej_rForsig(); ?>
 
                         </div>
                     </div>
