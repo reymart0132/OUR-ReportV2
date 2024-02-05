@@ -137,11 +137,16 @@ function vald(){
                         $login = $user->login(Input::get('username'),Input::get('password'),$remember);
                         if($login){
                             if($user->data()->groups == 1){
-                                 Redirect::to('template.php');
+                                 Redirect::to('udashboard.php');
+                                echo $user->data()->groups;
+                            }else if($user->data()->groups == 2){
+                                 Redirect::to('adashboard.php');
+                                echo $user->data()->groups;
+                            } else if ($user->data()->groups == 3) {
+                                Redirect::to('rdashboard.php');
                                 echo $user->data()->groups;
                             }else{
-                                 Redirect::to('template.php');
-                                echo $user->data()->groups;
+                                loginError();
                             }
                         }else{
                             loginError();
@@ -264,4 +269,89 @@ function changeP(){
         }
     }
 }
+
+function datevalidation($email)
+{
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT * FROM `tbl_transaction` WHERE `emailaddress`='$email' AND DATE(`dateapp`) = CURRENT_DATE()";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_OBJ);
+
+    if (count($rows) == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function datevalidation2($email)
+{
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT * FROM `tbl_spctransaction` WHERE `emailaddress`='$email' AND DATE(`dateapp`) = CURRENT_DATE()";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_OBJ);
+
+    if (count($rows) == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function CheckError($error)
+{
+    if ($error == 'MultipleTrans') {
+        echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
+              <b>Error!</b> Multiple transactions detected. You can only create <b>1 transaction per day only.</b>
+              
+              
+              </button>
+          </div>';
+    } elseif ($error == 'captchaError') {
+        echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
+                <b>Error!</b> Incorrect CAPTCHA entry Detected. Please enter the correct captcha numbers below.</b>
+                
+                
+                </button>
+            </div>';
+    } elseif ($error == 'tamper') {
+        echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
+                <b>Error!</b> Hi! we are having trouble validating your email address. Please use a different one and make sure to complete all the fields required. Thank you and stay safe!</b>
+                
+                
+                </button>
+            </div>';
+    } elseif ($error == 'tamper2') {
+        echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
+                <b>Error!</b> Form tampering detected please make sure to complete all the fields required. Thank you and stay safe!</b>
+                
+                
+                </button>
+            </div>';
+    }
+}
+
+function replaceNWithTilde($inputString)
+{
+    // Define search and replace arrays
+    $search = array('ñ', 'Ñ');
+    $replace = array('n', 'N');
+
+    // Replace using arrays
+    $outputString = str_replace($search, $replace, $inputString);
+
+    return $outputString;
+}
+
+function getRandomPastelColor() {
+    // Generate random pastel color
+    $hue = rand(0, 360);
+    $saturation = rand(70, 100); // 70-100 for pastel
+    $lightness = rand(60, 90); // 60-90 for pastel
+
+    return "hsl($hue, $saturation%, $lightness%)";
+  }
  ?>

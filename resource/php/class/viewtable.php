@@ -71,5 +71,43 @@ public function viewApproveTable(){
 
 }
 
+  public function tableWalkIn()
+  {
+
+    // $con = $this->con();
+    // $data= $con->prepare($sql);
+    // $data->execute();
+    // $result = $data->fetchAll(PDO::FETCH_ASSOC);
+
+    echo "<h3 class='text-center p-3'> Applications List </h3>";
+    echo "<div class='table-responsive'>";
+    echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+    echo "<thead class='thead-dark'>";
+    echo "<th>Transaction Number</th>";
+    echo "<th style='width: 250px;'>Name</th>";
+    echo "<th>Course</th>";
+    echo "<th>Request Date</th>";
+    echo "<th>Encoder</th>";
+    echo "<th>Status</th>";
+    echo "<th style='width: 175px;'>Actions</th>";
+    echo "</thead>";
+
+    // foreach ($result as $data) {
+    echo "<tr style='font-size: 13px'>";
+    echo "<td>MNL-W-asd23ref</td>";
+    echo "<td>DELA CRUZ - JUAN</td>";
+    echo "<td>Doctor of Dental Medicine</td>";
+    echo "<td>2024-01-24</td>";
+    echo "<td>Unassigned</td>";
+    echo "<td>Pending</td>";
+    echo "<td><a href='appInfo.php' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>
+                        <a href='appInfo.php' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>
+                        
+                        <a href='appInfo.php' class='btn btn-sm  btn-danger m-1' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
+                    </td>";
+    // }
+  }
+
+  // <a href='appInfo.php' class='btn btn-sm  btn-warning m-1' data-toggle='tooltip' data-placement='top' title='Assign Request to an Encoder'><i class='fa-solid fa-users'></i></a>
 
 }
