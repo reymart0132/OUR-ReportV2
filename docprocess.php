@@ -15,7 +15,8 @@ if (!empty($_SESSION['info']) && !empty($_POST['points'])) {
     $points = $_POST['points'];
     $price = $_POST['hiddenPrice'];
     $specialinstruction = $_POST['sinstruction'];
-    $_SESSION['tn'] = $tnumber;    
+    $summary = $_POST['items'];
+    $_SESSION['tn'] = $tnumber;
 } else {
     header("HTTP/1.1 403 Forbidden");
     exit;
@@ -68,7 +69,7 @@ if (!empty($_POST)) {
         if (datevalidation($emailAdress) == false) {
             header("location:docrequest.php?error=MultipleTrans");
         } else {
-            $transaction = new transaction($tnumber, $stdn, $yearGraduated, $status, $fullname, $course, $reason, $contactNumber, $emailAdress, $facebook, $points, $price, $specialinstruction);
+            $transaction = new transaction($tnumber, $stdn, $yearGraduated, $status, $fullname, $course, $reason, $contactNumber, $emailAdress, $facebook, $points, $price, $specialinstruction,$summary);
             $transaction->insertTransaction();
             for ($i = 0; $i < count($order); $i++) {
                 $item[$i] = new items($tnumber, "", $counts[$i], $order[$i]);

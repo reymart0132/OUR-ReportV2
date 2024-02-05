@@ -74,12 +74,13 @@ public function viewApproveTable(){
   public function tableWalkIn()
   {
 
-    // $con = $this->con();
-    // $data= $con->prepare($sql);
-    // $data->execute();
-    // $result = $data->fetchAll(PDO::FETCH_ASSOC);
+    $con = $this->con();
+    $sql = "SELECT * FROM `tbl_transaction` WHERE `remarks` = 'PENDING'";
+    $data= $con->prepare($sql);
+    $data->execute();
+    $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "<h3 class='text-center p-3'> Applications List </h3>";
+    echo "<h3 class='text-center p-3'> Normal Transaction List </h3>";
     echo "<div class='table-responsive'>";
     echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
     echo "<thead class='thead-dark'>";
@@ -87,25 +88,33 @@ public function viewApproveTable(){
     echo "<th style='width: 250px;'>Name</th>";
     echo "<th>Course</th>";
     echo "<th>Request Date</th>";
-    echo "<th>Encoder</th>";
-    echo "<th>Status</th>";
+    echo "<th>Email</th>";
+    echo "<th>Messenger</th>";
     echo "<th style='width: 175px;'>Actions</th>";
     echo "</thead>";
 
-    // foreach ($result as $data) {
+    foreach ($result as $data) {
     echo "<tr style='font-size: 13px'>";
-    echo "<td>MNL-W-asd23ref</td>";
-    echo "<td>DELA CRUZ - JUAN</td>";
-    echo "<td>Doctor of Dental Medicine</td>";
-    echo "<td>2024-01-24</td>";
-    echo "<td>Unassigned</td>";
-    echo "<td>Pending</td>";
-    echo "<td><a href='appInfo.php' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>
-                        <a href='appInfo.php' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>
-                        
-                        <a href='appInfo.php' class='btn btn-sm  btn-danger m-1' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
+    echo "<td>$data[transactionid]</td>";
+    echo "<td>$data[fullname]</td>";
+    echo "<td>$data[course]</td>";
+    echo "<td>$data[dateapp]</td>";
+    echo "<td>$data[emailaddress]</td>";
+    if(empty($data['facebook'])){
+      echo "<td>No Data</td>";
+    }else{
+      echo "<td>$data[facebook]</td>";
+    }
+    echo "<td><a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]&body=Goodmorning!%0D%0A%0D%0AWe have received and acknowledged your request!%0D%0A%0D%0ATotal Break down of your transaction is listed below:%0D%0A %0D%0A $data[summary] %0D%0ATotal Price: PHP$data[price].00 %0D%0A%0D%0APayments can be made through this link.%0D%0A https://ptipages.paynamics.net/ceu/default.aspx %0D%0A%0D%0A *Please send us the proof of payment to this email address for us to proceed with your documents. %0D%0A %0D%0A Release date is 15 working days after submission of proof of payment for TOR %0D%0A and 5 working days after submission of proof of payment for certificates ( please send it to this email thread for faster transaction) %0D%0A %0D%0A Thank you and Stay safe!' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
+     if(empty($data['facebook'])){
+            echo "<a href='#' class='btn btn-sm  btn-secondary m-1 disabled' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook' disabled></i></a>";
+    }else{
+      echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
+          }                    
+    echo       "<a href='appInfo.php' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>        
+                <a href='appInfo.php' class='btn btn-sm  btn-danger m-1' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
                     </td>";
-    // }
+    }
   }
 
   // <a href='appInfo.php' class='btn btn-sm  btn-warning m-1' data-toggle='tooltip' data-placement='top' title='Assign Request to an Encoder'><i class='fa-solid fa-users'></i></a>

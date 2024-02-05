@@ -43,27 +43,6 @@ $user = new user();
               <a class="sub-btn" href="adash-specialapp"><i class="fa-solid fa-star"></i> Special Requests</a>
             </div>
 
-            <!-- <div class="item">
-              <a class="sub-btn"><i class="fa-solid fa-tag"></i>Main Item<i class="fas fa-chevron-right dropdown"></i></a>
-                <div class="sub-menu">
-                  <a href="regs-req-tr.php" name="Rtransfer" class="sub-item border-bottom" value="Transfer">
-                   Sub Item 1</a> 
-                  <a href="regs-req-gd.php" name="Rgraduate" class="sub-item" value="Graduate">
-                   Sub Item 2</a> 
-                </div>
-            </div> -->
-<!-- 
-            <a class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-              <i class="fas fa-question-circle me-2"></i> Options</a>
-            
-            <div class="item">
-              <a class="sub-btn" href="#"><i class="fa-solid fa-key"></i> Change Password</a>
-            </div>
-
-            <div class="item">
-              <a class="sub-btn" href="#"><i class="fa-solid fa-person-walking-arrow-right"></i> Logout</a>
-            </div> -->
-
             <script type="text/javascript">
               $(document).ready(function(){
                   $('.sub-btn').click(function(){
