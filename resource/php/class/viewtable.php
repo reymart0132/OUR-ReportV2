@@ -206,7 +206,8 @@ public function viewApproveTable(){
     }else{
       echo "<td>$data[facebook]</td>";
     }
-    echo "<td><a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
+    echo "<td><a href='actions.php?transactionID=".$data['transactionid']."&state=2' class='btn btn-sm  btn-secondary m-1' data-toggle='tooltip' data-placement='top' title='Set as For Signature'><i class='fa-solid fa-check'></i></a>";
+    echo "<a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
      if(empty($data['facebook'])){
             echo "<a href='#' class='btn btn-sm  btn-secondary m-1 disabled' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook' disabled></i></a>";
     }else{
