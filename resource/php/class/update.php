@@ -20,5 +20,17 @@ class update extends config{
             return false;
         }
     }
+
+    public function kcej_setStateFR() {
+        $config = new config();
+        $con = $this->con();
+        $sql = "UPDATE `tbl_transaction` SET `remarks` = 'FOR RELEASE' WHERE `transactionid` = '$this->tID'";
+        $data= $con->prepare($sql);
+        if($data->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 ?>
