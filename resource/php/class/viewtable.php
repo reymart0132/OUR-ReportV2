@@ -139,7 +139,8 @@ public function viewApproveTable(){
     echo "<th style='width: 250px;'>Name</th>";
     echo "<th>Course</th>";
     echo "<th>Request Date</th>";
-    echo "<th>Status</th>";
+    echo "<th>Email</th>";
+    echo "<th>Messenger</th>";
     echo "<th style='width: 175px;'>Actions</th>";
     echo "</thead>";
 
@@ -149,12 +150,21 @@ public function viewApproveTable(){
     echo "<td>$data[fullname]</td>";
     echo "<td>$data[course]</td>";
     echo "<td>$data[dateapp]</td>";
-    echo "<td>$data[remarks]</td>";
-    echo "<td>Pending</td>";
-    echo "<td><a href='appInfo.php' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>
-                        <a href='appInfo.php' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>
-                        
-                        <a href='appInfo.php' class='btn btn-sm  btn-danger m-1' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
+    echo "<td>$data[emailaddress]</td>";
+    if(empty($data['facebook'])){
+      echo "<td>No Data</td>";
+    }else{
+      echo "<td>$data[facebook]</td>";
+    }
+    echo "<td><a href='actions.php?transactionID=".$data['transactionid']."&state=1' class='btn btn-sm  btn-secondary m-1' data-toggle='tooltip' data-placement='top' title='Set as For Signature'><i class='fa-solid fa-check'></i></a>";
+    echo "<a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
+     if(empty($data['facebook'])){
+            echo "<a href='#' class='btn btn-sm  btn-secondary m-1 disabled' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook' disabled></i></a>";
+    }else{
+      echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
+          }                    
+    echo       "<a href='appInfo.php' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>        
+                <a href='appInfo.php' class='btn btn-sm  btn-danger m-1' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
                     </td>";
     }
   }
@@ -179,7 +189,8 @@ public function viewApproveTable(){
     echo "<th style='width: 250px;'>Name</th>";
     echo "<th>Course</th>";
     echo "<th>Request Date</th>";
-    echo "<th>Status</th>";
+    echo "<th>Email</th>";
+    echo "<th>Messenger</th>";
     echo "<th style='width: 175px;'>Actions</th>";
     echo "</thead>";
 
@@ -189,12 +200,20 @@ public function viewApproveTable(){
     echo "<td>$data[fullname]</td>";
     echo "<td>$data[course]</td>";
     echo "<td>$data[dateapp]</td>";
-    echo "<td>$data[remarks]</td>";
-    echo "<td>Pending</td>";
-    echo "<td><a href='appInfo.php' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>
-                        <a href='appInfo.php' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>
-                        
-                        <a href='appInfo.php' class='btn btn-sm  btn-danger m-1' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
+    echo "<td>$data[emailaddress]</td>";
+    if(empty($data['facebook'])){
+      echo "<td>No Data</td>";
+    }else{
+      echo "<td>$data[facebook]</td>";
+    }
+    echo "<td><a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
+     if(empty($data['facebook'])){
+            echo "<a href='#' class='btn btn-sm  btn-secondary m-1 disabled' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook' disabled></i></a>";
+    }else{
+      echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
+          }                    
+    echo       "<a href='appInfo.php' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>        
+                <a href='appInfo.php' class='btn btn-sm  btn-danger m-1' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
                     </td>";
     }
   }
