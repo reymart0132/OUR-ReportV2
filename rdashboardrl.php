@@ -44,7 +44,7 @@ $user = new user();
                         <i class="fas fa-question-circle me-2"></i> Menu</a>
 
                     <div class="item mt-3">
-                        <a class="sub-btn bg-selected" href="rdashboard"><i class="fa-solid fa-house"></i> For Release </a>
+                        <a class="sub-btn" href="rdashboard"><i class="fa-solid fa-house"></i> For Release </a>
                     </div>
 
                     <!-- <div class="item">
@@ -52,7 +52,7 @@ $user = new user();
                     </div> -->
 
                     <div class="item">
-                        <a class="sub-btn" href="rdashboardrl"><i class="fa-solid fa-star"></i> Released </a>
+                        <a class="sub-btn bg-selected" href="rdashboardrl"><i class="fa-solid fa-star"></i> Released </a>
                     </div>
 
                     <script type="text/javascript">
@@ -114,7 +114,8 @@ $user = new user();
                 <div class="container-fluid p-5">
                     <div class="row">
                         <div class="col-md p-5 content">
-                            <?php $table->kcej_forRelease(); ?>
+                            <?php $table->kcej_releasedDocs(); ?>
+
                         </div>
                     </div>
                 </div>

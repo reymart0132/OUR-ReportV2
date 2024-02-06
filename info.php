@@ -1,6 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
-$table = new viewtable();
+$info = new info();
 $user = new user();
 ?>
 
@@ -44,7 +44,7 @@ $user = new user();
                         <i class="fas fa-question-circle me-2"></i> Menu</a>
 
                     <div class="item mt-3">
-                        <a class="sub-btn bg-selected" href="rdashboard"><i class="fa-solid fa-house"></i> For Release </a>
+                        <a class="sub-btn bg-selected" href="udashboard"><i class="fa-solid fa-house"></i> Pending </a>
                     </div>
 
                     <!-- <div class="item">
@@ -52,7 +52,7 @@ $user = new user();
                     </div> -->
 
                     <div class="item">
-                        <a class="sub-btn" href="rdashboardrl"><i class="fa-solid fa-star"></i> Released </a>
+                        <a class="sub-btn" href="udashboardfs"><i class="fa-solid fa-star"></i> For Signature </a>
                     </div>
 
                     <script type="text/javascript">
@@ -107,14 +107,15 @@ $user = new user();
 
                 <div class="p-3">
 
-                    <h1>Dashboard Level 3</h1>
+                    <h1>Application Info</h1>
 
                 </div>
 
                 <div class="container-fluid p-5">
                     <div class="row">
                         <div class="col-md p-5 content">
-                            <?php $table->kcej_forRelease(); ?>
+                            <?php $info = new info($_GET['tID'], $_GET['type']); ?>
+
                         </div>
                     </div>
                 </div>
