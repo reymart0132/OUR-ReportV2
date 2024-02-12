@@ -112,7 +112,7 @@ public function viewApproveTable(){
       echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
           }                    
     echo       "<a href='appInfo.php' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>        
-                <a href='appInfo.php' class='btn btn-sm  btn-danger m-1' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
+               <a href='#' class='btn btn-sm btn-danger m-1 remove-request' data-bs-toggle='modal' data-bs-target='#confirmationModal' data-transaction-id='$data[transactionid]' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
                     </td>";
     }
   }

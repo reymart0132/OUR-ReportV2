@@ -29,16 +29,25 @@ $user = new user();
 
           <div class="list-group list-group-flush my-3">
             <a class="list-group-item list-group-item-action fw-bold">
-              <i class="fas fa-question-circle me-2"></i> Menu</a>
-
-            <div class="item mt-3">
-              <a class="sub-btn" href="adashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
+              <i class="fas fa-question-circle me-2"></i> Main Menu</a>
+              
+              <div class="item mt-3">
+              <a class="sub-btn " href="dash"><i class="fa-solid fa-house"></i> Dashboard</a>
             </div>
 
             <div class="item">
               <a class="sub-btn bg-selected" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
             </div>
-
+            
+            <div class="item">
+              <a class="sub-btn" href="adash-specialapp"><i class="fa-solid fa-star"></i> Special Requests</a>
+            </div>
+            <a class="list-group-item list-group-item-action fw-bold mt-5">
+              <i class="fas fa-check me-2"></i> For Assignment </a>
+            <div class="item">
+              <a class="sub-btn" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
+            </div>
+            
             <div class="item">
               <a class="sub-btn" href="adash-specialapp"><i class="fa-solid fa-star"></i> Special Requests</a>
             </div>
@@ -99,6 +108,9 @@ $user = new user();
       </div>
      </div>
     </header>
+      <!-- Modal for confirmation -->
+   
+
       <script type="text/javascript">
         var el = document.getElementById("wrapper")
         var toggleButton = document.getElementById("menu-toggle")
@@ -109,5 +121,60 @@ $user = new user();
       </script>
       <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  </body>
+       <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          // Get the modal
+          var confirmationModal = document.getElementById('confirmationModal');
+           console.log(confirmationModal);
+          // Get the remove button
+          var removeButtons = document.querySelectorAll('.remove-request');
+
+          // Add event listeners to all remove buttons
+          removeButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+              // Get the transaction ID
+              var transactionId = this.getAttribute('data-transaction-id');
+              
+              // Update the modal confirmation button to include the transaction ID
+              var confirmRemoveButton = document.getElementById('confirmRemove');
+              confirmRemoveButton.setAttribute('data-transaction-id', transactionId);
+             
+            });
+          });
+
+          // Add event listener to the confirmation button inside the modal
+          var confirmRemove = document.getElementById('confirmRemove');
+          confirmRemove.addEventListener('click', function () {
+            // Get the transaction ID from the confirmation button
+            var transactionId = this.getAttribute('data-transaction-id');
+            var reason = document.getElementById('reasonInput').value;
+            
+            // Perform the removal process (You might need AJAX or form submission here)
+            window.location.href = 'actions.php?transactionID=' + transactionId+'&state=4&type=reg&landing=adash-online&info='+reason;
+            
+            // Close the modal
+            var modal = bootstrap.Modal.getInstance(confirmationModal);
+            modal.hide();
+          });
+        });
+      </script>
+       <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Please input the reason for removal of the request:
+              <input type="text" name="info" id='reasonInput' class="form-control">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmRemove">Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </body>
 </html>

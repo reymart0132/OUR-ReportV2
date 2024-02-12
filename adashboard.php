@@ -36,20 +36,29 @@
 
           <div class="list-group list-group-flush my-3">
             <a class="list-group-item list-group-item-action fw-bold">
-              <i class="fas fa-question-circle me-2"></i> Menu</a>
-
-            <div class="item mt-3">
+              <i class="fas fa-question-circle me-2"></i> Main Menu</a>
+              
+              <div class="item mt-3">
               <a class="sub-btn bg-selected" href="dash"><i class="fa-solid fa-house"></i> Dashboard</a>
             </div>
 
             <div class="item">
               <a class="sub-btn" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
             </div>
-
+            
             <div class="item">
               <a class="sub-btn" href="adash-specialapp"><i class="fa-solid fa-star"></i> Special Requests</a>
             </div>
-
+            <a class="list-group-item list-group-item-action fw-bold mt-5">
+              <i class="fas fa-check me-2"></i> For Assignment </a>
+            <div class="item">
+              <a class="sub-btn" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
+            </div>
+            
+            <div class="item">
+              <a class="sub-btn" href="adash-specialapp"><i class="fa-solid fa-star"></i> Special Requests</a>
+            </div>
+            
             <script type="text/javascript">
               $(document).ready(function(){
                   $('.sub-btn').click(function(){
@@ -109,6 +118,8 @@
       </div>
      </div>
     </header>
+
+      
       <script type="text/javascript">
         var el = document.getElementById("wrapper")
         var toggleButton = document.getElementById("menu-toggle")
@@ -120,5 +131,6 @@
       <script src="resource/js/loader.js"></script>
       <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  </body>
+     
+    </body>
 </html>

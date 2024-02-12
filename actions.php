@@ -16,8 +16,8 @@ if($_GET['state'] == '1' && $user->data()->groups == '1'){  // set for signature
   $action = new update($_GET['transactionID'], $_GET['type']);
   $action->kcej_setStateRL();
   header('Location:rdashboard.php');
-}elseif($_GET['state'] == '4' && !empty($user->data()->groups)){  // delete
-  $action = new update($_GET['transactionID'], $_GET['type']);
+}elseif($_GET['state'] == '4' && !empty($user->data()->groups)){  // remove transaction
+  $action = new update($_GET['transactionID'], $_GET['type'],$_GET['info']);
   $action->kcej_setStateDL();
   if($_GET['landing'] == 'udash'){
     header('Location:udashboard.php');
@@ -25,6 +25,8 @@ if($_GET['state'] == '1' && $user->data()->groups == '1'){  // set for signature
     header('Location:udashboardfs.php');
   }elseif($_GET['landing'] == 'rdash'){
     header('Location:rdashboard.php');
+  }elseif($_GET['landing'] == 'adash-online'){
+    header('Location:adash-onlineapp.php');
   }else{
     header("HTTP/1.1 403 Forbidden");
     exit();
