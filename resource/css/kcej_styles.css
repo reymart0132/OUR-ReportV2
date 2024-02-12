@@ -20,6 +20,10 @@ body {
   animation-fill-mode: forwards;
 }
 
+.fa-solid, .fa-brands{
+  padding: 0px 15px 10px;
+}
+
 .bg-selected{
   background-color: rgba(36, 18, 94, 0.5);
   border-radius: 100px 9999px 9999px 100px;
