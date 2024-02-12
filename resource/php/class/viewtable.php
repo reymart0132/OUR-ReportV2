@@ -125,7 +125,7 @@ public function viewApproveTable(){
     $assignee = $user->data()->id;
     $con = $this->con();
     // echo $assignee;
-    $sql = "SELECT * from `tbl_transaction` WHERE `assignee` = '$assignee' AND `remarks` = 'PENDING'";
+    $sql = "SELECT *, 'reg' as `apptype` from `tbl_transaction` WHERE `assignee` = '$assignee' AND `remarks` = 'PENDING'";
     $data= $con->prepare($sql);
 
     $data->execute();
@@ -141,7 +141,7 @@ public function viewApproveTable(){
     echo "<th>Request Date</th>";
     echo "<th>Email</th>";
     echo "<th>Messenger</th>";
-    echo "<th style='width: 175px;'>Actions</th>";
+    echo "<th style='width: 200px;'>Actions</th>";
     echo "</thead>";
 
     foreach ($result as $data) {
@@ -163,8 +163,8 @@ public function viewApproveTable(){
     }else{
       echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
           }                    
-    echo       "<a href='appInfo.php' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>        
-                <a href='appInfo.php' class='btn btn-sm  btn-danger m-1' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
+    echo       "<a href='info.php?tID=".$data['transactionid']."&type=".$data['apptype']."' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>        
+                <a href='actions.php?transactionID=".$data['transactionid']."&state=4&type=".$data['apptype']."&landing=udash' class='btn btn-sm  btn-danger' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
                     </td>";
     }
   }
@@ -174,8 +174,7 @@ public function viewApproveTable(){
     $user = new user();
     $assignee = $user->data()->id;
     $con = $this->con();
-    // echo $assignee;
-    $sql = "SELECT * from `tbl_transaction` WHERE `assignee` = '$assignee' AND `remarks` = 'FOR SIGNATURE'";
+    $sql = "SELECT *, 'reg' as `apptype` from `tbl_transaction` WHERE `assignee` = '$assignee' AND `remarks` = 'FOR SIGNATURE'";
     $data= $con->prepare($sql);
 
     $data->execute();
@@ -191,7 +190,7 @@ public function viewApproveTable(){
     echo "<th>Request Date</th>";
     echo "<th>Email</th>";
     echo "<th>Messenger</th>";
-    echo "<th style='width: 175px;'>Actions</th>";
+    echo "<th style='width: 200px;'>Actions</th>";
     echo "</thead>";
 
     foreach ($result as $data) {
@@ -206,7 +205,7 @@ public function viewApproveTable(){
     }else{
       echo "<td>$data[facebook]</td>";
     }
-    echo "<td><a href='actions.php?transactionID=".$data['transactionid']."&state=2' class='btn btn-sm  btn-secondary m-1' data-toggle='tooltip' data-placement='top' title='Set as For Signature'><i class='fa-solid fa-check'></i></a>";
+    echo "<td><a href='actions.php?transactionID=".$data['transactionid']."&state=2' class='btn btn-sm  btn-secondary m-1' data-toggle='tooltip' data-placement='top' title='Set as For Release'><i class='fa-solid fa-check'></i></a>";
     echo "<a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
      if(empty($data['facebook'])){
             echo "<a href='#' class='btn btn-sm  btn-secondary m-1 disabled' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook' disabled></i></a>";
@@ -214,9 +213,101 @@ public function viewApproveTable(){
       echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
           }                    
     echo       "<a href='appInfo.php' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>        
-                <a href='appInfo.php' class='btn btn-sm  btn-danger m-1' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
+                <a href='actions.php?transactionID=".$data['transactionid']."&state=4&type=".$data['apptype']."&landing=udashfs' class='btn btn-sm  btn-danger' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
                     </td>";
     }
   }
+  
+  public function kcej_forRelease()
+  {
+    $con = $this->con();
+    $sql = "SELECT *, 'reg' as `apptype` FROM `tbl_transaction` WHERE `remarks` = 'FOR RELEASE' 
+            UNION ALL SELECT *, 'sp' as `apptype` FROM `tbl_spctransaction` WHERE `remarks` = 'FOR RELEASE' ORDER BY `dateapp` DESC";
+    $data= $con->prepare($sql);
+    $data->execute();
+    $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
+    echo "<h3 class='text-center p-3'> For Release Applications </h3>";
+    echo "<div class='table-responsive'>";
+    echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+    echo "<thead class='thead-dark'>";
+    echo "<th>Transaction Number</th>";
+    echo "<th style='width: 250px;'>Name</th>";
+    echo "<th>Course</th>";
+    echo "<th>Request Date</th>";
+    echo "<th>Email</th>";
+    echo "<th>Messenger</th>";
+    echo "<th style='width: 200px;'>Actions</th>";
+    echo "</thead>";
+
+    foreach ($result as $data) {
+    echo "<tr style='font-size: 13px'>";
+    echo "<td>$data[transactionid]</td>";
+    echo "<td>$data[fullname]</td>";
+    echo "<td>$data[course]</td>";
+    echo "<td>$data[dateapp]</td>";
+    echo "<td>$data[emailaddress]</td>";
+    if(empty($data['facebook'])){
+      echo "<td>No Data</td>";
+    }else{
+      echo "<td>$data[facebook]</td>";
+    }
+    echo "<td><a href='actions.php?transactionID=".$data['transactionid']."&state=3&type=".$data['apptype']."' class='btn btn-sm  btn-secondary m-1' data-toggle='tooltip' data-placement='top' title='Set as Released'><i class='fa-solid fa-check'></i></a>";
+    echo "<a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
+     if(empty($data['facebook'])){
+            echo "<a href='#' class='btn btn-sm  btn-secondary m-1 disabled' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook' disabled></i></a>";
+    }else{
+      echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
+          }                    
+    echo       "<a href='appInfo.php' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>        
+                <a href='actions.php?transactionID=".$data['transactionid']."&state=4&type=".$data['apptype']."&landing=rdash' class='btn btn-sm  btn-danger' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
+                    </td>";
+    }
+  }
+  
+  public function kcej_releasedDocs()
+  {
+    $con = $this->con();
+    $sql = "SELECT *, 'reg' as `apptype` FROM `tbl_transaction` WHERE `remarks` = 'RELEASED' 
+            UNION ALL SELECT *, 'sp' as `apptype` FROM `tbl_spctransaction` WHERE `remarks` = 'RELEASED' ORDER BY `dateapp` DESC";
+    $data= $con->prepare($sql);
+    $data->execute();
+    $result = $data->fetchAll(PDO::FETCH_ASSOC);
+
+    echo "<h3 class='text-center p-3'> Released Applications </h3>";
+    echo "<div class='table-responsive'>";
+    echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+    echo "<thead class='thead-dark'>";
+    echo "<th>Transaction Number</th>";
+    echo "<th style='width: 250px;'>Name</th>";
+    echo "<th>Course</th>";
+    echo "<th>Request Date</th>";
+    echo "<th>Email</th>";
+    echo "<th>Messenger</th>";
+    echo "<th style='width: 200px;'>Actions</th>";
+    echo "</thead>";
+
+    foreach ($result as $data) {
+    echo "<tr style='font-size: 13px'>";
+    echo "<td>$data[transactionid]</td>";
+    echo "<td>$data[fullname]</td>";
+    echo "<td>$data[course]</td>";
+    echo "<td>$data[dateapp]</td>";
+    echo "<td>$data[emailaddress]</td>";
+    if(empty($data['facebook'])){
+      echo "<td>No Data</td>";
+    }else{
+      echo "<td>$data[facebook]</td>";
+    }
+    //echo "<td><a href='actions.php?transactionID=".$data['transactionid']."&state=2' class='btn btn-sm  btn-secondary m-1' data-toggle='tooltip' data-placement='top' title='Set as For Signature'><i class='fa-solid fa-check'></i></a>";
+    echo "<td><a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
+     if(empty($data['facebook'])){
+            echo "<a href='#' class='btn btn-sm  btn-secondary m-1 disabled' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook' disabled></i></a>";
+    }else{
+      echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
+          }                    
+    echo       "<a href='appInfo.php' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>        
+                    </td>";
+    }
+  }
 }
