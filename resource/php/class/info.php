@@ -360,10 +360,22 @@ class info extends config{
 
         echo "<table class='table table-borderless' width='100%'>";
 
-        echo"<tr><td>Transaction ID: <h4><b>$transID</b></h4></td></tr>
-                    <td>Student Number: <h4><b>$studentID</b></h4></td></tr>
-                    <td>Name: <h4><b>$fullname</b></h4>
-                </tr>";
+        echo"<tr>
+                <td>
+                    <tr>Transaction ID: <h4><b>$transID</b></h4></tr>
+                    <tr>Student Number: <h4><b>$studentID</b></tr>
+                    <tr>Name: <h4><b>$fullname</b></h4></tr>
+                    <tr>Course: <h4><b>$course</b></h4></tr>
+                    <tr>Type: <h4><b>$status</b></h4></tr>
+                    <tr>Year Graduate: <h4><b>$yeargrad</b></h4></tr>
+                </td>
+                <td>
+                    <tr>Transaction ID: <h4><b>$transID</b></h4></tr>
+                    <tr>Student Number: <h4><b>$studentID</b></tr>
+                    <tr>Name: <h4><b>$fullname</b></h4></tr>
+                </td>
+            </tr>
+        </table>";
         
 
         // $sql0 = "SELECT * FROM `tbl_items` WHERE `transactionid` = '$this->tID'";

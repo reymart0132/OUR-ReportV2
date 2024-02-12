@@ -16,7 +16,7 @@ if($_GET['state'] == '1' && $user->data()->groups == '1'){  // set for signature
   $action = new update($_GET['transactionID'], $_GET['type']);
   $action->kcej_setStateRL();
   header('Location:rdashboard.php');
-}elseif($_GET['state'] == '4' && !empty($user->data()->groups)){
+}elseif($_GET['state'] == '4' && !empty($user->data()->groups)){  // delete
   $action = new update($_GET['transactionID'], $_GET['type']);
   $action->kcej_setStateDL();
   if($_GET['landing'] == 'udash'){
