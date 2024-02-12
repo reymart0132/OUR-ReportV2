@@ -113,7 +113,7 @@ $user = new user();
 
                 <div class="container-fluid p-5">
                     <div class="row">
-                        <div class="col-md p-5 content">
+                        <div class="col-md p-5 content d-flex justify-content-center">
                             <?php $info = new info($_GET['tID'], $_GET['type']); ?>
 
                         </div>

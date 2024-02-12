@@ -345,7 +345,11 @@ class info extends config{
             $reason = $result[0]['reason'];
             $contact = $result[0]['contactnumber'];
             $email = $result[0]['emailaddress'];
-            $fb = $result[0]['facebook'];
+            if(!empty($result[0]['facebook'])){
+                $fb = $result[0]['facebook'];
+            }else{
+                $fb = "N/A";
+            }
             $dateapp = $result[0]['dateapp'];
             $remarks = $result[0]['remarks'];
             $dateconfirmed = $result[0]['dateconfirmed'];
@@ -358,24 +362,53 @@ class info extends config{
             $assign = $result[0]['assignee'];
             $summary = $result[0]['summary'];
 
-        echo "<table class='table table-borderless' width='100%'>";
+        echo "
+                <div class='col-md-9'>
+                <table class='table shadow m-3'>";
 
+        echo "<tr>
+                <td class='pt-5 px-5' width='50%'>
+                    Name: <h4><i class='fa-solid fa-user'></i> <b>$fullname</b></h4>
+                </td>    
+                <td class='pt-5 px-5' width='50%'>
+                    Transaction Number: <h4><i class='fa-solid fa-key'></i> <b>$transID</b></h4>
+                </td>    
+            </tr>";
         echo"<tr>
-                <td>
-                    <tr>Transaction ID: <h4><b>$transID</b></h4></tr>
-                    <tr>Student Number: <h4><b>$studentID</b></tr>
-                    <tr>Name: <h4><b>$fullname</b></h4></tr>
-                    <tr>Course: <h4><b>$course</b></h4></tr>
-                    <tr>Type: <h4><b>$status</b></h4></tr>
-                    <tr>Year Graduate: <h4><b>$yeargrad</b></h4></tr>
+                <td class='p-5' width='50%'>
+
+                        Current Request Status: <h4><i class='fa-solid fa-spinner'></i> <b>$status</b></h4>
+                        Assigned to: <h4><i class='fa-solid fa-keyboard'></i> <b>$assign</b></h4>
+                        Student Number: <h4><i class='fa-solid fa-id-card'></i> <b>$studentID</b></h4>
+                        Course: <h4><i class='fa-solid fa-book-open'></i> <b>$course</b></h4>
+                        Year Graduate: <h4><i class='fa-solid fa-graduation-cap'></i> <b>$yeargrad</b></h4>
+                        Email Address: <h4><i class='fa-solid fa-envelope'></i> <b>$email</b></h4>
+                        Contact Number: <h4><i class='fa-solid fa-phone'></i> <b>$contact</b></h4>
+                        Facebook: <h4><i class='fa-brands fa-facebook'></i> <b>$fb</b></h4>
+                       
+
+                    
                 </td>
-                <td>
-                    <tr>Transaction ID: <h4><b>$transID</b></h4></tr>
-                    <tr>Student Number: <h4><b>$studentID</b></tr>
-                    <tr>Name: <h4><b>$fullname</b></h4></tr>
+                <td class='p-5' width='50%'>
+                        
+                        Request Purpose: <h5><b>$reason</b></h5>
+                        Request Date: <h5><b>$dateapp</b></h5>
+                        Date Paid: <h5><b>$paid</b></h5>
+                        Date Released: <h5><b>$released</b></h5>
+
+                        <hr>
+
+                        Requested Documents:
+                        (Insert Documents Here)
+
+                        <hr>
+
+                        Special Instructions:<h5><b>$inst</b></h5>
+                    
                 </td>
             </tr>
-        </table>";
+        </table>
+        </div>";
         
 
         // $sql0 = "SELECT * FROM `tbl_items` WHERE `transactionid` = '$this->tID'";
