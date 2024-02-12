@@ -285,6 +285,17 @@ function datevalidation($email)
         return false;
     }
 }
+function getEmail($transactionID)
+{
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT * FROM `tbl_transaction` WHERE `transactionid` = '$transactionID'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_ASSOC);
+    return $rows[0]['emailaddress'];
+    
+}
 function datevalidation2($email)
 {
     $config = new config;
