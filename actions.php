@@ -3,7 +3,10 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/ord/resource/php/class/core/init.php';
 
 
 $user = new user();
-$emailAdress = getEmail($_GET['transactionID']);
+$emailAddress = getEmail($_GET['transactionID']);
+$assignName = kcej_getTransactionAssignName($_GET['transactionID'], $_GET['type']);
+$clientName = kcej_getTransactionClientName($_GET['transactionID'], $_GET['type']);
+$assignEmail = kcej_getAssigneeEmail($assignName);
 
 if($_GET['state'] == '1' && $user->data()->groups == '1'){  // set for signature
   $action = new update($_GET['transactionID'], $_GET['type']);
@@ -23,6 +26,9 @@ if($_GET['state'] == '1' && $user->data()->groups == '1'){  // set for signature
 }elseif($_GET['state'] == '2' && $user->data()->groups == '1'){  // set as for release
   $action = new update($_GET['transactionID'], $_GET['type']);
   $action->kcej_setStateFR();
+
+  include_once "vendor/release.php";
+
   if($_GET['landing'] == 'udashfs'){
     header('Location:udashboardfs.php');
   }elseif($_GET['landing'] == 'sdashfs'){

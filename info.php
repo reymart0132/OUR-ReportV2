@@ -97,8 +97,6 @@ $user = new user();
                                             Password</a></li>
                                     <li><a href='logout.php' class='dropdown-item'><i
                                                 class="fa-solid fa-person-walking-arrow-right"></i> Logout</a></li>
-                                    <!-- <li><a href= '#' class='dropdown-item'>Item 3</a></li>
-                    <li><a href='#' class='dropdown-item'>Item 4</a></li> -->
                                 </ul>
                             </li>
                         </ul>

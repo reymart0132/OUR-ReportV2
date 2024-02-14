@@ -164,7 +164,7 @@ public function viewApproveTable(){
       echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
           }                    
     echo       "<a href='info.php?tID=".$data['transactionid']."&type=".$data['apptype']."' class='btn btn-sm  btn-success m-1' target='_blank' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>        
-                <a href='actions.php?transactionID=".$data['transactionid']."&state=4&type=".$data['apptype']."&landing=udash' class='btn btn-sm  btn-danger' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
+                <a href='#' class='btn btn-sm btn-danger remove-request' data-bs-toggle='modal' data-bs-target='#confirmationModal' data-transaction-id='$data[transactionid]' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
                     </td>";
     }
   }
@@ -214,7 +214,7 @@ public function viewApproveTable(){
       echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
           }                    
     echo       "<a href='info.php?tID=".$data['transactionid']."&type=".$data['apptype']."' class='btn btn-sm  btn-success m-1' target='_blank' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>        
-                <a href='actions.php?transactionID=".$data['transactionid']."&state=4&type=".$data['apptype']."&landing=sdash' class='btn btn-sm  btn-danger' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
+                <a href='#' class='btn btn-sm btn-danger remove-request' data-bs-toggle='modal' data-bs-target='#confirmationModal' data-transaction-id='$data[transactionid]' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
                     </td>";
     }
   }
@@ -263,7 +263,7 @@ public function viewApproveTable(){
       echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
           }                    
     echo       "<a href='info.php?tID=".$data['transactionid']."&type=".$data['apptype']."' class='btn btn-sm  btn-success m-1' target='_blank' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>        
-                <a href='actions.php?transactionID=".$data['transactionid']."&state=4&type=".$data['apptype']."&landing=udashfs' class='btn btn-sm  btn-danger' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
+                <a href='#' class='btn btn-sm btn-danger remove-request' data-bs-toggle='modal' data-bs-target='#confirmationModal' data-transaction-id='$data[transactionid]' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
                     </td>";
     }
   }
@@ -312,7 +312,7 @@ public function viewApproveTable(){
       echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
           }                    
     echo       "<a href='info.php?tID=".$data['transactionid']."&type=".$data['apptype']."' class='btn btn-sm  btn-success m-1' target='_blank' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>
-                <a href='actions.php?transactionID=".$data['transactionid']."&state=4&type=".$data['apptype']."&landing=rdashfs' class='btn btn-sm  btn-danger' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
+                <a href='#' class='btn btn-sm btn-danger remove-request' data-bs-toggle='modal' data-bs-target='#confirmationModal' data-transaction-id='$data[transactionid]' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
                     </td>";
     }
   }
@@ -358,8 +358,8 @@ public function viewApproveTable(){
     }else{
       echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
           }                    
-    echo       "<a href='appInfo.php' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>        
-                <a href='actions.php?transactionID=".$data['transactionid']."&state=4&type=".$data['apptype']."&landing=rdash' class='btn btn-sm  btn-danger' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
+    echo       "<a href='info.php?tID=".$data['transactionid']."&type=".$data['apptype']."' class='btn btn-sm  btn-success m-1' target='_blank' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>
+                <a href='#' class='btn btn-sm btn-danger remove-request' data-bs-toggle='modal' data-bs-target='#confirmationModal' data-transaction-id='$data[transactionid]' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
                     </td>";
     }
   }
@@ -405,7 +405,7 @@ public function viewApproveTable(){
     }else{
       echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
           }                    
-    echo       "<a href='appInfo.php' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>        
+    echo       "<a href='info.php?tID=".$data['transactionid']."&type=".$data['apptype']."' class='btn btn-sm  btn-success m-1' target='_blank' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>
                     </td>";
     }
   }
