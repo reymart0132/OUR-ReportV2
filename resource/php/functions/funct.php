@@ -145,6 +145,9 @@ function vald(){
                             } else if ($user->data()->groups == 3) {
                                 Redirect::to('rdashboard.php');
                                 echo $user->data()->groups;
+                            } else if ($user->data()->groups == 4) {
+                                Redirect::to('sdashboard.php');
+                                echo $user->data()->groups;
                             }else{
                                 loginError();
                             }
@@ -296,6 +299,19 @@ function getEmail($transactionID)
     return $rows[0]['emailaddress'];
     
 }
+
+function getAssignee($assignee)
+{
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT * FROM `tbl_accounts` WHERE `id` = '$assignee'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_ASSOC);
+    return $rows[0]['name'];
+    
+}
+
 function datevalidation2($email)
 {
     $config = new config;
