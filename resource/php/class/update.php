@@ -3,9 +3,9 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/ord/resource/php/class/core/init.php';
 
 class update extends config{
 
-    public $tID, $type,$info;
+    public $tID, $type, $info;
 
-    function __construct( $transactionID = null, $type = null,$info=null ){
+    function __construct( $transactionID = null, $type = null, $info=null ){
         $this->tID = $transactionID;
         $this->type = $type;
         $this->info = $info;
@@ -17,7 +17,7 @@ class update extends config{
         $sql = "UPDATE `tbl_transaction` SET `remarks` = 'FOR SIGNATURE' WHERE `transactionid` = '$this->tID'";
         $data= $con->prepare($sql);
         if($data->execute()){
-            return true;
+            $this->kcej_setPrinted();
         }else{
             return false;
         }
@@ -26,7 +26,7 @@ class update extends config{
     public function kcej_setStateFR(){
         $config = new config();
         $con = $this->con();
-        $sql = "UPDATE `tbl_transaction` SET `remarks` = 'FOR RELEASE' WHERE `transactionid` = '$this->tID'";
+        $sql = "UPDATE `tbl_transaction` SET `remarks` = 'FOR RELEASE', `signeddate` = now() WHERE `transactionid` = '$this->tID'";
         $data= $con->prepare($sql);
         if($data->execute()){
             return true;
@@ -39,10 +39,9 @@ class update extends config{
         $config = new config();
         $con = $this->con();
         if($this->type == 'reg'){
-            $sql = "UPDATE `tbl_transaction` SET `remarks` = 'RELEASED', `info`='$this->info' WHERE `transactionid` = '$this->tID'";
-            
+            $sql = "UPDATE `tbl_transaction` SET `remarks` = 'RELEASED', `info`='$this->info', `releasedate` = now() WHERE `transactionid` = '$this->tID'";
         }elseif($this->type == 'sp'){
-            $sql = "UPDATE `tbl_spctransaction` SET `remarks` = 'RELEASED', `info`='$this->info' WHERE `transactionid` = '$this->tID'";
+            $sql = "UPDATE `tbl_spctransaction` SET `remarks` = 'RELEASED', `info`='$this->info' `releasedate` = now() WHERE `transactionid` = '$this->tID'";
         }else{
             header("HTTP/1.1 403 Forbidden");
         }
@@ -66,7 +65,6 @@ class update extends config{
             header("HTTP/1.1 403 Forbidden");
         }
         $data= $con->prepare($sql);
-
         if($data->execute()){
             $this->kcej_deleteItems();
         }else{
@@ -74,16 +72,28 @@ class update extends config{
         }
     }
 
-    public function kcej_deleteItems()
-    {
+    public function kcej_deleteItems(){
         $config = new config();
         $con = $this->con();
         $sql = "DELETE FROM tbl_items WHERE `transnumber` = '$this->tID'";
         $data = $con->prepare($sql);
 
-        if ($data->execute()) {
+        if($data->execute()){
             return true;
-        } else {
+        }else{
+            return false;
+        }
+    }
+
+    public function kcej_setPrinted(){
+        $config = new config();
+        $con = $this->con();
+        $sql = "UPDATE `tbl_items` SET `printeddate` = now() WHERE `transnumber` = '$this->tID'";
+        $data = $con->prepare($sql);
+
+        if($data->execute()){
+            return true;
+        }else{
             return false;
         }
     }

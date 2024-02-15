@@ -97,8 +97,6 @@ $user = new user();
                                             Password</a></li>
                                     <li><a href='logout.php' class='dropdown-item'><i
                                                 class="fa-solid fa-person-walking-arrow-right"></i> Logout</a></li>
-                                    <!-- <li><a href= '#' class='dropdown-item'>Item 3</a></li>
-                    <li><a href='#' class='dropdown-item'>Item 4</a></li> -->
                                 </ul>
                             </li>
                         </ul>
@@ -136,6 +134,61 @@ $user = new user();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          // Get the modal
+          var confirmationModal = document.getElementById('confirmationModal');
+           console.log(confirmationModal);
+          // Get the remove button
+          var removeButtons = document.querySelectorAll('.remove-request');
+
+          // Add event listeners to all remove buttons
+          removeButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+              // Get the transaction ID
+              var transactionId = this.getAttribute('data-transaction-id');
+              
+              // Update the modal confirmation button to include the transaction ID
+              var confirmRemoveButton = document.getElementById('confirmRemove');
+              confirmRemoveButton.setAttribute('data-transaction-id', transactionId);
+             
+            });
+          });
+
+          // Add event listener to the confirmation button inside the modal
+          var confirmRemove = document.getElementById('confirmRemove');
+          confirmRemove.addEventListener('click', function () {
+            // Get the transaction ID from the confirmation button
+            var transactionId = this.getAttribute('data-transaction-id');
+            var reason = document.getElementById('reasonInput').value;
+            
+            // Perform the removal process (You might need AJAX or form submission here)
+            window.location.href = 'actions.php?transactionID=' + transactionId+'&state=4&type=reg&landing=udash&info='+reason;
+            
+            // Close the modal
+            var modal = bootstrap.Modal.getInstance(confirmationModal);
+            modal.hide();
+          });
+        });
+    </script>
+        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Please input the reason for removal of the request:
+                        <input type="text" name="info" id='reasonInput' class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="confirmRemove">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
 
 </html>

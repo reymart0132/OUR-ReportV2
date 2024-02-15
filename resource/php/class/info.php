@@ -17,318 +17,6 @@ class info extends config{
         }
     }
 
-        // $data = $con->prepare($sql);
-        // $data->execute();
-        // $result = $data->fetchAll(PDO::FETCH_ASSOC);
-        //   $id = $result[0]["id"];                 // PK
-    //       $studID = $result[0]["studentID"];      // index
-    //       $refID = $result[0]["referenceID"];
-    //       $temp_lname = utf8_decode($result[0]["lname"]);
-    //       $lname = str_replace('?', 'Ñ', $temp_lname);
-    //       $temp_fname = utf8_decode($result[0]["fname"]);
-    //       $fname = str_replace('?', 'Ñ', $temp_fname);
-    //       $temp_mname = utf8_decode($result[0]["mname"]);
-    //       $mname = str_replace('?', 'Ñ', $temp_mname);
-    //       $sy = $result[0]["sy"];
-    //       $sem = $result[0]["semester"];
-        //   $rawDateReq = $result[0]["dateReq"];
-    //       $school = $result[0]["school"];
-    //       $schoolABBR = $result[0]["schoolABBR"];
-    //       $email = $result[0]["email"];
-    //       $contact = $result[0]["contact"];
-    //       $rawBday = $result[0]["bday"];
-    //       $course = $result[0]["course"];
-    //       $courseABBR = $result[0]["courseABBR"];
-    //       $year = $result[0]["year"];
-    //       $tSchool = strtoupper(str_replace('?', 'Ñ', utf8_decode($result[0]['transferredSchool'])));
-    //       $tReason = $result[0]["reason"];
-    //       $studType = $result[0]["studentType"];
-    //       $schType = $result[0]["schoolType"];
-    //       $libraryC = $result[0]["libraryclearance"];
-    //       $libraryR = $result[0]["libraryremarks"];
-    //       $rawLibraryD = $result[0]["librarydate"];
-    //       $deptC = $result[0]["departmentclearance"];
-    //       $deptR = $result[0]["departmentremarks"];
-    //       $rawDeptD = $result[0]["departmentdate"];
-    //       $acctC = $result[0]["accountingclearance"];
-    //       $acctR = $result[0]["accountingremarks"];
-    //       $rawAcctD = $result[0]["accountingdate"];
-    //       $regC = $result[0]["registrarclearance"];
-    //       $regR = $result[0]["registrarremarks"];
-    //       $rawRegD = $result[0]["registrardate"];
-    //       $evaluator_name = evaluatorName();
-
-    //       if($studType == "Under"){
-    //         $guidanceC = $result[0]["guidanceclearance"];
-    //         $guidanceR = $result[0]["guidanceremarks"];
-    //         $rawGuidanceD = $result[0]["guidancedate"];
-    //         $attachedID = $result[0]["file_validID"];
-    //         $attachedLTR = $result[0]["file_letter"];
-    //       }
-
-    //       if($regC == "PENDING")
-    //       {
-    //         $rcc = "bg-info";
-    //       }else{
-    //         $rcc = "";
-    //       }
-    
-    // echo "<form method='post' action=''>";
-
-    // echo "<div class='row d-flex justify-content-between'>";
-    //     echo "<div class='col col-md-5'>";
-    //         echo "<h3 class='text-center mt-5'><i class='fas fa-user-circle'></i> <u> Student Information </u> </h3>";
-    //     echo "</div>";
-    //     echo "<div class='col col-md-2 justify-content-center'>";
-    //     echo "<button type='submit' name='saveChanges' class='btn btn-adduser btn-block mt-3 mr-3'><i class='fa-solid fa-floppy-disk'></i> Save Changes</button>";
-    //     echo "<a class='btn btn-dark btn-block mt-1 mr-3' href='override'><i class='fa-solid fa-person-walking-arrow-right'></i> Cancel</a>";
-    //     echo "</div>";
-    // echo "</div>";
-    // echo "<hr>";
-     
-    //     echo "<div class='table-responsive mt-4 col-12'>";
-    //         echo "<div class='row justify-content-center'>";
-    //             echo "<div class='col col-10'>";
-    //                 echo "<table class='table table-borderless' width='100%'>";
-
-    //                     echo "<tr><td>Reference #: <h4><b>$refID</b></h4></td></tr>
-    //                             <tr><td>Date Requested: <h4><b>$rawDateReq</b></h4></td></tr>
-    //                             <tr><td>Student Number: <h4><b>$studID</b></h4>
-    //                             <input type='hidden' name='studID' value='$studID'></td></tr>";
-                        
-    //                     echo "<tr>
-    //                             <td>Last Name <input class='form-control' type='text' name='lastName' value='$lname' required> 
-    //                                 First Name <input class='form-control' type='text' name='firstName' value='$fname' required>
-    //                                 Middle Name <input class='form-control' type='text' name='middleName' value='$mname' required>
-    //                             </td>
-    //                         </tr>";
-
-    //                     echo "<tr>
-    //                             <td class='pt-2'>School:
-    //                                 <select name='school' class='form-control selectpicker' data-live-search='true' required>
-    //                                 <option data-tokens='$school' value='$school'>$school</option>";
-    //                                     $view->collegeSP2();
-    //                             echo "</select>
-    //                             </td>
-    //                         </tr>";
-
-    //                     echo "<tr>
-    //                             <td class='pt-2'>Course:
-    //                                 <select name='course' class='form-control selectpicker' data-live-search='true' required>
-    //                                 <option data-tokens='$course' value='$course'>$course</option>";
-    //                                     $view->courseSP2();
-    //                             echo "</select>
-    //                             </td>
-    //                         </tr>";
-
-    //                     if($studType == "Graduate"){
-    //                         echo "<tr>
-    //                                 <td>
-    //                                     <div class='row'>
-    //                                         <div class='col col-6'>
-    //                                             School Year <input class='form-control' type='text' name='schYear' value='$sy' required> 
-    //                                         </div>
-    //                                         <div class='col col-6'>
-    //                                             Semester <input class='form-control' type='text' name='sem' value='$sem' required>
-    //                                         </div>
-    //                                     </div>
-    //                                 </td>
-    //                             </tr>";
-    //                     }else{
-    //                         echo "<tr>
-    //                             <td>
-    //                                 Last Year Enrolled <input class='form-control' type='text' name='year' value='$year' required> 
-    //                             </td>
-    //                         </tr>";
-    //                     }
-
-    //                     echo "<tr>
-    //                             <td class='pt-2'>Student Type:
-    //                                 <select name='studType' class='form-control selectpicker'>
-    //                                     <option data-tokens='$studType' value='$studType'>$studType</option>
-    //                                     <option data-tokens='Graduate' value='Graduate'>Graduate</option>
-    //                                     <option data-tokens='Transfer' value='Transfer'>Undergraduate / Transfer</option>
-    //                                 </select>
-    //                             </td>
-    //                         </tr>";
-
-    //                     echo "<tr>
-    //                             <td>Email Address: <input class='form-control' type='text' name='email' value='$email' required></td>
-    //                         </tr>";
-
-    //                     echo "<tr>
-    //                             <td>
-    //                                 <div class='row'>
-    //                                     <div class='col col-8'>
-    //                                         Contact Number <input class='form-control' type='text' name='contact' value='$contact'>
-    //                                     </div>
-    //                                     <div class='col col-4'>
-    //                                         Birthdate: <input type='date' class='form-control' name='bdate' value='$rawBday'
-    //                                     </div>
-    //                                 </div>
-    //                             </td>
-    //                         </tr>";
-    //             echo "</table>";
-    //         echo "</div>";
-    //     echo "</div>";
-
-    //     echo "<hr><div class='row justify-content-center'>";
-    //         echo "<h3 class='text-center my-4'><i class='fas fa-user-circle'></i> <u> Clearance Status </u> </h3>";
-    //             echo "<div class='col col-11'>";
-                    
-    //                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded text-center' width='100%'>";
-    //                     echo "<th>Dean's Office</th>";
-    //                     if($studType == "Transfer"){
-    //                         echo "<th>Guidance Office</th>";}
-    //                     echo "<th>Library</th>";
-    //                     echo "<th>Accounting</th>";
-    //                     echo "<th>Registrar</th>";
-    //                     echo "<tr>";
-    //                     echo "<td class='pt-2'>
-    //                                 Status
-    //                                 <select name='deptC' class='form-control selectpicker'>
-    //                                     <option data-tokens='$deptC' value='$deptC'>$deptC</option>
-    //                                     <option data-tokens='PENDING' value='PENDING'>PENDING</option>
-    //                                     <option data-tokens='ON-HOLD' value='ON-HOLD'>ON-HOLD</option>
-    //                                     <option data-tokens='CLEARED' value='CLEARED'>CLEARED</option>
-    //                                 </select>
-    //                             </td>";
-    //                     if($studType == "Transfer"){
-    //                         echo "<td class='pt-2'>
-    //                                 Status
-    //                                 <select name='guidanceC' class='form-control selectpicker'>
-    //                                     <option data-tokens='$guidanceC' value='$guidanceC'>$guidanceC</option>
-    //                                     <option data-tokens='PENDING' value='PENDING'>PENDING</option>
-    //                                     <option data-tokens='ON-HOLD' value='ON-HOLD'>ON-HOLD</option>
-    //                                     <option data-tokens='CLEARED' value='CLEARED'>CLEARED</option>
-    //                                 </select>
-    //                             </td>";}
-    //                         echo "<td class='pt-2'>
-    //                                 Status
-    //                                 <select name='libraryC' class='form-control selectpicker'>
-    //                                     <option data-tokens='$libraryC' value='$libraryC'>$libraryC</option>
-    //                                     <option data-tokens='PENDING' value='PENDING'>PENDING</option>
-    //                                     <option data-tokens='ON-HOLD' value='ON-HOLD'>ON-HOLD</option>
-    //                                     <option data-tokens='CLEARED' value='CLEARED'>CLEARED</option>
-    //                                 </select>
-    //                             </td>";
-    //                         echo "<td class='pt-2'>
-    //                                 Status
-    //                                 <select name='acctC' class='form-control selectpicker'>
-    //                                     <option data-tokens='$acctC' value='$acctC'>$acctC</option>
-    //                                     <option data-tokens='PENDING' value='PENDING'>PENDING</option>
-    //                                     <option data-tokens='ON-HOLD' value='ON-HOLD'>ON-HOLD</option>
-    //                                     <option data-tokens='CLEARED' value='CLEARED'>CLEARED</option>
-    //                                 </select>
-    //                             </td>";
-    //                         echo "<td class='pt-2'>
-    //                                 Status
-    //                                 <select name='regC' class='form-control selectpicker'>
-    //                                     <option data-tokens='$regC' value='$regC'>$regC</option>
-    //                                     <option data-tokens='PENDING' value='PENDING'>PENDING</option>
-    //                                     <option data-tokens='ON-HOLD' value='ON-HOLD'>ON-HOLD</option>
-    //                                     <option data-tokens='CLEARED' value='CLEARED'>CLEARED</option>
-    //                                     <option data-tokens='REMOVED' value='REMOVED'>REMOVED</option>
-    //                                 </select>
-    //                             </td>";
-    //                     echo "</tr>";
-    //                     echo "<tr>";
-    //                         echo "<td>Date: <input type='date' class='form-control' name='deptD' value='$rawDeptD'></td>";
-    //                     if($studType == "Transfer"){
-    //                         echo "<td>Date: <input type='date' class='form-control' name='guidanceD' value='$rawGuidanceD'></td>";}
-    //                     echo "<td>Date: <input type='date' class='form-control' name='libraryD' value='$rawLibraryD'></td>";
-    //                     echo "<td>Date: <input type='date' class='form-control' name='acctD' value='$rawAcctD'></td>";
-    //                     echo "<td>Date: <input type='date' class='form-control' name='regD' value='$rawRegD'></td>";
-    //                     echo "</tr>";
-    //                 echo "</table>";
-    //             echo "</div>";
-    //     echo "</div>";
-
-    //     echo "<hr><div class='row justify-content-center'>";
-    //         echo "<h3 class='text-center my-4'><i class='fas fa-user-circle'></i> <u> Remarks </u> </h3>";
-    //             echo "<div class='col col-11'>";
-    //                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
-    //                     echo "<tr> 
-    //                             <td>Dean's Office Remarks: <input class='form-control' type='text' name='deptR' value='$deptR'></td>
-    //                         </tr>";
-    //                     if($studType == "Transfer"){
-    //                         echo "<td>Guidance Office Remarks: <input class='form-control' type='text' name='guidanceR' value='$guidanceR'></td>";}
-    //                     echo "<tr> 
-    //                             <td>Library Remarks: <input class='form-control' type='text' name='libraryR' value='$libraryR'></td>
-    //                         </tr>";
-    //                     echo "<tr> 
-    //                             <td>Accounting Dept. Remarks: <input class='form-control' type='text' name='acctR' value='$acctR'></td>
-    //                         </tr>";
-    //                     echo "<tr> 
-    //                             <td>Registrar's Office Remarks: <input class='form-control' type='text' name='regR' value='$regR'></td>
-    //                         </tr>";
-    //                 echo "</table>";
-    //             echo "</div>";
-    //     echo "</div>";
-        
-    //     echo "<hr><div class='row d-flex justify-content-center pb-5'>";
-    //         echo "<div class='col col-md-5 '>";
-    //             echo "<a class='btn btn-dark btn-block mt-4 mr-1' href='override'><i class='fa-solid fa-person-walking-arrow-right'></i> Cancel</a>";
-    //             echo "<button type='submit' name='saveChanges' class='btn btn-block btn-adduser'><i class='fa-solid fa-floppy-disk'></i> Save Changes</button>";
-    //         echo "</div>";
-    //     echo "</div>";
-    // echo "</div>";
-    // echo "</form>";
-    // }
-
-    // public function update(){
-    //     $id = $_POST['studID'];
-    //     $new_lname = $_POST['lastName'];
-    //     $new_fname = $_POST['firstName'];
-    //     $new_mname = $_POST['middleName'];
-    //     $new_school = $_POST['school'];
-    //     $new_course = $_POST['course'];
-    //     $new_email = $_POST['email'];
-    //     $new_contact = $_POST['contact'];
-    //     $new_bday = $_POST['bdate'];
-    //     $new_deptC = $_POST['deptC'];
-    //     $new_libraryC = $_POST['libraryC'];
-    //     $new_acctC = $_POST['acctC'];
-    //     $new_regC = $_POST['regC'];
-    //     $new_deptD = $_POST['deptD'];
-    //     $new_libraryD = $_POST['libraryD'];
-    //     $new_acctD = $_POST['acctD'];
-    //     $new_regD = $_POST['regD'];
-    //     $new_deptR = $_POST['deptR'];
-    //     $new_libraryR = $_POST['libraryR'];
-    //     $new_acctR = $_POST['acctR'];
-    //     $new_regR = $_POST['regR'];
-    //     $type = $_POST['studType'];
-
-    //     if($type == "Transfer"){
-    //         $new_year = $_POST['year'];
-    //         $new_guidanceC = $_POST['guidanceC'];
-    //         $new_guidanceD = $_POST['guidanceD'];
-    //         $new_guidanceR = $_POST['guidanceR'];
-    //         $sql = "UPDATE `ecle_forms_ug` SET `lname` = '$new_lname' WHERE `studentID` = '$id'";
-    //     }elseif($type == "Graduate"){
-    //         $new_sy = $_POST['schYear'];
-    //         $new_sem = $_POST['sem'];
-    //         $sql = "UPDATE `ecle_forms` SET `lname` = '$new_lname' WHERE `studentID` = '$id'";
-    //     }else{
-    //         echo "Error.";
-    //     }
-
-    //     $con = $this->con();
-    //     $data = $con->prepare($sql);
-    //         try{$data->execute();
-    //             echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-    //                     <i class='fa-solid fa-circle-check'></i> Changes Saved.
-    //                     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-    //                     </div>";
-                        
-    //         }catch(PDOException $e){
-    //             echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-    //                     <strong><i class='fa-solid fa-triangle-exclamation'></i> Update Failed. </strong>
-    //                     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-    //                     </div>";
-    //         }
-
     public function viewInfoREG(){
         $con = $this->con();
         $sql = "SELECT * FROM `tbl_transaction` WHERE `transactionid` = '$this->tID'";
@@ -339,91 +27,205 @@ class info extends config{
             $transID = $result[0]['transactionid'];
             $studentID = $result[0]['stdn'];
             $yeargrad = $result[0]['yeargrad'];
-            $status = $result[0]['status'];
+            $type = $result[0]['status'];
             $fullname = $result[0]['fullname'];
             $course = $result[0]['course'];
             $reason = $result[0]['reason'];
             $contact = $result[0]['contactnumber'];
             $email = $result[0]['emailaddress'];
+            $dateapp = $result[0]['dateapp'];
+            $remarks = $result[0]['remarks'];
+            $confirmed = date("m-d-Y - H:ia", strtotime($result[0]['dateconfirmed']));
+            $points = $result[0]['points'];
+            $price = $result[0]['price'];
+            $inst = $result[0]['specialinstruction'];
+            $summary = $result[0]['summary'];
+
+            if(!empty($result[0]['paymentdate'])){
+                $paid = date("m-d-Y - H:ia", strtotime($result[0]['paymentdate']));
+            }else{
+                $paid = "N/A";
+            }
+
+            if(!empty($result[0]['signeddate'])){
+                $signed = date("m-d-Y - H:ia", strtotime($result[0]['signeddate']));
+            }else{
+                $signed = "N/A";
+            }
+
+            if(!empty($result[0]['releasedate'])){
+                $released = date("m-d-Y - H:ia", strtotime($result[0]['releasedate']));
+            }else{
+                $released = "N/A";
+            }
+
             if(!empty($result[0]['facebook'])){
                 $fb = $result[0]['facebook'];
             }else{
                 $fb = "N/A";
             }
-            $dateapp = $result[0]['dateapp'];
-            $remarks = $result[0]['remarks'];
-            $dateconfirmed = $result[0]['dateconfirmed'];
-            $paid = $result[0]['paymentdate'];
-            $signed = $result[0]['signeddate'];
-            $released = $result[0]['releasedate'];
-            $points = $result[0]['points'];
-            $price = $result[0]['price'];
-            $inst = $result[0]['specialinstruction'];
-            $assign = $result[0]['assignee'];
-            $summary = $result[0]['summary'];
 
-        echo "
-                <div class='col-md-9'>
-                <table class='table shadow m-3'>";
+            if(!empty($result[0]['assignee'])){
+                $assign = kcej_getAssignee($result[0]['assignee']);
+            }else{
+                $assign = "Unassigned";
+            }
 
-        echo "<tr>
-                <td class='pt-5 px-5' width='50%'>
-                    Name: <h4><i class='fa-solid fa-user'></i> <b>$fullname</b></h4>
-                </td>    
-                <td class='pt-5 px-5' width='50%'>
-                    Transaction Number: <h4><i class='fa-solid fa-key'></i> <b>$transID</b></h4>
-                </td>    
-            </tr>";
-        echo"<tr>
-                <td class='p-5' width='50%'>
+        $sql0 = "SELECT * FROM `tbl_items` WHERE `transnumber` = '$transID'";
+        $data0 = $con->prepare($sql0);
+        $data0->execute();
+        $result0 = $data0->fetchAll(PDO::FETCH_ASSOC);
 
-                        Current Request Status: <h4><i class='fa-solid fa-spinner'></i> <b>$status</b></h4>
-                        Assigned to: <h4><i class='fa-solid fa-keyboard'></i> <b>$assign</b></h4>
-                        Student Number: <h4><i class='fa-solid fa-id-card'></i> <b>$studentID</b></h4>
-                        Course: <h4><i class='fa-solid fa-book-open'></i> <b>$course</b></h4>
-                        Year Graduate: <h4><i class='fa-solid fa-graduation-cap'></i> <b>$yeargrad</b></h4>
-                        Email Address: <h4><i class='fa-solid fa-envelope'></i> <b>$email</b></h4>
-                        Contact Number: <h4><i class='fa-solid fa-phone'></i> <b>$contact</b></h4>
-                        Facebook: <h4><i class='fa-brands fa-facebook'></i> <b>$fb</b></h4>
-                       
-
-                    
-                </td>
-                <td class='p-5' width='50%'>
-                        
-                        Request Purpose: <h5><b>$reason</b></h5>
-                        Request Date: <h5><b>$dateapp</b></h5>
-                        Date Paid: <h5><b>$paid</b></h5>
-                        Date Released: <h5><b>$released</b></h5>
-
-                        <hr>
-
-                        Requested Documents:
-                        (Insert Documents Here)
-
-                        <hr>
-
-                        Special Instructions:<h5><b>$inst</b></h5>
-                    
-                </td>
-            </tr>
-        </table>
-        </div>";
-        
-
-        // $sql0 = "SELECT * FROM `tbl_items` WHERE `transactionid` = '$this->tID'";
-        // $data0 = $con->prepare($sql0);
-        // $data0->execute();
-        // $result0 = $data0->fetchAll(PDO::FETCH_ASSOC);
-        // foreach ($result0 as $data0) {
-        //      requested docs table here
-        // }
-
-
+        echo "<div class='col-md-10'>
+                <table class='table shadow m-3'>
+                    <tr>
+                        <td class='pt-5 px-5' width='60%'>
+                            Name: <h4><i class='fa-solid fa-user icon-info'></i> <b>$fullname</b></h4>
+                            Student Number: <h5><i class='fa-solid fa-id-card icon-info'></i> <b>$studentID</b></h5>
+                            Current Request Status: <h5><i class='fa-solid fa-spinner icon-info'></i> <b>$remarks</b></h5>
+                        </td>    
+                        <td class='pt-5 px-5' width='40%'>
+                            Transaction Number: <h4><i class='fa-solid fa-key icon-info'></i> <b>$transID</b></h4>
+                            Request Date: <h5><i class='fa-solid fa-calendar-days icon-info'></i> <b>$dateapp</b></h5>
+                            Assigned to: <h5><i class='fa-solid fa-keyboard icon-info'></i> <b>$assign</b></h5>
+                        </td>    
+                    </tr>
+                    <tr>
+                        <td class='py-4 px-5' width='60%'>
+                            Course: <h5><i class='fa-solid fa-book-open icon-info'></i> <b>$course ($type)</b></h5>
+                            Year Graduate: <h5><i class='fa-solid fa-graduation-cap icon-info'></i> <b>$yeargrad</b></h5>
+                        </td>
+                        <td class='py-4 px-5' width='40%'>
+                            Email Address: <h5><i class='fa-solid fa-envelope icon-info'></i> <b>$email</b></h5>
+                            Contact Number: <h5><i class='fa-solid fa-phone icon-info'></i> <b>$contact</b></h5>
+                            Facebook: <h5><i class='fa-brands fa-facebook icon-info'></i> <b>$fb</b></h5>
+                        </td>
+                    </tr>
+                        <td class='py-4 px-5' width='60%'>
+                            Requested Documents:
+                            <ul>";
+                            foreach ($result0 as $data0) {
+                                echo "<li><h5><b>$data0[quantity] - $data0[itemrequest]</b></h5></li>";
+                            }
+                        echo "</ul>
+                            <hr>
+                            Special Instructions:<h5><b>$inst</b></h5>
+                        </td>
+                        <td class='py-4 px-5' width='40%'>
+                            Request Purpose: <h5><b>$reason</b></h5>
+                            Date Confirmed: <h5><b>$confirmed</b></h5>
+                            Date Paid: <h5><b>$paid</b></h5>
+                            Date Signed: <h5><b>$signed</b></h5>
+                            Date Released: <h5><b>$released</b></h5>
+                        </td>
+                    </tr>
+                </table>
+            </div>";
     }
 
     public function viewInfoSP(){
-        echo "Special";
+        $con = $this->con();
+        $sql = "SELECT * FROM `tbl_spctransaction` WHERE `transactionid` = '$this->tID'";
+        $data = $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+            $id = $result[0]['id'];
+            $transID = $result[0]['transactionid'];
+            $studentID = $result[0]['stdn'];
+            $yeargrad = $result[0]['yeargrad'];
+            $type = $result[0]['status'];
+            $fullname = $result[0]['fullname'];
+            $course = $result[0]['course'];
+            $reason = $result[0]['reason'];
+            $contact = $result[0]['contactnumber'];
+            $email = $result[0]['emailaddress'];
+            $dateapp = date("m-d-Y - H:ia ", strtotime($result[0]['dateapp']));
+            $remarks = $result[0]['remarks'];
+            $confirmed = date("m-d-Y - H:ia", strtotime($result[0]['dateconfirmed']));
+            $document = $result[0]['type'];
+            $summary = $result[0]['summary'];
+
+            if(!empty($result[0]['paymentdate'])){
+                $paid = date("m-d-Y - H:ia", strtotime($result[0]['paymentdate']));
+            }else{
+                $paid = "N/A";
+            }
+
+            if(!empty($result[0]['signeddate'])){
+                $signed = date("m-d-Y - H:ia", strtotime($result[0]['signeddate']));
+            }else{
+                $signed = "N/A";
+            }
+
+            if(!empty($result[0]['releasedate'])){
+                $released = date("m-d-Y - H:ia", strtotime($result[0]['releasedate']));
+            }else{
+                $released = "N/A";
+            }
+
+            if(!empty($result[0]['facebook'])){
+                $fb = $result[0]['facebook'];
+            }else{
+                $fb = "N/A";
+            }
+
+            if(!empty($result[0]['assignee'])){
+                $assign = kcej_getAssignee($result[0]['assignee']);
+            }else{
+                $assign = "Unassigned";
+            }
+
+        // $sql0 = "SELECT * FROM `tbl_items` WHERE `transnumber` = '$transID'";
+        // $data0 = $con->prepare($sql0);
+        // $data0->execute();
+        // $result0 = $data0->fetchAll(PDO::FETCH_ASSOC);
+
+        echo "<div class='col-md-10'>
+                <table class='table shadow m-3'>
+                    <tr>
+                        <td class='pt-5 px-5' width='60%'>
+                            Name: <h4><i class='fa-solid fa-user icon-info'></i> <b>$fullname</b></h4>
+                            Student Number: <h5><i class='fa-solid fa-id-card icon-info'></i> <b>$studentID</b></h5>
+                            Current Request Status: <h5><i class='fa-solid fa-spinner icon-info'></i> <b>$remarks</b></h5>
+                        </td>    
+                        <td class='pt-5 px-5' width='40%'>
+                            Transaction Number: <h4><i class='fa-solid fa-key icon-info'></i> <b>$transID</b></h4>
+                            Request Date: <h5><i class='fa-solid fa-calendar-days icon-info'></i> <b>$dateapp</b></h5>
+                            Assigned to: <h5><i class='fa-solid fa-keyboard icon-info'></i> <b>$assign</b></h5>
+                        </td>    
+                    </tr>
+                    <tr>
+                        <td class='py-4 px-5' width='60%'>
+                            Course: <h5><i class='fa-solid fa-book-open icon-info'></i> <b>$course ($type)</b></h5>
+                            Year Graduate: <h5><i class='fa-solid fa-graduation-cap icon-info'></i> <b>$yeargrad</b></h5>
+                        </td>
+                        <td class='py-4 px-5' width='40%'>
+                            Email Address: <h5><i class='fa-solid fa-envelope icon-info'></i> <b>$email</b></h5>
+                            Contact Number: <h5><i class='fa-solid fa-phone icon-info'></i> <b>$contact</b></h5>
+                            Facebook: <h5><i class='fa-brands fa-facebook icon-info'></i> <b>$fb</b></h5>
+                        </td>
+                    </tr>
+                        <td class='py-4 px-5' width='60%'>
+                            Requested Documents:
+                            <ul>
+                                <li><h5><b>$document</b></h5></li>";
+                            // foreach ($result0 as $data0) {
+                            //     echo "<li><h5><b>$data0[quantity] - $data0[itemrequest]</b></h5></li>";
+                            // }
+                        echo "</ul>
+
+
+                        </td>
+                        <td class='py-4 px-5' width='40%'>
+                            Request Purpose: <h5><b>$reason</b></h5>
+                            Date Confirmed: <h5><b>$confirmed</b></h5>
+                            Date Paid: <h5><b>$paid</b></h5>
+                            Date Signed: <h5><b>$signed</b></h5>
+                            Date Released: <h5><b>$released</b></h5>
+                        </td>
+                    </tr>
+                </table>
+            </div>";
     }
 }
 ?>

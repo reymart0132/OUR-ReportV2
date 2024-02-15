@@ -145,6 +145,9 @@ function vald(){
                             } else if ($user->data()->groups == 3) {
                                 Redirect::to('rdashboard.php');
                                 echo $user->data()->groups;
+                            } else if ($user->data()->groups == 4) {
+                                Redirect::to('sdashboard.php');
+                                echo $user->data()->groups;
                             }else{
                                 loginError();
                             }
@@ -296,6 +299,62 @@ function getEmail($transactionID)
     return $rows[0]['emailaddress'];
     
 }
+
+function kcej_getAssignee($assignee)
+{
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT * FROM `tbl_accounts` WHERE `id` = '$assignee'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_ASSOC);
+    return $rows[0]['name'];
+}
+
+function kcej_getAssigneeEmail($assignee)
+{
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT * FROM `tbl_accounts` WHERE `name` = '$assignee'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_ASSOC);
+    return $rows[0]['email'];
+}
+
+function kcej_getTransactionAssignName($transactionID, $type)
+{
+    $config = new config;
+    $con = $config->con();
+    if($type == "reg"){
+        $sql = "SELECT * FROM `tbl_transaction` WHERE `transactionid` = '$transactionID'";
+    }else{
+        $sql = "SELECT * FROM `tbl_spctransaction` WHERE `transactionid` = '$transactionID'";
+    }
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_ASSOC);
+    $assignee = $rows[0]['assignee'];
+    $assigneeName = kcej_getAssignee($assignee);
+    return $assigneeName;
+}
+
+function kcej_getTransactionClientName($transactionID, $type)
+{
+    $config = new config;
+    $con = $config->con();
+    if($type == "reg"){
+        $sql = "SELECT * FROM `tbl_transaction` WHERE `transactionid` = '$transactionID'";
+    }else{
+        $sql = "SELECT * FROM `tbl_spctransaction` WHERE `transactionid` = '$transactionID'";
+    }
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_ASSOC);
+    $clientName = $rows[0]['fullname'];
+    return $clientName;
+}
+
 function datevalidation2($email)
 {
     $config = new config;

@@ -39,7 +39,7 @@ try {
 
   //Recipients
   $mail->setFrom('ceuourmailerMNL@gmail.com');       //sender
-  $mail->addAddress($emailAdress);
+  $mail->addAddress($emailAddress);
 
   //Content
   $mail->isHTML(true);
