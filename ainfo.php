@@ -40,27 +40,36 @@ if (!empty($_GET['tID']) && !empty($_GET['type'])) {
     </div>
     <header>
         <div class="d-flex" id="wrapper">
-            <div class="bg-white" id="sidebar-wrapper">
+        <div class="bg-white" id="sidebar-wrapper">
+                    
+          <div class="sidebar-heading text-center py-4 fs-4 fw-bold text-uppercase">
+            <img src="resource/img/header.jpg" height="80px;" alt="">
+          </div>
 
-                <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase">
-                    <img src="resource/img/header.jpg" height="80px;" alt="">
-                </div>
+          <div class="list-group list-group-flush my-3">
+            <a class="list-group-item list-group-item-action fw-bold">
+              <i class="fas fa-question-circle me-2"></i> Main Menu</a>
+              
+              <div class="item mt-3">
+              <a class="sub-btn " href="dash"><i class="fa-solid fa-house"></i> Dashboard</a>
+            </div>
 
-                <div class="list-group list-group-flush my-3">
-                    <a class="list-group-item list-group-item-action fw-bold">
-                        <i class="fas fa-question-circle me-2"></i> Menu</a>
-
-                    <div class="item mt-3">
-                        <a class="sub-btn bg-selected" href="udashboard"><i class="fa-solid fa-house"></i> Pending </a>
-                    </div>
-
-                    <!-- <div class="item">
-                        <a class="sub-btn" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
-                    </div> -->
-
-                    <div class="item">
-                        <a class="sub-btn" href="udashboardfs"><i class="fa-solid fa-star"></i> For Signature </a>
-                    </div>
+            <div class="item">
+              <a class="sub-btn bg-selected" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
+            </div>
+            
+            <div class="item">
+              <a class="sub-btn" href="adash-specialapp"><i class="fa-solid fa-star"></i> Special Requests</a>
+            </div>
+            <a class="list-group-item list-group-item-action fw-bold mt-5">
+              <i class="fas fa-check me-2"></i> For Assignment </a>
+            <div class="item">
+              <a class="sub-btn" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
+            </div>
+            
+            <div class="item">
+              <a class="sub-btn" href="adash-specialapp"><i class="fa-solid fa-star"></i> Special Requests</a>
+            </div>
 
                     <script type="text/javascript">
                         $(document).ready(function () {

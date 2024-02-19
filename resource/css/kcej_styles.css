@@ -353,6 +353,10 @@ p.caption{
   background-color: transparent;
 }
 
+.text-pink{
+  color: #fd8ec5;
+}
+
 @media(min-width: 768px){
   #sidebar-wrapper{
     margin-left: 0;

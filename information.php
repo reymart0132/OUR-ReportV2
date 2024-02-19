@@ -99,7 +99,7 @@ $view = new view();
                                 <input type="email" class="form-control" id="emailAddress" name="emailAddress" required>
                             </div>
                             <div class="col-md-4 mb-1 ">
-                                 <label for="basic-url" class="form-label">Your facebook URL</label>
+                                 <label for="basic-url" class="form-label">Your Messenger URL</label>
                                  <div class="input-group mb-3">
                                      <span class="input-group-text" id="basic-addon3">fb.com/</span>
                                      <input type="text" class="form-control" id="basic-url" name ="facebook" aria-describedby="basic-addon3">

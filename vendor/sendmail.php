@@ -18,7 +18,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'autoload.php';
 
 $mail = new PHPMailer(true);
-
+                                                  
 $tn = $tnumber;
 $name = $fullname;
 $body ="<p>Dear $name ,</p>
