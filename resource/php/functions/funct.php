@@ -299,6 +299,17 @@ function getEmail($transactionID)
     return $rows[0]['emailaddress'];
     
 }
+function getEmail2($transactionID)
+{
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT * FROM `tbl_spctransaction` WHERE `transactionid` = '$transactionID'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_ASSOC);
+    return $rows[0]['emailaddress'];
+    
+}
 
 function kcej_getAssignee($assignee)
 {
@@ -308,7 +319,12 @@ function kcej_getAssignee($assignee)
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchAll(PDO::FETCH_ASSOC);
-    return $rows[0]['name'];
+    // return $rows[0]['name'];
+    if($rows){
+        return $rows[0]['name'];
+    }else{
+        return "";
+    }
 }
 
 function kcej_getAssigneeEmail($assignee)
@@ -319,7 +335,12 @@ function kcej_getAssigneeEmail($assignee)
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchAll(PDO::FETCH_ASSOC);
-    return $rows[0]['email'];
+    // return $rows[0]['email'];
+    if ($rows) {
+        return $rows[0]['email'];
+    } else {
+        return "";
+    }
 }
 
 function kcej_getTransactionAssignName($transactionID, $type)
@@ -351,9 +372,126 @@ function kcej_getTransactionClientName($transactionID, $type)
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchAll(PDO::FETCH_ASSOC);
-    $clientName = $rows[0]['fullname'];
-    return $clientName;
+    
+    if ($rows) {
+        $clientName = $rows[0]['fullname'];
+        return $clientName;
+    } else {
+        return "";
+    }
 }
+
+function findAssignee($id)
+{
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT * FROM `tbl_accounts` where `id` = $id";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_OBJ);
+    if (!empty($rows)) {
+        return $rows[0]->name;
+    } else {
+        return "N/A";
+    }
+}
+
+
+
+
+
+function getAssigneeChart()
+{
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points FROM tbl_accounts a LEFT JOIN tbl_transaction t ON a.id = t.assignee WHERE t.remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT') OR t.remarks IS NULL AND a.groups = 1 GROUP BY a.id ORDER BY total_points ASC";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_ASSOC);
+    $dataset ="[";
+    // Example: const data = [{ assignee: 'John', total_points: 50 }, { assignee: 'Alice', total_points: 30 }];
+    foreach($rows as $data){
+    $dataset .= "{ assignee: '".findAssignee($data['id'])."', total_points: ".$data['total_points']."},";
+    }
+    $dataset = rtrim($dataset, ",");
+    $dataset.="]";
+    return $dataset;
+}
+function getAssigneeChart2()
+{
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT A.id, COALESCE(ST.transaction_count, 0) AS transaction_count FROM tbl_accounts A LEFT JOIN ( SELECT assignee, COUNT(*) AS transaction_count FROM tbl_spctransaction GROUP BY assignee ) ST ON A.id = ST.assignee WHERE A.groups = 4 ORDER BY transaction_count;";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_ASSOC);
+    $dataset ="[";
+    // Example: const data = [{ assignee: 'John', total_points: 50 }, { assignee: 'Alice', total_points: 30 }];
+    foreach($rows as $data){
+    $dataset .= "{ assignee: '".findAssignee($data['id'])."', transaction_count: ".$data['transaction_count']."},";
+    }
+    $dataset = rtrim($dataset, ",");
+    $dataset.="]";
+    return $dataset;
+}
+function getnextAssigneeChartQ()
+{
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points
+    FROM tbl_accounts a
+    LEFT JOIN tbl_transaction t ON a.id = t.assignee AND (t.remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT') OR t.remarks IS NULL)
+    WHERE a.groups = 1
+    GROUP BY a.id
+    ORDER BY total_points ASC;
+    ";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_ASSOC);
+    $assignee = $rows[0]['id'];
+    return $assignee;
+}
+function getnextAssigneeChart2Q()
+{
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT A.id, COALESCE(ST.transaction_count, 0) AS transaction_count FROM tbl_accounts A LEFT JOIN ( SELECT assignee, COUNT(*) AS transaction_count FROM tbl_spctransaction GROUP BY assignee ) ST ON A.id = ST.assignee WHERE A.groups = 4 ORDER BY transaction_count;";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_ASSOC);
+    $assignee = $rows[0]['id'];
+    return $assignee;
+}
+function getnextAssigneeChart()
+{
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points
+    FROM tbl_accounts a
+    LEFT JOIN tbl_transaction t ON a.id = t.assignee AND (t.remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT') OR t.remarks IS NULL)
+    WHERE a.groups = 1
+    GROUP BY a.id
+    ORDER BY total_points ASC;
+    ";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_ASSOC);
+    $assignee = findAssignee($rows[0]['id']);
+    return $assignee;
+}
+function getnextAssigneeChart2()
+{
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT A.id, COALESCE(ST.transaction_count, 0) AS transaction_count FROM tbl_accounts A LEFT JOIN ( SELECT assignee, COUNT(*) AS transaction_count FROM tbl_spctransaction GROUP BY assignee ) ST ON A.id = ST.assignee WHERE A.groups = 4 ORDER BY transaction_count;";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_ASSOC);
+    $assignee = findAssignee($rows[0]['id']);
+    return $assignee;
+}
+
+
 
 function datevalidation2($email)
 {

@@ -13,7 +13,7 @@ $user = new user();
     <link rel="stylesheet" href="resource/css/styledash.css" type="text/css">
     <script src="https://kit.fontawesome.com/03ca298d2d.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Dashboard</title>
     <link rel="icon" type="image/x-icon" href="resource/img/ceu.png" />
   </head>
@@ -31,24 +31,21 @@ $user = new user();
               <i class="fas fa-question-circle me-2"></i> Main Menu</a>
               
               <div class="item mt-3">
-              <a class="sub-btn bg-selected" href="dash"><i class="fa-solid fa-house"></i> Dashboard</a>
+              <a class="sub-btn" href="adashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
             </div>
-
+              <a class="list-group-item list-group-item-action fw-bold mt-5">
+              <i class="fas fa-magnifying-glass me-2"></i> For Review </a>
             <div class="item">
               <a class="sub-btn" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
-            </div>
-            
-            <div class="item">
-              <a class="sub-btn" href="adash-specialapp"><i class="fa-solid fa-star"></i> Special Requests</a>
             </div>
             <a class="list-group-item list-group-item-action fw-bold mt-5">
               <i class="fas fa-check me-2"></i> For Assignment </a>
             <div class="item">
-              <a class="sub-btn" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
+              <a class="sub-btn" href="adash-asgn1"><i class="fa-solid fa-globe"></i> Online Requests</a>
             </div>
             
             <div class="item">
-              <a class="sub-btn" href="adash-specialapp"><i class="fa-solid fa-star"></i> Special Requests</a>
+              <a class="sub-btn  bg-selected" href="adash-asgn2"><i class="fa-solid fa-star"></i> Special Requests</a>
             </div>
 
 
@@ -123,8 +120,13 @@ $user = new user();
 
           <div class="container-fluid p-5">
             <div class="row">
-              <div class="col-md p-5 content">
-                <?php $table->tableWalkIn(); ?>
+              <div class="col-md-8 p-5 content">
+                <?php $table->tbl_forAssignSPC(); ?>
+              </div>
+              <div class="col-md-4 p-5 content ">
+              <small class="text-muted my-2">Next Assignee:&nbsp;<span class="text-danger"><?php echo getnextAssigneeChart2();?></span></small>
+                <h4 class="text-center my-3">Total Points per Resource</h4>
+               <canvas id="myChart" width="400px"></canvas>
               </div>
             </div>
           </div>
@@ -142,5 +144,106 @@ $user = new user();
       </script>
       <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+       <script type="text/javascript">
+        var el = document.getElementById("wrapper")
+        var toggleButton = document.getElementById("menu-toggle")
+
+        toggleButton.onclick = function(){
+          el.classList.toggle("toggled")
+        }
+      </script>
+      <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+       <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          // Get the modal
+          var confirmationModal = document.getElementById('confirmationModal');
+           console.log(confirmationModal);
+          // Get the remove button
+          var removeButtons = document.querySelectorAll('.remove-request');
+
+          // Add event listeners to all remove buttons
+          removeButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+              // Get the transaction ID
+              var transactionId = this.getAttribute('data-transaction-id');
+              
+              // Update the modal confirmation button to include the transaction ID
+              var confirmRemoveButton = document.getElementById('confirmRemove');
+              confirmRemoveButton.setAttribute('data-transaction-id', transactionId);
+             
+            });
+          });
+
+          // Add event listener to the confirmation button inside the modal
+          var confirmRemove = document.getElementById('confirmRemove');
+          confirmRemove.addEventListener('click', function () {
+            // Get the transaction ID from the confirmation button
+            var transactionId = this.getAttribute('data-transaction-id');
+            var reason = document.getElementById('reasonInput').value;
+            
+            // Perform the removal process (You might need AJAX or form submission here)
+            window.location.href = 'actions.php?transactionID=' + transactionId+'&state=4&type=sp&landing=adash-asgn2&info='+reason;
+            
+            // Close the modal
+            var modal = bootstrap.Modal.getInstance(confirmationModal);
+            modal.hide();
+          });
+        });
+      </script>
+       <script>
+        // Load data from data.js (should contain an array of objects with 'assignee' and 'total_points' properties)
+       
+        const data =<?php echo getAssigneeChart2(); ?>; // Assuming getData() is a function that returns the data
+
+        // Extract assignees and total points from the data
+        const assignees = data.map(item => item.assignee);
+        const points = data.map(item => item.transaction_count);
+
+        // Get the chart container
+        const ctx = document.getElementById('myChart').getContext('2d');
+
+        // Create the bar chart
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: assignees,
+            datasets: [{
+              label: 'Total Points',
+              data: points,
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            scales: {
+              x: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+      </script>
+       <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Please input the reason for removal of the request:
+              <input type="text" name="info" id='reasonInput' class="form-control">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmRemove">Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
   </body>
 </html>

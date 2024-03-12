@@ -77,7 +77,7 @@ $view = new view();
                             <div class="col-md-8 mb-1">
                                 <label for="course" class="form-label">Course <small class="text-muted"> (*Kindly use the course that appear on the suggestion box.)</small></label>
                                 
-                                <input class="form-control" list="courseoptions" name="course" id="course" placeholder="Type to search...">
+                                <input class="form-control" list="courseoptions" name="course" id="course" placeholder="Type to search..." required>
                                 <datalist id="courseoptions">
                                     <?php $view->listCourse();  ?>
                                 </datalist>

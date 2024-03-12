@@ -39,24 +39,21 @@
               <i class="fas fa-question-circle me-2"></i> Main Menu</a>
               
               <div class="item mt-3">
-              <a class="sub-btn bg-selected" href="dash"><i class="fa-solid fa-house"></i> Dashboard</a>
+              <a class="sub-btn bg-selected" href="adashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
             </div>
-
+            <a class="list-group-item list-group-item-action fw-bold mt-5">
+              <i class="fas fa-magnifying-glass me-2"></i> For Review </a>
             <div class="item">
               <a class="sub-btn" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
-            </div>
-            
-            <div class="item">
-              <a class="sub-btn" href="adash-specialapp"><i class="fa-solid fa-star"></i> Special Requests</a>
             </div>
             <a class="list-group-item list-group-item-action fw-bold mt-5">
               <i class="fas fa-check me-2"></i> For Assignment </a>
             <div class="item">
-              <a class="sub-btn" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
+              <a class="sub-btn" href="adash-asgn1"><i class="fa-solid fa-globe"></i> Online Requests</a>
             </div>
             
             <div class="item">
-              <a class="sub-btn" href="adash-specialapp"><i class="fa-solid fa-star"></i> Special Requests</a>
+              <a class="sub-btn" href="adash-asgn2"><i class="fa-solid fa-star"></i> Special Requests</a>
             </div>
             
             <script type="text/javascript">

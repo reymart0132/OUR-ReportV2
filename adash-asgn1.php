@@ -14,7 +14,7 @@ $user = new user();
     <link rel="stylesheet" href="resource/css/styledash.css" type="text/css">
     <script src="https://kit.fontawesome.com/03ca298d2d.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Dashboard</title>
     <link rel="icon" type="image/x-icon" href="resource/img/ceu.png" />
   </head>
@@ -37,12 +37,12 @@ $user = new user();
               <a class="list-group-item list-group-item-action fw-bold mt-5">
               <i class="fas fa-magnifying-glass me-2"></i> For Review </a>
             <div class="item">
-              <a class="sub-btn bg-selected" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
+              <a class="sub-btn" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
             </div>
             <a class="list-group-item list-group-item-action fw-bold mt-5">
               <i class="fas fa-check me-2"></i> For Assignment </a>
             <div class="item">
-              <a class="sub-btn" href="adash-asgn1"><i class="fa-solid fa-globe"></i> Online Requests</a>
+              <a class="sub-btn bg-selected" href="adash-asgn1"><i class="fa-solid fa-globe"></i> Online Requests</a>
             </div>
             
             <div class="item">
@@ -96,9 +96,14 @@ $user = new user();
 
           <div class="container-fluid p-5">
             <div class="row">
-              <div class="col-md p-5 content">
-                <?php $table->tableWalkIn(); ?>
+              <div class="col-md-9 content">
+                  <?php $table->tbl_forAssignREG(); ?>
               </div>
+              <div class="col-md-3 content ">
+                <small class="text-muted my-2">Next Assignee:&nbsp;<span class="text-danger"><?php echo getnextAssigneeChart();?></span></small>
+                <h4 class="text-center my-3">Total Points per Resource</h4>
+               <canvas id="myChart" width="400px"></canvas>
+.              </div>
             </div>
           </div>
         </div>
@@ -147,13 +152,49 @@ $user = new user();
             var reason = document.getElementById('reasonInput').value;
             
             // Perform the removal process (You might need AJAX or form submission here)
-            window.location.href = 'actions.php?transactionID=' + transactionId+'&state=4&type=reg&landing=adash-online&info='+reason;
+            window.location.href = 'actions.php?transactionID=' + transactionId+'&state=4&type=reg&landing=adash-asgn1&info='+reason;
             
             // Close the modal
             var modal = bootstrap.Modal.getInstance(confirmationModal);
             modal.hide();
           });
         });
+      </script>
+      <script>
+        // Load data from data.js (should contain an array of objects with 'assignee' and 'total_points' properties)
+       
+        const data =<?php echo getAssigneeChart(); ?>; // Assuming getData() is a function that returns the data
+
+        // Extract assignees and total points from the data
+        const assignees = data.map(item => item.assignee);
+        const points = data.map(item => item.total_points);
+
+        // Get the chart container
+        const ctx = document.getElementById('myChart').getContext('2d');
+
+        // Create the bar chart
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: assignees,
+            datasets: [{
+              label: 'Total Points',
+              data: points,
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            scales: {
+              x: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
       </script>
        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
           <div class="modal-dialog">

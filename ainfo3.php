@@ -125,7 +125,7 @@ if (!empty($_GET['tID']) && !empty($_GET['type'])) {
                 <div class="container-fluid p-5">
                     <div class="row">
                         <div class="col-md p-5 content d-flex justify-content-center">
-                            <?php $ainfo = new ainfo($_GET['tID'], $_GET['type']); ?>
+                            <?php $ainfo = new ainfospc($_GET['tID'], $_GET['type']); ?>
                             
 
                         </div>

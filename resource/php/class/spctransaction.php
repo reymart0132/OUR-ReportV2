@@ -83,7 +83,8 @@ class spctransaction extends config
         $currentDateTime = date("Y-m-d H:i:s");
         $config = new config;
         $con = $config->con();
-        
+        $this->filename1 = "doc1" . $this->transactionid;
+        $this->filename2 = "doc2" . $this->transactionid;
         
         $sql = "INSERT INTO tbl_spctransaction( `transactionid`,`stdn`,`yeargrad`,`status`,`fullname`,`course`,`reason`,`contactnumber`,`emailaddress`,`facebook`,`dateapp`,`doc1`,`doc2`,`type`) VALUES('$this->transactionid','$this->studentNumber','$this->yearGraduated','$this->status','$this->fullName','$this->course','$this->reason','$this->contactNumber','$this->emailAddress','$this->facebook','$currentDateTime','$this->filename1','$this->filename2','$this->type')";
         $data = $con->prepare($sql);

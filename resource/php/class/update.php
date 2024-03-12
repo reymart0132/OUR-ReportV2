@@ -3,12 +3,13 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/ord/resource/php/class/core/init.php';
 
 class update extends config{
 
-    public $tID, $type, $info;
+    public $tID, $type, $info,$assignee;
 
-    function __construct( $transactionID = null, $type = null, $info=null ){
+    function __construct( $transactionID = null, $type = null, $info=null,$assignee=null ){
         $this->tID = $transactionID;
         $this->type = $type;
         $this->info = $info;
+        $this->assignee = $assignee;
     }
 
     public function kcej_setStateFS(){
@@ -68,6 +69,48 @@ class update extends config{
         if($data->execute()){
             $this->kcej_deleteItems();
         }else{
+            return false;
+        }
+    }
+    public function set_forAssign()
+    {
+
+        $timestamp = time(); // Get the current timestamp
+        $dateconfirmed = date('Y-m-d H:i:s', $timestamp); // Format the timestamp as a string in the desired format
+        $config = new config();
+        $con = $this->con();
+        if ($this->type == 'reg') {
+            $sql = "UPDATE `tbl_transaction` SET `remarks`='FOR ASSIGNMENT',`dateconfirmed`='$dateconfirmed', `info`='$this->info' WHERE `transactionid` = '$this->tID'";
+        } elseif ($this->type == 'sp') {
+            $sql = "UPDATE `tbl_spctransaction` SET `remarks`='FOR ASSIGNMENT',`dateconfirmed`='$dateconfirmed', `info`='$this->info' WHERE `transactionid` = '$this->tID'";
+        } else {
+            header("HTTP/1.1 403 Forbidden");
+        }
+        $data = $con->prepare($sql);
+        if ($data->execute()) {
+            $this->kcej_deleteItems();
+        } else {
+            return false;
+        }
+    }
+    public function assignTo()
+    {
+
+        $timestamp = time(); // Get the current timestamp
+        $dateconfirmed = date('Y-m-d H:i:s', $timestamp); // Format the timestamp as a string in the desired format
+        $config = new config();
+        $con = $this->con();
+        if ($this->type == 'reg') {
+            $sql = "UPDATE `tbl_transaction` SET `remarks`='ASSIGNED',`assignee`='$this->assignee',`paymentdate`='$dateconfirmed' WHERE `transactionid` = '$this->tID'";
+        } elseif ($this->type == 'sp') {
+            $sql = "UPDATE `tbl_spctransaction` SET `remarks`='ASSIGNED',`assignee`='$this->assignee',`paymentdate`='$dateconfirmed' WHERE `transactionid` = '$this->tID'";
+        } else {
+            header("HTTP/1.1 403 Forbidden");
+        }
+        $data = $con->prepare($sql);
+        if ($data->execute()) {
+            $this->kcej_deleteItems();
+        } else {
             return false;
         }
     }
