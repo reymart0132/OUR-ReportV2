@@ -184,7 +184,7 @@ public function viewApproveTable(){
     echo "<td>$data[dateapp]</td>";
     echo "<td>$data[type]</td>";
     
-    echo "<td><a href='actions.php?landing=adash-asgn2&state=6&transactionID=$data[transactionid]&type=reg' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='Assign to SRA'><i class='fa-solid fa-user'></i></a><a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]&body='' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";         
+    echo "<td><a href='actions.php?landing=adash-asgn2&state=6&transactionID=$data[transactionid]&type=sp' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='Assign to SRA'><i class='fa-solid fa-user'></i></a><a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]&body='' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";         
     echo       "<a href='ainfo3.php?tID=$data[transactionid]&type=sp' class='btn btn-sm  btn-warning m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>        
                <a href='#' class='btn btn-sm btn-danger m-1 remove-request' data-bs-toggle='modal' data-bs-target='#confirmationModal' data-transaction-id='$data[transactionid]' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
                     </td></tr>";

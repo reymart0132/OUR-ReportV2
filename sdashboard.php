@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
 $table = new viewtable();
 $user = new user();
+isSPC($user->data()->groups);
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +14,7 @@ $user = new user();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="resource/css/styledash.css" type="text/css">
+    <link rel="stylesheet" href="resource/css/kcej_styles.css" type="text/css">
     <script src="https://kit.fontawesome.com/03ca298d2d.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
@@ -41,18 +42,22 @@ $user = new user();
 
                 <div class="list-group list-group-flush my-3">
                     <a class="list-group-item list-group-item-action fw-bold">
-                        <i class="fas fa-question-circle me-2"></i> Menu</a>
-
+                        <i class="fas fa-house me-2"></i> Menu</a>
+                    
                     <div class="item mt-3">
-                        <a class="sub-btn bg-selected" href="dash"><i class="fa-solid fa-house"></i> Dashboard</a>
+                        <a class="sub-btn bg-selected" href="udashboard"><i class="fa-solid fa-magnifying-glass"></i>Review </a>
+                    </div>
+                    
+                    <div class="item">
+                        <a class="sub-btn" href="udashboard"><i class="fa-solid fa-money-bill"></i> For Payment </a>
                     </div>
 
-                    <div class="item">
+                    <!-- <div class="item">
                         <a class="sub-btn" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
-                    </div>
+                    </div> -->
 
                     <div class="item">
-                        <a class="sub-btn" href="adash-specialapp"><i class="fa-solid fa-star"></i> Special Requests</a>
+                        <a class="sub-btn" href="udashboardfs"><i class="fa-solid fa-star"></i> For Signature </a>
                     </div>
 
                     <script type="text/javascript">
@@ -97,8 +102,6 @@ $user = new user();
                                             Password</a></li>
                                     <li><a href='logout.php' class='dropdown-item'><i
                                                 class="fa-solid fa-person-walking-arrow-right"></i> Logout</a></li>
-                                    <!-- <li><a href= '#' class='dropdown-item'>Item 3</a></li>
-                    <li><a href='#' class='dropdown-item'>Item 4</a></li> -->
                                 </ul>
                             </li>
                         </ul>
@@ -114,7 +117,7 @@ $user = new user();
                 <div class="container-fluid p-5">
                     <div class="row">
                         <div class="col-md p-5 content">
-                            Charts and Summary Here
+                            <?php $table->kcej_rTrans(); ?>
 
                         </div>
                     </div>
@@ -136,6 +139,61 @@ $user = new user();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          // Get the modal
+          var confirmationModal = document.getElementById('confirmationModal');
+           console.log(confirmationModal);
+          // Get the remove button
+          var removeButtons = document.querySelectorAll('.remove-request');
+
+          // Add event listeners to all remove buttons
+          removeButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+              // Get the transaction ID
+              var transactionId = this.getAttribute('data-transaction-id');
+              
+              // Update the modal confirmation button to include the transaction ID
+              var confirmRemoveButton = document.getElementById('confirmRemove');
+              confirmRemoveButton.setAttribute('data-transaction-id', transactionId);
+             
+            });
+          });
+
+          // Add event listener to the confirmation button inside the modal
+          var confirmRemove = document.getElementById('confirmRemove');
+          confirmRemove.addEventListener('click', function () {
+            // Get the transaction ID from the confirmation button
+            var transactionId = this.getAttribute('data-transaction-id');
+            var reason = document.getElementById('reasonInput').value;
+            
+            // Perform the removal process (You might need AJAX or form submission here)
+            window.location.href = 'actions.php?transactionID=' + transactionId+'&state=4&type=reg&landing=udash&info='+reason;
+            
+            // Close the modal
+            var modal = bootstrap.Modal.getInstance(confirmationModal);
+            modal.hide();
+          });
+        });
+    </script>
+        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Please input the reason for removal of the request:
+                        <input type="text" name="info" id='reasonInput' class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="confirmRemove">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
 
 </html>
