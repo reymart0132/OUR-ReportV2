@@ -7,7 +7,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php'
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CEU Registrar ORD FAQ</title>
+    <title>CEU Registrar ORD Status Checker</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,7 +73,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php'
                     </div>
                 <?php }else{ ?>
                     <div class=" row inner-checker p-3 mt-2 d-flex justify-content-center">
-                        <div class="col-md-8 pt-2 mt-2">
+                        <div class="col-md-8">
                             <div class="col-lg-12 p-0 bg-faq"></div>
                         </div>
                     </div>
