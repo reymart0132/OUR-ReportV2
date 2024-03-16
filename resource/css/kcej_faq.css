@@ -1,0 +1,64 @@
+
+.bg-faq {
+    background-image: url(../img/bg-faq.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:200px;
+}
+
+.big-txt-faq {
+    color: #DC64A1;
+    padding: 10px 20px 10px 30px;
+}
+
+.big-txt-faq-inv {
+    color: rgb(22, 21, 66);
+    padding: 10px 20px 10px 30px;
+    display:contents !important;
+}
+
+.sm-txt-faq {
+    color: rgb(22, 21, 66);
+    margin-top: 10px;
+}
+
+.sm-txt-faq-inv {
+    color: #DC64A1;
+    display: inline;
+}
+
+.inner-faq {
+    /* text-align: center; */
+    width: 100%;
+    margin: 2px;
+    background-color: aliceblue;
+    border-radius: 5px;
+    min-height: 30vh;
+}
+
+.inner-checker {
+    /* text-align: center; */
+    width: 100%;
+    margin: 2px;
+    background-color: aliceblue;
+    border-radius: 5px;
+    min-height: 20vh;
+}
+
+.accordion-button {
+    padding: 5px !important;
+}
+
+.accordion-button::after{
+    margin-right: 20px !important;
+}
+
+.accordion-body {
+    padding: 20px 45px 20px 45px;
+    text-align: justify;
+}
+
+.fa-hand-point-right:before {
+    rotate: 30deg !important;
+}
