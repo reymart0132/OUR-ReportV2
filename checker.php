@@ -56,7 +56,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php'
                         <div class="my-3 text-center">
                             <form action="" method="get">
                                 <label for="transNumber" class="form-label">Enter Transaction Number Here:</label>
-                                <input type="text" class="form-control text-center " name="transNumber" id="transNumber">
+                                <input type="text" class="form-control text-center " name="transNumber" id="transNumber" required>
                                 <button type="submit" class="btn btn-primary my-3" name="search">Submit</button>
                             </form>
                         </div>
@@ -71,8 +71,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php'
                                 $status->matchDoc(); ?>
                         </div>
                     </div>
+                <?php }else{ ?>
+                    <div class=" row inner-checker p-3 mt-2 d-flex justify-content-center">
+                        <div class="col-md-8 pt-2 mt-2">
+                            <div class="col-lg-12 p-0 bg-faq"></div>
+                        </div>
+                    </div>
                 <?php } ?>
-
                 <div class="col-12 px-2 mt-2  text-center">
                     <div class="inner p-2">
                         <img class="services" height="75px" src="resource/img/support.png" alt="Question and answer icons created by Linector">

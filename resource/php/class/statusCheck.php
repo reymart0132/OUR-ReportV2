@@ -29,7 +29,7 @@ class statusCheck extends config{
                 $assignee_email = kcej_getAssigneeEmail($assignee);
             }
 
-            echo "<div class='card'>
+            echo "<div class='card shadow rounded'>
                     <div class='card-header'>
                         Transaction Number: <b>$id</b>
                     </div>
@@ -86,7 +86,7 @@ class statusCheck extends config{
                     $assignee = findAssignee($result0[0]['assignee']);
                     $assignee_email = kcej_getAssigneeEmail($assignee);
                 }
-                echo "<div class='card'>
+                echo "<div class='card shadow rounded'>
                     <div class='card-header'>
                         Transaction Number: <b>$id</b>
                     </div>
@@ -127,16 +127,25 @@ class statusCheck extends config{
                     </div>
                 </div>";
             }else{
-                echo "None Matched";
+                echo "<div class='d-flex justify-content-center'>
+                        <div class='card shadow rounded' style='width: 18rem;'>
+                            <i class='fa-solid fa-circle-exclamation fa-5x text-center text-danger pt-3 pb-1'></i>
+                            <div class='card-body'>
+                                <p class='card-text'>Transaction Number not found.</p>
+                            </div>
+                        </div>
+                    </div>";
             }
         }
     }
 
     public function chkDocStatReg(){
+        //tester
         echo "Regular Document";
     }
 
     public function chkDocStatSpc(){
+        //tester
         echo "Special Document";
     }
 

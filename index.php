@@ -60,7 +60,7 @@
                         <img class="services" height="75px" src="resource/img/tracking.png" alt="Track icons created by photo3idea_studio">
                         <h6 class="card-title big-txt-ceu3 text-center mb-2 mt-4">Track Request Status</h6>
                         <p class="itext">Check the real-time status of Online Request for Documents via Transaction Number. </p>
-                        <a href="" class="btn btn-hover color-3 text-center"> Track my Transaction</a>
+                        <a href="checker" class="btn btn-hover color-3 text-center"> Track my Transaction</a>
                     </div>
                 </div>
                 <div class="col-md-3 px-2 text-center servc">
@@ -76,7 +76,7 @@
                         <img class="services" height="75px" src="resource/img/faq.png" alt="Question and answer icons created by Linector">
                         <h6 class="card-title big-txt-ceu3 text-center mb-2 mt-4">Frequently Asked Questions</h6>    
                         <p class="itext">View frequently asked question and inquire about OUR Procedure</p>
-                        <a href="" class="btn btn-hover color-3 text-center"> Proceed to FAQ</a>
+                        <a href="faq" class="btn btn-hover color-3 text-center"> Proceed to FAQ</a>
                     </div>
 
                 </div>

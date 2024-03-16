@@ -14,7 +14,7 @@
                         style="color: #eaa7c9;"></i> Transaction</a>
                 <a class="nav-link text-ceu" href="#"><i class="fa-solid fa-address-book" style="color: #eaa7c9;"></i>
                     Contact Us</a>
-                <a class="nav-link text-ceu" href=#><i class="fa-solid fa-circle-question" style="color: #eaa7c9;"></i>
+                <a class="nav-link text-ceu" href=faq><i class="fa-solid fa-circle-question" style="color: #eaa7c9;"></i>
                     FAQ</a>
             </div>
         </div>
