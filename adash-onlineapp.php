@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
 $table = new viewtable();
 $user = new user();
+isRAdmin($user->data()->groups);
 ?>
 
 <!DOCTYPE html>

@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
 $table = new viewtable();
 $user = new user();
+isRAdmin($user->data()->groups);
 ?>
 
 <!DOCTYPE html>
@@ -112,7 +113,15 @@ $user = new user();
     </header>
       <!-- Modal for confirmation -->
    
+                 <a class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+              <i class="fas fa-question-circle me-2"></i> Options</a>
+            
+            <div class="item">
+              <a class="sub-btn" href="#"><i class="fa-solid fa-key"></i> Change Password</a>
+            </div>
 
+            <div class="item">
+              <a class="sub-btn" href="#"><i class="fa-solid fa-person-walking-arrow-right"></i> Logout</a> 
       <script type="text/javascript">
         var el = document.getElementById("wrapper")
         var toggleButton = document.getElementById("menu-toggle")

@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
 $table = new viewtable();
 $user = new user();
+isRAdmin($user->data()->groups);
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -104,8 +105,8 @@ $user = new user();
                   </a>
 
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a href='#' class='dropdown-item'><i class="fa-solid fa-key"></i> Change Password</a></li>
-                    <li><a href= '#' class='dropdown-item'><i class="fa-solid fa-person-walking-arrow-right"></i> Logout</a></li>
+                    <li><a href='changepassword.php' class='dropdown-item'><i class="fa-solid fa-key"></i> Change Password</a></li>
+                    <li><a href= 'logout.php' class='dropdown-item'><i class="fa-solid fa-person-walking-arrow-right"></i> Logout</a></li>
                     <!-- <li><a href= '#' class='dropdown-item'>Item 3</a></li>
                     <li><a href='#' class='dropdown-item'>Item 4</a></li> -->
                   </ul>
@@ -135,16 +136,6 @@ $user = new user();
      </div>
     </header>
       <script type="text/javascript">
-        var el = document.getElementById("wrapper")
-        var toggleButton = document.getElementById("menu-toggle")
-
-        toggleButton.onclick = function(){
-          el.classList.toggle("toggled")
-        }
-      </script>
-      <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-       <script type="text/javascript">
         var el = document.getElementById("wrapper")
         var toggleButton = document.getElementById("menu-toggle")
 
