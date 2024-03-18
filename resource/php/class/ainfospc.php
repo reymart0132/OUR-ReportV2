@@ -188,10 +188,10 @@ class ainfospc extends config{
                 $assign = "Unassigned";
             }
 
-        // $sql0 = "SELECT * FROM `tbl_items` WHERE `transnumber` = '$transID'";
-        // $data0 = $con->prepare($sql0);
-        // $data0->execute();
-        // $result0 = $data0->fetchAll(PDO::FETCH_ASSOC);
+        $sql0 = "SELECT * FROM `tbl_spcitems` WHERE `transnumber` = '$transID'";
+        $data0 = $con->prepare($sql0);
+        $data0->execute();
+        $result0 = $data0->fetchAll(PDO::FETCH_ASSOC);
 
         echo "<div class='col-md-10'>
                 <table class='table shadow m-3'>
@@ -227,6 +227,9 @@ class ainfospc extends config{
                             Requested Documents:
                             <ul>
                                 <li><h5><b>$document</b></h5></li>";
+        foreach ($result0 as $data0) {
+            echo "<li><h5><b>$data0[quantity] - $data0[itemrequest]</b></h5></li>";
+        }
                     if($doc1 != null || $doc1 != ""){
                         echo "<embed src='./doc1/$doc1' type='application/pdf' width='100%' height='600px' />";
                     }
@@ -235,9 +238,7 @@ class ainfospc extends config{
                         echo "<embed src='./doc2/$doc2' type='application/pdf' width='100%' height='600px' />";
                     }
 
-                            // foreach ($result0 as $data0) {
-                            //     echo "<li><h5><b>$data0[quantity] - $data0[itemrequest]</b></h5></li>";
-                            // }
+                            
                         echo "</ul>
 
                         </td>

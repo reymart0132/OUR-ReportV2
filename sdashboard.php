@@ -1,7 +1,8 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
-$table = new viewtable();
 $user = new user();
+$id = $user->data()->id;
+$table = new viewtable($id);
 isSPC($user->data()->groups);
 ?>
 
@@ -45,11 +46,11 @@ isSPC($user->data()->groups);
                         <i class="fas fa-house me-2"></i> Menu</a>
                     
                     <div class="item mt-3">
-                        <a class="sub-btn bg-selected" href="udashboard"><i class="fa-solid fa-magnifying-glass"></i>Review </a>
+                        <a class="sub-btn bg-selected" href="sdashboard.php"><i class="fa-solid fa-magnifying-glass"></i>Review </a>
                     </div>
                     
                     <div class="item">
-                        <a class="sub-btn" href="udashboard"><i class="fa-solid fa-money-bill"></i> For Payment </a>
+                        <a class="sub-btn" href="sdashboardpayment.php"><i class="fa-solid fa-money-bill"></i> For Payment </a>
                     </div>
 
                     <!-- <div class="item">
@@ -57,7 +58,7 @@ isSPC($user->data()->groups);
                     </div> -->
 
                     <div class="item">
-                        <a class="sub-btn" href="udashboardfs"><i class="fa-solid fa-star"></i> For Signature </a>
+                        <a class="sub-btn" href="sdashboardsignature"><i class="fa-solid fa-star"></i> For Signature </a>
                     </div>
 
                     <script type="text/javascript">
@@ -117,7 +118,7 @@ isSPC($user->data()->groups);
                 <div class="container-fluid p-5">
                     <div class="row">
                         <div class="col-md p-5 content">
-                            <?php $table->kcej_rTrans(); ?>
+                            <?php $table->tbl_SPCassigned(); ?>
 
                         </div>
                     </div>
@@ -168,7 +169,7 @@ isSPC($user->data()->groups);
             var reason = document.getElementById('reasonInput').value;
             
             // Perform the removal process (You might need AJAX or form submission here)
-            window.location.href = 'actions.php?transactionID=' + transactionId+'&state=4&type=reg&landing=udash&info='+reason;
+            window.location.href = 'actions.php?transactionID=' + transactionId+'&state=4&type=sp&landing=sdash&info='+reason;
             
             // Close the modal
             var modal = bootstrap.Modal.getInstance(confirmationModal);

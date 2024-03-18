@@ -86,6 +86,20 @@ if(!empty($_POST)){
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-12 mt-3">
+                            <div class="card carding">
+                                <div class="card-header">
+                                   *Important Notes
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="card-title">For Certificate of Internship and Course Syllabus</h6>
+                                    <p class="card-text text-danger" style="font-size: 14px;">
+                                        <b>-Please proceed to your College / School / Department.</b><br> 
+                                        
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>

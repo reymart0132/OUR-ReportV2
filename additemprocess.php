@@ -1,0 +1,46 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
+if (!empty($_SESSION['info']) && !empty($_POST['points'])) {
+    $price = $_POST['hiddenPrice'];
+    $summary = $_POST['items'];
+    $tnumber = $_POST['tn'];
+} else {
+    header("HTTP/1.1 403 Forbidden");
+    exit;
+}
+
+if (!empty($_POST['items'])) {
+    // var_dump($_SESSION['info']);
+} else {
+    header("HTTP/1.1 403 Forbidden");
+    exit;
+}
+
+$text = $_POST['items'];
+$pattern = '/^(.+?)\s*-\s*(\d+)\s*$/m';
+// Initialize arrays to store matches
+$order = array();
+$counts = array();
+// Use preg_match_all to find matches
+preg_match_all($pattern, $text, $matches, PREG_SET_ORDER);
+// Extract matched values
+foreach ($matches as $match) {
+    $order[] = trim($match[1]);
+    $counts[] = intval($match[2]);
+}
+            $transaction = new transaction($tnumber,'','', '','','','', '', '', '', '', $price, '',$summary);
+            $transaction->editTransaction();
+            for ($i = 0; $i < count($order); $i++) {
+                $item[$i] = new items($tnumber, "", $counts[$i], $order[$i]);
+                $item[$i]->insertItem2();
+            header("location:./sdashboard.php");
+            }
+
+    //insert codes here
+
+
+
+
+
+
+?>

@@ -24,5 +24,24 @@ class items extends config
         $data = $con->prepare($sql);
         $data->execute();
     }
+    public function deleteItem2()
+    {
+        $currentDateTime = date("Y-m-d H:i:s");
+        $config = new config;
+        $con = $config->con();
+        $sql = "DELETE FROM `tbl_spcitems` WHERE `transactionid` = '$this->transactionid'";
+        $data = $con->prepare($sql);
+        $data->execute();
+    }
+    public function insertItem2()
+    {
+        $this->deleteItem2();
+        $currentDateTime = date("Y-m-d H:i:s");
+        $config = new config;
+        $con = $config->con();
+        $sql = "INSERT INTO tbl_spcitems(`itemrequest`,`quantity`,`transnumber`) VALUES('$this->itemname','$this->quantity','$this->transactionid')";
+        $data = $con->prepare($sql);
+        $data->execute();
+    }
 
 }

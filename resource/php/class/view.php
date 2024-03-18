@@ -27,6 +27,28 @@ class view extends config{
                     $x++;
                 }
         }
+        public function listAppliedFor2(){
+            $config = new config;
+            $con = $config->con();
+            $sql = "SELECT * FROM `tbl_applied_for`ORDER BY LOWER(`appliedfor`)";
+            $data = $con-> prepare($sql);
+            $data ->execute();
+            $rows =$data-> fetchAll(PDO::FETCH_ASSOC);
+            $x = 1;
+                foreach ($rows as $row) {
+                echo "<tr>
+                        <td class='px-2 py-1'>q$row[id]</td>
+                        <td class='px-2 py-1'>
+                            <div><b>".strtoupper($row['appliedfor'])."</b></div>
+                        </td>
+                        <td class='px-2 py-1'><small>$row[price].00</small></td>
+                        <td class='px-2 py-1'><input type='number' name='item$x' class='form-control' value='0' onchange='updateTotal()'></td>
+                        <td class='px-2 py-1 d-none'><small>$row[point]</small></td>
+
+                    </tr>";
+                    $x++;
+                }
+        }
         public function listCourse(){
             $config = new config;
             $con = $config->con();
