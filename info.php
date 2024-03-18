@@ -47,20 +47,20 @@ if (!empty($_GET['tID']) && !empty($_GET['type'])) {
                 </div>
 
                 <div class="list-group list-group-flush my-3">
-                    <a class="list-group-item list-group-item-action fw-bold">
-                        <i class="fas fa-question-circle me-2"></i> Menu</a>
-
+                    <!-- <a class="list-group-item list-group-item-action fw-bold">
+                        <i class="fas fa-question-circle me-2"></i> Menu</a> -->
+<!-- 
                     <div class="item mt-3">
                         <a class="sub-btn bg-selected" href="udashboard"><i class="fa-solid fa-house"></i> Pending </a>
-                    </div>
+                    </div> -->
 
                     <!-- <div class="item">
                         <a class="sub-btn" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
                     </div> -->
 
-                    <div class="item">
+                    <!-- <div class="item">
                         <a class="sub-btn" href="udashboardfs"><i class="fa-solid fa-star"></i> For Signature </a>
-                    </div>
+                    </div> -->
 
                     <script type="text/javascript">
                         $(document).ready(function () {

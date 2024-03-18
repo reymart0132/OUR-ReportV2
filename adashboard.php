@@ -53,9 +53,13 @@
             <div class="item">
               <a class="sub-btn" href="adash-asgn1"><i class="fa-solid fa-globe"></i> Online Requests</a>
             </div>
-            
             <div class="item">
               <a class="sub-btn" href="adash-asgn2"><i class="fa-solid fa-star"></i> Special Requests</a>
+            </div>
+            <a class="list-group-item list-group-item-action fw-bold mt-5">
+              <i class="fa-solid fa-folder me-2"></i> Releasing Section </a>
+            <div class="item">
+              <a class="sub-btn" href="rdashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
             </div>
             
             <script type="text/javascript">

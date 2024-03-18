@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
 $table = new viewtable();
 $user = new user();
+kcej_isReleasing($user->data()->groups);
 ?>
 
 <!DOCTYPE html>
@@ -55,6 +56,14 @@ $user = new user();
                         <a class="sub-btn bg-selected" href="rdashboardrl"><i class="fa-solid fa-star"></i> Released </a>
                     </div>
 
+                    <?php if($user->data()->groups == '2'){ ?>
+                    <a class="list-group-item list-group-item-action fw-bold mt-5">
+                        <i class="fa-solid fa-folder me-2"></i> Verifier Section </a>
+                    <div class="item">
+                        <a class="sub-btn" href="adashboard"><i class="fa-solid fa-house"></i>Dashboard</a>
+                    </div>
+                    <?php } ?>
+
                     <script type="text/javascript">
                         $(document).ready(function () {
                             $('.sub-btn').click(function () {
@@ -107,7 +116,7 @@ $user = new user();
 
                 <div class="p-3">
 
-                    <h1>Dashboard Level 3</h1>
+                    <h1>Releasing Section</h1>
 
                 </div>
 

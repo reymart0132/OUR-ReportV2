@@ -49,6 +49,11 @@ isRAdmin($user->data()->groups);
             <div class="item">
               <a class="sub-btn" href="adash-asgn2"><i class="fa-solid fa-star"></i> Special Requests</a>
             </div>
+            <a class="list-group-item list-group-item-action fw-bold mt-5">
+              <i class="fa-solid fa-folder me-2"></i> Releasing Section </a>
+            <div class="item">
+              <a class="sub-btn" href="rdashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
+            </div>
 
             <script type="text/javascript">
               $(document).ready(function(){
@@ -82,7 +87,7 @@ isRAdmin($user->data()->groups);
 
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a href='#' class='dropdown-item'><i class="fa-solid fa-key"></i> Change Password</a></li>
-                    <li><a href= '#' class='dropdown-item'><i class="fa-solid fa-person-walking-arrow-right"></i> Logout</a></li>
+                    <li><a href= 'logout.php' class='dropdown-item'><i class="fa-solid fa-person-walking-arrow-right"></i> Logout</a></li>
                     <!-- <li><a href= '#' class='dropdown-item'>Item 3</a></li>
                     <li><a href='#' class='dropdown-item'>Item 4</a></li> -->
                   </ul>
