@@ -561,7 +561,8 @@ function getRandomPastelColor() {
     $lightness = rand(60, 90); // 60-90 for pastel
 
     return "hsl($hue, $saturation%, $lightness%)";
-  }
+}
+
 function isRAdmin($user){
     if($user !== '2'){
         header("HTTP/1.1 403 Forbidden");
@@ -579,4 +580,15 @@ function isSPC($user){
 
     }
 }
+
+function kcej_isReleasing($user){
+    if($user !== '3' && $user !== '2'){
+        header("HTTP/1.1 403 Forbidden");
+        exit();
+    }else{
+
+    }
+}
+
+// 1 - ENCODER, 2 - VERIFIER, 3 - RELEASING, 4 - SPECIAL
  ?>

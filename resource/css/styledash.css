@@ -189,6 +189,18 @@ table{
   color: white;
 }
 
+ .btn-primary {
+   background-color: #667eea;
+   border-color: #667eea;
+   font-size: 11px;
+   font-weight: bold;
+ }
+
+ .btn-primary:hover {
+   background-color: #764ba2;
+   border-color: #764ba2;
+ }
+
 #wrapper{
   overflow-x: hidden;
   background-image: linear-gradient(

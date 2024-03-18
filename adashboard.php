@@ -3,6 +3,7 @@
   $table = new viewtable();
   $user = new user();
   isRAdmin($user->data()->groups);
+  $locker = new locker();
 ?>
 
 <!DOCTYPE html>
@@ -52,9 +53,13 @@
             <div class="item">
               <a class="sub-btn" href="adash-asgn1"><i class="fa-solid fa-globe"></i> Online Requests</a>
             </div>
-            
             <div class="item">
               <a class="sub-btn" href="adash-asgn2"><i class="fa-solid fa-star"></i> Special Requests</a>
+            </div>
+            <a class="list-group-item list-group-item-action fw-bold mt-5">
+              <i class="fa-solid fa-folder me-2"></i> Releasing Section </a>
+            <div class="item">
+              <a class="sub-btn" href="rdashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
             </div>
             
             <script type="text/javascript">
@@ -78,10 +83,20 @@
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupporteContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
-            </button>
+            </button> 
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav  ms-auto mb-2 mb-lg-0">
+              
+                <div class="row text-center me-3">
+                  <div class="col-md-3 px-0">
+                    <a href="locker.php?landing=adashboard" class="btn btn-sm <?php $locker->lockerButtonClr(); ?>"><?php $locker->lockerButton(); ?></a>
+                  </div>
+                  <div class="col-md-9">
+                    <?php $locker->lockerStatusDisp(); ?>
+                  </div>
+                </div>
+
                 <li class="nav-item dropdown ">
                   
                   <a href="#" class="nav-link dropdown-toggle second-text fw-bold username" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
