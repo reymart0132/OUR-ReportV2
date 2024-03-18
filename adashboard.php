@@ -3,6 +3,7 @@
   $table = new viewtable();
   $user = new user();
   isRAdmin($user->data()->groups);
+  $locker = new locker();
 ?>
 
 <!DOCTYPE html>
@@ -78,10 +79,20 @@
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupporteContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
-            </button>
+            </button> 
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav  ms-auto mb-2 mb-lg-0">
+              
+                <div class="row text-center me-3">
+                  <div class="col-md-3 px-0">
+                    <a href="locker.php?landing=adashboard" class="btn btn-sm <?php $locker->lockerButtonClr(); ?>"><?php $locker->lockerButton(); ?></a>
+                  </div>
+                  <div class="col-md-9">
+                    <?php $locker->lockerStatusDisp(); ?>
+                  </div>
+                </div>
+
                 <li class="nav-item dropdown ">
                   
                   <a href="#" class="nav-link dropdown-toggle second-text fw-bold username" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
