@@ -3,10 +3,10 @@ require_once 'config.php';
 
 class spctransaction extends config
 {
-    public $type,$transactionid,$studentNumber,$yearGraduated,$status,$fullName,$course,$reason,$contactNumber,$emailAddress,$facebook,$doc1,$doc2,$doc1tmp,$doc2tmp,$filename1,$filename2;
+    public $transactionid,$studentNumber,$yearGraduated,$status,$fullName,$course,$reason,$contactNumber,$emailAddress,$facebook,$doc1,$doc2,$doc1tmp,$doc2tmp,$filename1,$filename2,$type;
 
 
-    function __construct($transactionid = null, $studentNumber = null, $yearGraduated = null, $status = null, $fullName = null, $course = null, $reason = null, $contactNumber = null, $emailAddress = null, $facebook = null,$doc1 =null,$doc2 = null,$doc1tmp =null,$doc2tmp=null,$type)
+    function __construct($transactionid = null, $studentNumber = null, $yearGraduated = null, $status = null, $fullName = null, $course = null, $reason = null, $contactNumber = null, $emailAddress = null, $facebook = null,$doc1 =null,$doc2 = null,$doc1tmp =null,$doc2tmp=null,$type =null)
     {
         $this->transactionid= $transactionid;
         $this->studentNumber= $studentNumber;
@@ -26,6 +26,9 @@ class spctransaction extends config
         $this->filename1="";
         $this->filename2="";
 
+        // var_dump($this->doc1);
+        // var_dump($this->doc2);
+        // die();
         //Get Filename Extensions
         $vdoc1 = strtolower(pathinfo($this->doc1['name'], PATHINFO_EXTENSION));
         $vdoc2 = strtolower(pathinfo($this->doc2['name'], PATHINFO_EXTENSION));
@@ -54,6 +57,7 @@ class spctransaction extends config
                 $error = $error + 1;
             }
         }
+        
         if(!isset($doc2)){
 
             $this->filename2 = "doc2" . $this->transactionid;
@@ -84,8 +88,20 @@ class spctransaction extends config
         $currentDateTime = date("Y-m-d H:i:s");
         $config = new config;
         $con = $config->con();
-        $this->filename1 = "doc1" . $this->transactionid;
-        $this->filename2 = "doc2" . $this->transactionid;
+
+        if($this->doc1['error'] == '4'){
+            $this->filename1 = "";
+        }else{
+            $this->filename1 = "doc1" . $this->transactionid;
+
+        }
+
+        if($this->doc2['error'] == '4'){
+            $this->filename2 = "";
+        }else{
+            $this->filename2 = "doc2" . $this->transactionid;
+
+        }
         
         $sql = "INSERT INTO tbl_spctransaction( `transactionid`,`stdn`,`yeargrad`,`status`,`fullname`,`course`,`reason`,`contactnumber`,`emailaddress`,`facebook`,`dateapp`,`doc1`,`doc2`,`type`) VALUES('$this->transactionid','$this->studentNumber','$this->yearGraduated','$this->status','$this->fullName','$this->course','$this->reason','$this->contactNumber','$this->emailAddress','$this->facebook','$currentDateTime','$this->filename1','$this->filename2','$this->type')";
         $data = $con->prepare($sql);

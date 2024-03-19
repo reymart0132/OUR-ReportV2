@@ -1,5 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
+
+
 if (!empty($_POST['items']) && !empty($_POST['tn'])) {
     $price = $_POST['hiddenPrice'];
     $summary = $_POST['items'];
