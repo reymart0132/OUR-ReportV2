@@ -42,7 +42,7 @@ class transaction extends config
         $currentDateTime = date("Y-m-d H:i:s");
         $config = new config;
         $con = $config->con();
-        $sql = "UPDATE `tbl_spctransaction` SET `price`= '$this->price', `summary`='$this->summary where `transactionid = $this->transactionid`'";
+        $sql = "UPDATE `tbl_spctransaction` SET `price`= '$this->price', `summary`='$this->summary' where `transactionid` = '$this->transactionid'";
         $data = $con->prepare($sql);
         // var_dump($data);
         // die();

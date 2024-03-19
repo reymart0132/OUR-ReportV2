@@ -404,7 +404,7 @@ function getAssigneeChart()
 {
     $config = new config;
     $con = $config->con();
-    $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points FROM tbl_accounts a LEFT JOIN tbl_transaction t ON a.id = t.assignee WHERE t.remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT') OR t.remarks IS NULL AND a.groups = 1 GROUP BY a.id ORDER BY total_points ASC";
+    $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points FROM tbl_accounts a LEFT JOIN tbl_transaction t ON a.id = t.assignee WHERE t.remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT','FOR RELEASE') OR t.remarks IS NULL AND a.groups = 1 GROUP BY a.id ORDER BY total_points ASC";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -421,7 +421,7 @@ function getAssigneeChart2()
 {
     $config = new config;
     $con = $config->con();
-    $sql = "SELECT A.id, COALESCE(ST.transaction_count, 0) AS transaction_count FROM tbl_accounts A LEFT JOIN ( SELECT assignee, COUNT(*) AS transaction_count FROM tbl_spctransaction GROUP BY assignee ) ST ON A.id = ST.assignee WHERE A.groups = 4 ORDER BY transaction_count;";
+    $sql = "SELECT A.id, COALESCE(ST.transaction_count, 0) AS transaction_count FROM tbl_accounts A LEFT JOIN ( SELECT assignee, COUNT(*) AS transaction_count FROM tbl_spctransaction WHERE remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT','FOR RELEASE') GROUP BY assignee ) ST ON A.id = ST.assignee WHERE A.groups = 4 ORDER BY transaction_count;";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchAll(PDO::FETCH_ASSOC);

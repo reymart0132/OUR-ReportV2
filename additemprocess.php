@@ -1,9 +1,10 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
-if (!empty($_SESSION['info']) && !empty($_POST['points'])) {
+if (!empty($_POST['items']) && !empty($_POST['tn'])) {
     $price = $_POST['hiddenPrice'];
     $summary = $_POST['items'];
     $tnumber = $_POST['tn'];
+
 } else {
     header("HTTP/1.1 403 Forbidden");
     exit;
@@ -28,13 +29,15 @@ foreach ($matches as $match) {
     $order[] = trim($match[1]);
     $counts[] = intval($match[2]);
 }
+            $dcommand = new items($tnumber);
+            $dcommand->deleteItem2();
             $transaction = new transaction($tnumber,'','', '','','','', '', '', '', '', $price, '',$summary);
             $transaction->editTransaction();
             for ($i = 0; $i < count($order); $i++) {
                 $item[$i] = new items($tnumber, "", $counts[$i], $order[$i]);
                 $item[$i]->insertItem2();
-            header("location:./sdashboard.php");
             }
+            header("location:./sdashboard.php");
 
     //insert codes here
 

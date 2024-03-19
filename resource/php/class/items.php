@@ -29,13 +29,12 @@ class items extends config
         $currentDateTime = date("Y-m-d H:i:s");
         $config = new config;
         $con = $config->con();
-        $sql = "DELETE FROM `tbl_spcitems` WHERE `transactionid` = '$this->transactionid'";
+        $sql = "DELETE FROM `tbl_spcitems` WHERE `transnumber` = '$this->transactionid'";
         $data = $con->prepare($sql);
         $data->execute();
     }
     public function insertItem2()
     {
-        $this->deleteItem2();
         $currentDateTime = date("Y-m-d H:i:s");
         $config = new config;
         $con = $config->con();
