@@ -3,6 +3,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php'
 $table = new viewtable();
 $user = new user();
 isRAdmin($user->data()->groups);
+$locker = new locker();
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +16,7 @@ isRAdmin($user->data()->groups);
     <link rel="stylesheet" href="resource/css/styledash.css" type="text/css">
     <script src="https://kit.fontawesome.com/03ca298d2d.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500&display=swap" rel="stylesheet">
 
     <title>Dashboard</title>
     <link rel="icon" type="image/x-icon" href="resource/img/ceu.png" />
@@ -29,6 +31,12 @@ isRAdmin($user->data()->groups);
           </div>
 
           <div class="list-group list-group-flush my-3">
+
+            <a class="list-group-item list-group-item-action fw-bold text-center mb-5">
+            <small>Current Date and Time</small> 
+            <?php include 'clock.php'; ?>
+            </a>
+
             <a class="list-group-item list-group-item-action fw-bold">
               <i class="fas fa-question-circle me-2"></i> Main Menu</a>
               
@@ -80,6 +88,16 @@ isRAdmin($user->data()->groups);
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav  ms-auto mb-2 mb-lg-0">
+
+                <div class="row text-center me-3">
+                  <div class="col-md-3 px-0">
+                    <a href="locker.php?landing=adash-onlineapp" class="btn btn-sm <?php $locker->lockerButtonClr(); ?>"><?php $locker->lockerButton(); ?></a>
+                  </div>
+                  <div class="col-md-9">
+                    <?php $locker->lockerStatusDisp(); ?>
+                  </div>
+                </div>
+
                 <li class="nav-item dropdown ">
 
                    <a href="#" class="nav-link dropdown-toggle second-text fw-bold username" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

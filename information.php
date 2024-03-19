@@ -1,6 +1,8 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
 $view = new view();
+$locker = new locker();
+$locker->formLockerCheck();
 ?>
 <!doctype html>
 <html lang="en">

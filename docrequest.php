@@ -1,5 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
+$locker = new locker();
+$locker->formLockerCheck();
 $view = new view();
 if (!empty($_SESSION['info'])) {
     // var_dump($_SESSION['info']);
