@@ -103,7 +103,7 @@ class update extends config{
         if ($this->type == 'reg') {
             $sql = "UPDATE `tbl_transaction` SET `remarks`='ASSIGNED',`assignee`='$this->assignee',`paymentdate`='$dateconfirmed' WHERE `transactionid` = '$this->tID'";
         } elseif ($this->type == 'sp') {
-            $sql = "UPDATE `tbl_spctransaction` SET `remarks`='ASSIGNED',`assignee`='$this->assignee',`paymentdate`='$dateconfirmed' WHERE `transactionid` = '$this->tID'";
+            $sql = "UPDATE `tbl_spctransaction` SET `remarks`='ASSIGNED',`assignee`='$this->assignee' WHERE `transactionid` = '$this->tID'";
         } else {
             header("HTTP/1.1 403 Forbidden");
         }
@@ -134,6 +134,43 @@ class update extends config{
         $sql = "UPDATE `tbl_items` SET `printeddate` = now() WHERE `transnumber` = '$this->tID'";
         $data = $con->prepare($sql);
 
+        if($data->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function setForPayment(){
+        $config = new config();
+        $con = $this->con();
+        $sql = "UPDATE `tbl_spctransaction` SET `remarks` = 'FOR PAYMENT' WHERE `transactionid` = '$this->tID'";
+        $data = $con->prepare($sql);
+        if($data->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function setForSignature(){
+        $timestamp = time(); // Get the current timestamp
+        $dateconfirmed = date('Y-m-d H:i:s', $timestamp); // Format the timestamp as a string in the desired format
+        $config = new config();
+        $con = $this->con();
+        $sql = "UPDATE `tbl_spctransaction` SET `remarks` = 'FOR SIGNATURE',`paymentdate`='$dateconfirmed' WHERE `transactionid` = '$this->tID'";
+        $data = $con->prepare($sql);
+        if($data->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function setForRelease(){
+        $timestamp = time(); // Get the current timestamp
+        $dateconfirmed = date('Y-m-d H:i:s', $timestamp); // Format the timestamp as a string in the desired format
+        $config = new config();
+        $con = $this->con();
+        $sql = "UPDATE `tbl_spctransaction` SET `remarks` = 'FOR RELEASE',`signeddate`='$dateconfirmed' WHERE `transactionid` = '$this->tID'";
+        $data = $con->prepare($sql);
         if($data->execute()){
             return true;
         }else{

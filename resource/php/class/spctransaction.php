@@ -17,6 +17,7 @@ class spctransaction extends config
         $this->reason= $reason;
         $this->contactNumber= $contactNumber;
         $this->emailAddress= $emailAddress;
+        $this->facebook = $facebook;
         $this->doc1= $doc1;
         $this->doc2= $doc2;
         $this->doc1tmp= $doc1tmp;

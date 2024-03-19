@@ -109,8 +109,6 @@ if($_GET['state'] == '1' && $user->data()->groups == '1'){  // set for signature
   }
   
 
-  
-
   if($_GET['landing'] == 'udash'){
     header('Location:udashboard.php');
   }elseif($_GET['landing'] == 'udashfs'){
@@ -132,6 +130,20 @@ if($_GET['state'] == '1' && $user->data()->groups == '1'){  // set for signature
     header("HTTP/1.1 403 Forbidden");
     exit();
   }
+}elseif($_GET['state'] == '7' && $user->data()->groups == '4'){
+  $action = new update($_GET['transactionID'],'spc');
+  $action->setForPayment();
+  header('Location:sdashboard.php');
+}elseif($_GET['state'] == '8' && $user->data()->groups == '4'){
+  $action = new update($_GET['transactionID'],'spc');
+  $action->setForSignature();
+  header('Location:sdashboardpayment.php');
+} elseif ($_GET['state'] == '9' && $user->data()->groups == '4') {
+  $action = new update($_GET['transactionID'], 'spc');
+  $action->setForRelease();
+  $open = true;
+  include_once "vendor/release.php";; //email
+  header('Location:sdashboardsignature.php');
 }else{
 
   header("HTTP/1.1 403 Forbidden");
