@@ -42,7 +42,7 @@ class update extends config{
         if($this->type == 'reg'){
             $sql = "UPDATE `tbl_transaction` SET `remarks` = 'RELEASED', `info`='$this->info', `releasedate` = now() WHERE `transactionid` = '$this->tID'";
         }elseif($this->type == 'sp'){
-            $sql = "UPDATE `tbl_spctransaction` SET `remarks` = 'RELEASED', `info`='$this->info' `releasedate` = now() WHERE `transactionid` = '$this->tID'";
+            $sql = "UPDATE `tbl_spctransaction` SET `remarks` = 'RELEASED', `info`='$this->info' ,`releasedate` = now() WHERE `transactionid` = '$this->tID'";
         }else{
             header("HTTP/1.1 403 Forbidden");
         }
