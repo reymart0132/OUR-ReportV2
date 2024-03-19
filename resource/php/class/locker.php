@@ -56,5 +56,20 @@ class locker extends config{
             echo "<h6 class='m-1'>Application Form is currently</h6> <h5><b class='text-danger'> CLOSED  </b></h5>";
         }
     }
+
+    public function formLockerCheck(){
+        $config = new config();
+        $con = $config->con();
+        $sql = "SELECT `value` FROM `tbl_config`";
+        $data = $con->prepare($sql);
+        $data ->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        if($result[0]['value'] == "OPEN"){
+            // do nothing
+        }else{
+            header('Location:locked.php');
+            exit();
+        }
+    }
 }
 ?>

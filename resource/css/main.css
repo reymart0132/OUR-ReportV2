@@ -417,6 +417,11 @@ small{
      border-color: #667eea;
  }
 
+ .timeDisp {
+     font-family: 'Oxanium', sans-serif;
+     padding: 0%;
+ }
+
  .btn-primary {
      background-color: #667eea;
      border-color: #667eea;

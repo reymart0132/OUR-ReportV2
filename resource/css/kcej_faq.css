@@ -62,3 +62,7 @@
 .fa-hand-point-right:before {
     rotate: 30deg !important;
 }
+
+.card-closed{
+    min-height: 30vh;
+}

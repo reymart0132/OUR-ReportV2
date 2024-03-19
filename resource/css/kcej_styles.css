@@ -29,6 +29,11 @@ body {
   border-radius: 100px 9999px 9999px 100px;
 }
 
+.timeDisp {
+  font-family: 'Oxanium', sans-serif;
+  padding: 0%;
+}
+
 .avatar {
   width: 30px;
   height: 30px;

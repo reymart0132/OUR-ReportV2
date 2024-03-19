@@ -18,6 +18,7 @@ $user = new user();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500&display=swap" rel="stylesheet">
 
     <title>Dashboard</title>
     <link rel="icon" type="image/x-icon" href="resource/img/ceu.png" />
@@ -40,6 +41,12 @@ $user = new user();
                 </div>
 
                 <div class="list-group list-group-flush my-3">
+
+                    <a class="list-group-item list-group-item-action fw-bold text-center mb-5">
+                    <small>Current Date and Time</small> 
+                    <?php include 'clock.php'; ?>
+                    </a>
+
                     <a class="list-group-item list-group-item-action fw-bold">
                         <i class="fas fa-question-circle me-2"></i> Menu</a>
 
