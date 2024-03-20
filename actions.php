@@ -46,7 +46,7 @@ if($_GET['state'] == '1' && $user->data()->groups == '1'){  // set for signature
     exit();
   }
 }elseif($_GET['state'] == '3' && ($user->data()->groups == '3' || $user->data()->groups == '2')){  // set as released
-  $action = new update($_GET['transactionID'], $_GET['type']);
+  $action = new update($_GET['transactionID'], $_GET['type'], '' ,$user->data()->id);
   $action->kcej_setStateRL();
   header('Location:rdashboard.php');
 }elseif($_GET['state'] == '4' && !empty($user->data()->groups)){  // remove transaction
@@ -75,12 +75,9 @@ if($_GET['state'] == '1' && $user->data()->groups == '1'){  // set for signature
     header("HTTP/1.1 403 Forbidden");
     exit();
   }
-  
-} elseif ($_GET['state'] == '5' && $user->data()->groups == '2') {
+}elseif($_GET['state'] == '5' && $user->data()->groups == '2') {
   $action = new update($_GET['transactionID'], $_GET['type']);
   $action->set_forAssign();
-
-  
 
   if($_GET['landing'] == 'udash'){
     header('Location:udashboard.php');
@@ -95,7 +92,6 @@ if($_GET['state'] == '1' && $user->data()->groups == '1'){  // set for signature
   }elseif($_GET['landing'] == 'adash-onlineapp'){
     header('Location:adash-onlineapp.php');
   }else{
-
     header("HTTP/1.1 403 Forbidden");
     exit();
   }
@@ -104,11 +100,10 @@ if($_GET['state'] == '1' && $user->data()->groups == '1'){  // set for signature
     $action = new update($_GET['transactionID'], $_GET['type'],"", getnextAssigneeChart2Q());
     $action->assignTo();
   }else{
-  $action = new update($_GET['transactionID'], $_GET['type'],"", getnextAssigneeChartQ());
-  $action->assignTo();
+    $action = new update($_GET['transactionID'], $_GET['type'],"", getnextAssigneeChartQ());
+    $action->assignTo();
   }
   
-
   if($_GET['landing'] == 'udash'){
     header('Location:udashboard.php');
   }elseif($_GET['landing'] == 'udashfs'){
@@ -126,7 +121,6 @@ if($_GET['state'] == '1' && $user->data()->groups == '1'){  // set for signature
   }elseif($_GET['landing'] == 'adash-asgn2'){
     header('Location:adash-asgn2.php');
   }else{
-
     header("HTTP/1.1 403 Forbidden");
     exit();
   }
@@ -145,7 +139,6 @@ if($_GET['state'] == '1' && $user->data()->groups == '1'){  // set for signature
   include_once "vendor/release.php";; //email
   header('Location:sdashboardsignature.php');
 }else{
-
   header("HTTP/1.1 403 Forbidden");
   exit();
 }

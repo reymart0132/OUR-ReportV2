@@ -194,6 +194,11 @@ table{
   color: white;
 }
 
+.btn-fb{
+  background-color:blue;
+  color:white;
+}
+
  .btn-primary {
    background-color: #667eea;
    border-color: #667eea;

@@ -57,7 +57,7 @@ $locker->formLockerCheck();
                             </div>
                             <div class="col-md-3 mb-1">
                                 <label for="yearGraduated" class="form-label">Year Graduated or Last Enrolled (4 digits)</label>
-                                <input type="text" class="form-control" id="yearGraduated" name="yearGraduated" min="1900" max="2099" step="1" value="" required>
+                                <input type="text" class="form-control" id="yearGraduated" name="yearGraduated" min="1900" max="2099" step="1" value="" maxlength="4" required>
                             </div>
                             <div class="col-md-4 mb-1">
                                 <label for="status" class="form-label">Status</label>

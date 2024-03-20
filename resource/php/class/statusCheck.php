@@ -31,10 +31,11 @@ class statusCheck extends config{
 
             echo "<div class='card shadow rounded'>
                     <div class='card-header'>
-                        Transaction Number: <b>$id</b>
+                        Transaction Number: <b>$id</b><br>
+                        Transactoion Type: <b class='text-primary'>Regular Transaction</b>
                     </div>
                     <div class='card-body px-5'>
-                        <h5 class='card-title'>$name</h5><hr>
+                        <h4 class='card-title'>$name</h4><hr>
                         <ul>
                             <li>Request Date: <b>$applied</b></li>
                             <li>Document Status: <b>$remarks</b></li>";
@@ -88,37 +89,45 @@ class statusCheck extends config{
                 }
                 echo "<div class='card shadow rounded'>
                     <div class='card-header'>
-                        Transaction Number: <b>$id</b>
+                        Transaction Number: <b>$id</b><br>
+                        Transactoion Type: <b class='text-primary'>Special Transaction</b>
                     </div>
                     <div class='card-body px-5'>
-                        <h5 class='card-title'>$name</h5><hr>
+                        <h4 class='card-title'>$name</h4><hr>
                         <ul>
-                            <li>Request Date: <b>$applied</b></li>
-                            <li>Document Status: <b>$remarks</b></li>";
+                            <li>Request Date: <b>$applied</b></li>";
                             if($remarks == "PENDING"){
-                                echo "<i class='text-primary'>Further instructions for your request will be sent to your email.</i>";
-                            }elseif($remarks == "FOR ASSIGNMENT"){
-                                echo "<li>Payment Date: <b>$paid</b></li>
-                                        <i class=text-primary>Your request will be assigned to an Encoder for processing of documents.</i>";
+                                echo "<li>Document Status: <b>$remarks</b></li>
+                                        <i class='text-primary'>Your Request is on queue and will be reviewed and assigned to a Student Records Assistant.</i>";
                             }elseif($remarks == "ASSIGNED"){
-                                echo "<li>Payment Date: <b>$paid</b></li>
+                                echo "<li>Document Status: <b>$remarks</b></li>
                                         <li>Student Records Assistant In-Charge: <b>$assignee</b></li>
                                         <li>Contact Email: <b>$assignee_email</b></li>
-                                        <i class=text-primary>Request is currently for processing</i>";
+                                        <i class='text-primary'>Your request was assigned to a Student Records Assistant in-charge. Kindly wait for further instructions for your request that will be sent to your email.</i>";
+                            }elseif($remarks == "FOR PAYMENT"){
+                                echo "<li>Document Status: <b>$remarks</b></li>
+                                        <li>Student Records Assistant In-Charge: <b>$assignee</b></li>
+                                        <li>Contact Email: <b>$assignee_email</b></li>
+                                        <i class='text-primary'>Payment details were sent to your email.</i>";
                             }elseif($remarks == "FOR SIGNATURE"){
-                                echo "<li>Payment Date: <b>$paid</b></li>
+                                $c_remarks = "ON PROCESS";
+                                echo "<li>Document Status: <b>$c_remarks</b></li>
+                                        <li>Payment Date: <b>$paid</b></li>
                                         <li>Student Records Assistant In-Charge: <b>$assignee</b></li>
                                         <li>Contact Email: <b>$assignee_email</b></li>
-                                        <i class=text-primary>Request is currently for signature by the head</i>";
+                                        <i class=text-primary>Request is currently on process. You will be notified via email when your documents are ready for release</i>";
                             }elseif($remarks == "FOR RELEASE"){
-                                echo "<li>Payment Date: <b>$paid</b></li>
+                                echo "<li>Document Status: <b>$remarks</b></li>
+                                        <li>Payment Date: <b>$paid</b></li>
                                         <li>Student Records Assistant In-Charge: <b>$assignee</b></li>
                                         <li>Contact Email: <b>$assignee_email</b></li>
                                         <i class=text-primary>Your requested document/s are ready for release. Kindly check your email for further instructions in claiming your document/s.</i>";
                             }elseif($remarks == "RELEASED"){
-                                echo "<li>Released Date: <b>$released</b></li>";
+                                echo "<li>Document Status: <b>$remarks</b></li>
+                                        <li>Released Date: <b>$released</b></li>";
                             }elseif($remarks == "REMOVED"){
-                                echo "<i class=text-danger>Please check your email for more information.</i>";
+                                echo "<li>Document Status: <b>$remarks</b></li>
+                                        <i class=text-danger>Please check your email for more information.</i>";
                             }else{
                                 
                             }

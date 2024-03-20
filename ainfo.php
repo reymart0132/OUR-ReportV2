@@ -49,18 +49,19 @@ isRAdmin($user->data()->groups);
           </div>
 
           <div class="list-group list-group-flush my-3">
-            <a class="list-group-item list-group-item-action fw-bold">
 
             <a class="list-group-item list-group-item-action fw-bold text-center mb-5">
             <small>Current Date and Time</small> 
             <?php include 'clock.php'; ?>
             </a>
-
+            
+            <a class="list-group-item list-group-item-action fw-bold">
               <i class="fas fa-question-circle me-2"></i> Main Menu</a>
               
-              <div class="item mt-3">
+            <div class="item mt-3">
               <a class="sub-btn " href="adashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
             </div>
+
             <a class="list-group-item list-group-item-action fw-bold mt-5">
               <i class="fas fa-magnifying-glass me-2"></i> For Review </a>
             <div class="item">
@@ -74,6 +75,12 @@ isRAdmin($user->data()->groups);
             
             <div class="item">
               <a class="sub-btn" href="adash-asgn2"><i class="fa-solid fa-star"></i> Special Requests</a>
+            </div>
+
+            <a class="list-group-item list-group-item-action fw-bold mt-5">
+              <i class="fa-solid fa-folder me-2"></i> Releasing Section </a>
+            <div class="item">
+              <a class="sub-btn" href="rdashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
             </div>
 
                     <script type="text/javascript">
