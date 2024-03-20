@@ -19,7 +19,7 @@ class ainfospc extends config{
 
     public function viewInfoREG(){
         $con = $this->con();
-        $sql = "SELECT * FROM `tbl_spctransaction` WHERE `transactionid` = '$this->tID'";
+        $sql = "SELECT * FROM `tbl_transaction` WHERE `transactionid` = '$this->tID'";
         $data = $con->prepare($sql);
         $data->execute();
         $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -33,9 +33,8 @@ class ainfospc extends config{
             $reason = $result[0]['reason'];
             $contact = $result[0]['contactnumber'];
             $email = $result[0]['emailaddress'];
-            $dateapp = $result[0]['dateapp'];
+            $dateapp = date("m-d-Y - h:ia ", strtotime($result[0]['dateapp']));
             $remarks = $result[0]['remarks'];
-            $confirmed = date("m-d-Y - H:ia", strtotime($result[0]['dateconfirmed']));
             $points = $result[0]['points'];
             $price = $result[0]['price'];
             $inst = $result[0]['specialinstruction'];
@@ -43,19 +42,25 @@ class ainfospc extends config{
             
 
             if(!empty($result[0]['paymentdate'])){
-                $paid = date("m-d-Y - H:ia", strtotime($result[0]['paymentdate']));
+                $paid = date("m-d-Y - h:ia", strtotime($result[0]['paymentdate']));
             }else{
                 $paid = "N/A";
             }
 
+            if(!empty($result[0]['dateconfirmed'])){
+                $confirmed = date("m-d-Y - h:ia", strtotime($result[0]['dateconfirmed']));
+            }else{
+                $confirmed = "N/A";
+            }
+
             if(!empty($result[0]['signeddate'])){
-                $signed = date("m-d-Y - H:ia", strtotime($result[0]['signeddate']));
+                $signed = date("m-d-Y - h:ia", strtotime($result[0]['signeddate']));
             }else{
                 $signed = "N/A";
             }
 
             if(!empty($result[0]['releasedate'])){
-                $released = date("m-d-Y - H:ia", strtotime($result[0]['releasedate']));
+                $released = date("m-d-Y - h:ia", strtotime($result[0]['releasedate']));
             }else{
                 $released = "N/A";
             }
@@ -123,7 +128,7 @@ class ainfospc extends config{
                     </tr>
                     <tr><td class='text-center'><a href='actions.php?landing=adash-onlineapp&state=5&transactionID=$transID&type=reg' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='Awaiting Payment'><i class='fa-solid fa-check'></i> Confirm Transaction</a><a href='https://mail.google.com/mail/?view=cm&fs=1&to=$email&su= $fullname - CEU Document Request -  $transID&body=Goodmorning!%0D%0A%0D%0AWe have received and acknowledged your request!%0D%0A%0D%0ATotal Break down of your transaction is listed below:%0D%0A %0D%0A $summary %0D%0ATotal Price: PHP$price.00 %0D%0A%0D%0APayments can be made through this link.%0D%0A https://ptipages.paynamics.net/ceu/default.aspx %0D%0A%0D%0A *Please send us the proof of payment to this email address for us to proceed with your documents. %0D%0A %0D%0A Release date is 15 working days after submission of proof of payment for TOR %0D%0A and 5 working days after submission of proof of payment for certificates ( please send it to this email thread for faster transaction) %0D%0A %0D%0A Thank you and Stay safe!' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i>mail Requestor</a>";
                     if (empty($result[0]['facebook'])) {
-                        echo "<a href='#' class='btn btn-sm  btn-secondary m-1 disabled' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook' disabled></i></a>";
+                        echo "<a href='#' class='btn btn-sm  btn-secondary m-1 disabled' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook' disabled></i> Messenger</a>";
                     } else {
                         echo "<a href='https://www.messenger.com/t/".$result[0]['facebook']."' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i> Messenger</a>";
                     }
@@ -150,28 +155,33 @@ class ainfospc extends config{
             $reason = $result[0]['reason'];
             $contact = $result[0]['contactnumber'];
             $email = $result[0]['emailaddress'];
-            $dateapp = date("m-d-Y - H:ia ", strtotime($result[0]['dateapp']));
+            $dateapp = date("m-d-Y - h:ia ", strtotime($result[0]['dateapp']));
             $remarks = $result[0]['remarks'];
-            $confirmed = date("m-d-Y - H:ia", strtotime($result[0]['dateconfirmed']));
             $document = $result[0]['type'];
             $doc1 = $result[0]['doc1'];
             $doc2 = $result[0]['doc2'];
 
 
             if(!empty($result[0]['paymentdate'])){
-                $paid = date("m-d-Y - H:ia", strtotime($result[0]['paymentdate']));
+                $paid = date("m-d-Y - h:ia", strtotime($result[0]['paymentdate']));
             }else{
                 $paid = "N/A";
             }
 
+            if(!empty($result[0]['dateconfirmed'])){
+                $confirmed = date("m-d-Y - h:ia", strtotime($result[0]['dateconfirmed']));
+            }else{
+                $confirmed = "N/A";
+            }
+
             if(!empty($result[0]['signeddate'])){
-                $signed = date("m-d-Y - H:ia", strtotime($result[0]['signeddate']));
+                $signed = date("m-d-Y - h:ia", strtotime($result[0]['signeddate']));
             }else{
                 $signed = "N/A";
             }
 
             if(!empty($result[0]['releasedate'])){
-                $released = date("m-d-Y - H:ia", strtotime($result[0]['releasedate']));
+                $released = date("m-d-Y - h:ia", strtotime($result[0]['releasedate']));
             }else{
                 $released = "N/A";
             }

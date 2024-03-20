@@ -20,6 +20,11 @@ body {
   animation-fill-mode: forwards;
 }
 
+.btn-pay{
+  background-color: #fd8ec5;
+  color:white;
+}
+
 .icon-info{
   padding: 0px 15px 10px;
 }
