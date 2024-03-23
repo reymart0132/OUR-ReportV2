@@ -9,9 +9,14 @@
         // label: 'Number of Transactions Received Today',
         data: [<?php echo $chart->transReceivedREG().', '.$chart->transReceivedSP(); ?> ],
         backgroundColor: [
-            'rgba(245, 40, 145, 0.4)',
-            'rgba(245, 40, 145, 0.4)',
+            'rgba(41, 41, 110, 0.6)',
+            'rgba(245, 40, 145, 0.6)',
         ],
+        borderColor: [
+            'rgba(41, 41, 110, 1)', 
+            'rgba(245, 40, 145, 1)',
+        ],
+        borderWidth:0.75,
         }]
     },
     options: {
@@ -41,10 +46,14 @@
         // label: 'Number of Transactions Received Today',
         data: [<?php echo $chart->transReceivedTotal().', '.$chart->transDoneTotal(); ?> ],
         backgroundColor: [
-            'rgba(247, 0, 0, 0.4)',
-            'rgba(0, 163, 10, 0.4)'
-
+            'rgba(247, 0, 0, 0.6)',
+            'rgba(0, 163, 10, 0.6)'
         ],
+        borderColor: [
+            'rgba(247, 0, 0, 0.6)',
+            'rgba(0, 163, 10, 0.6)'
+        ],
+        borderWidth:0.75,
         }]
     },
     options: {
@@ -64,39 +73,100 @@
     </script>
 
 
-    <script>
+<script>
     const tally = document.getElementById('tally');
     new Chart(tally, {
     type: 'horizontalBar',
     data: {
-        labels: <?php echo'["' . implode('", "', $viewchart->encoderNames()) . '"]' ?>,
+        labels: <?php echo '
+                     [" '.implode(' ", " ',$chart->encoderNamesREG()).' ",
+                      " '.implode(' ", " ',$chart->encoderNamesSP()).' "] ' ?>,
         datasets: [{
         //maxBarThickness: 40,
         label: 'Number of Completed Requests Done',
-        data: <?php echo '[' . implode(', ', $viewchart->viewTransferredSchoolTotal()) . ']' ?>,
+        data: <?php echo '
+                    [" '.implode(' ", " ',$chart->countDailyTaskDoneREG()).' ",
+                     " '.implode(' ", " ',$chart->countDailyTaskDoneSP()).' "] ' ?>,
         backgroundColor: [
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)',
-            'rgb(41, 41, 110)'
+            'rgba(41, 41, 110, 0.6)',
+            'rgba(41, 41, 110, 0.6)',
+            'rgba(41, 41, 110, 0.6)',
+            'rgba(41, 41, 110, 0.6)',
+            'rgba(41, 41, 110, 0.6)',
+            'rgba(41, 41, 110, 0.6)',
+            'rgba(41, 41, 110, 0.6)',
+            'rgba(41, 41, 110, 0.6)',
+            'rgba(41, 41, 110, 0.6)',
+            'rgba(41, 41, 110, 0.6)',
+            'rgba(41, 41, 110, 0.6)',
+            'rgba(41, 41, 110, 0.6)',
+            'rgba(41, 41, 110, 0.6)',
+            'rgba(41, 41, 110, 0.6)',
+            'rgba(41, 41, 110, 0.6)'
         ],
+        borderColor: [
+            'rgba(41, 41, 110, 1)',
+            'rgba(41, 41, 110, 1)',
+            'rgba(41, 41, 110, 1)',
+            'rgba(41, 41, 110, 1)',
+            'rgba(41, 41, 110, 1)',
+            'rgba(41, 41, 110, 1)',
+            'rgba(41, 41, 110, 1)',
+            'rgba(41, 41, 110, 1)',
+            'rgba(41, 41, 110, 1)',
+            'rgba(41, 41, 110, 1)',
+            'rgba(41, 41, 110, 1)',
+            'rgba(41, 41, 110, 1)',
+            'rgba(41, 41, 110, 1)',
+            'rgba(41, 41, 110, 1)',
+            'rgba(41, 41, 110, 1)'
+        ],
+        borderWidth:0.75,
         }]
+    },
+    options: {
+        legend: {
+            display: false
+        },
+        scales: {
+            xAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+    });
+</script>
+
+<script>
+    const history = document.getElementById('history');
+    new Chart(history, {
+    type: 'line',
+    data: {
+        labels: <?php echo '
+                     [" '.implode(' ", " ',$chart->getLastSevenDays()).' ",
+                      " '.date("Y-m-d").' "] ' ?>,
+        datasets: [
+            {
+                label: 'Regular Transactions',
+                data: <?php echo '
+                    [" '.implode(' ", " ',$chart->getCountAppSevenDaysREG()).' ",
+                     " '.$chart->getCountAppTodayREG().' "] ' ?>,
+                backgroundColor: 'rgba(0, 0, 0, 0.0)',
+                borderColor: 'rgba(41, 41, 110, 1)',
+                borderWidth:1.25,
+            },
+            {
+                label: 'Special Transactions',
+                data: <?php echo '
+                    [" '.implode(' ", " ',$chart->getCountAppSevenDaysSP()).' ",
+                     " '.$chart->getCountAppTodaySP().' "] ' ?>,
+                backgroundColor: 'rgba(0, 0, 0, 0.0)',
+                borderColor: 'rgba(245, 40, 145, 1)',
+                borderWidth:1.25,
+            }
+        ]
     },
     options: {
         scales: {
@@ -108,7 +178,7 @@
         }
     }
     });
-    </script>
+</script>
 
     
     <!-- <script>

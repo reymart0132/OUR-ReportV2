@@ -1,11 +1,7 @@
 <?php 
 $chart = new chartdata();
 
-// echo "Regular: ".$chart->transReceivedREG()."<br>";
-// echo "Special: ".$chart->transReceivedSP()."<br>";
-// echo "Total: ".$chart->transReceivedtotal()."<br>";
-
-echo "<div class='row'>
+echo "<div class='row d-flex justify-content-center'>
         <div class='col-lg-4 p-3 mx-2 shadow'>
             <h5><b>Number of Transactions Received Today</b></h5>
             <canvas id='trans_received_type' style='width:100%;  height:150px;'></canvas>
@@ -22,16 +18,15 @@ echo "<div class='row'>
         </div>
     </div>";
 
-echo "<div class='row'>
+echo "<div class='row mt-3 justify-content-center d-flex'>
         <div class='col-lg-4 p-3 mx-2 shadow'>
             <h5><b>Encoders' Daily Finished Tasks Tally</b></h5>
-            <canvas id='tally' style='width:100%;  height:150px;'></canvas>
+            <canvas id='tally' style='width:100%;  height:300px;'></canvas>
+        </div>
+        <div class='col-lg-7 p-3 mx-2 shadow'>
+            <h5><b>Application Volume for the Past 7 Working Days</b></h5>
+            <canvas id='history' style='width:100%;  height:300px;'></canvas>
         </div>
     </div>";
-
-
 ?>
-
-
-
 

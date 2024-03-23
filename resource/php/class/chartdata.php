@@ -74,10 +74,10 @@ class chartdata extends config{
         $sql = "SELECT * FROM `tbl_accounts` WHERE `groups` = '1' ORDER BY `id` ASC";
         $data= $con->prepare($sql);
         $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){
             $name[] = $row['name'];
         }
-        unset($name[0]);
         return $name;
     }
 
@@ -86,47 +86,170 @@ class chartdata extends config{
         $sql = "SELECT * FROM `tbl_accounts` WHERE `groups` = '4' ORDER BY `id` ASC";
         $data= $con->prepare($sql);
         $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){
             $name[] = $row['name'];
         }
-        unset($name[0]);
         return $name;
     }
 
-    public function encoderDailyTaskTallyREG(){
-        $current_date = date("Y-m-d");
+    public function encoderIdREG(){
         $con = $this->con();
-        $sql = "SELECT `transactionid`, `assignee` FROM `tbl_transaction` WHERE `signeddate` LIKE '$current_date'";
+        $sql = "SELECT * FROM `tbl_accounts` WHERE `groups` = '1' ORDER BY `id` ASC";
         $data= $con->prepare($sql);
         $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
         foreach($result as $row){
-            $name[] = $row['name'];
+            $name[] = $row['id'];
         }
-        unset($name[0]);
         return $name;
     }
 
+    public function encoderIdSP(){
+        $con = $this->con();
+        $sql = "SELECT * FROM `tbl_accounts` WHERE `groups` = '4' ORDER BY `id` ASC";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        foreach($result as $row){
+            $name[] = $row['id'];
+        }
+        return $name;
+    }
 
+    public function countDailyTaskDoneSP(){
+        $each_count = array();
+        foreach($this->encoderIdSP() as $id){
+            $getcount = $this->getCountDailyTaskDoneSP($id);
+            foreach($getcount as $count){
+                $each_count[] = $count;
+            }
+        }
+        return $each_count;
+    }
 
+    public function getCountDailyTaskDoneSP($id){
+            $current_date = date("Y-m-d");
+            $con = $this->con();
+            $sql = "SELECT COUNT(`transactionid`) AS `count` FROM `tbl_spctransaction` WHERE `signeddate` LIKE '$current_date%' AND `assignee` = '$id'";
+            $data= $con->prepare($sql);
+            $data->execute();
+            $result = $data->fetchAll(PDO::FETCH_ASSOC);
+            foreach($result as $row){
+                $count[] = $row['count'];
+            }
+            return $count;
+    }
 
+    public function countDailyTaskDoneREG(){
+        $each_count = array();
+        foreach($this->encoderIdREG() as $id){
+            $getcount = $this->getCountDailyTaskDoneREG($id);
+            foreach($getcount as $count){
+                $each_count[] = $count;
+            }
+        }
+        return $each_count;
+    }
 
+    public function getCountDailyTaskDoneREG($id){
+        $current_date = date("Y-m-d");
+        $con = $this->con();
+        $sql = "SELECT COUNT(`transactionid`) AS `count` FROM `tbl_transaction` WHERE `signeddate` LIKE '$current_date%' AND `assignee` = '$id'";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        foreach($result as $row){
+            $count[] = $row['count'];
+        }
+        return $count;
+    }
 
+    public function getLastSevenDays(){
+        $days = array();
+        for($i=7; $i>0; $i--){
+            $date =  date("Y-m-d", strtotime("-$i days"));
+            $day = strval(date('w', strtotime($date)));
 
+                if(strval($day) == "0"){
+                    continue;
+                }
+                $days[] = $date;
+            }
+        return $days;
+    }
 
+    public function getCountAppSevenDaysREG(){
+        $app_count = array();
+        foreach($this->getLastSevenDays() as $date){
+            $getcount = $this->getCountDailyAppREG($date);
+            foreach($getcount as $count){
+                $app_count[] = $count;
+            }
+        }
+        return $app_count;
+    }
 
-    // public function mostReqDocQty(){
-    //     $con = $this->con();
-    //     $sql = "SELECT COUNT(`itemrequest`) as `count`, `itemrequest` from `tbl_spcitems` GROUP BY `itemrequest`
-    //             UNION ALL SELECT COUNT(`itemrequest`) as `count`, `itemrequest` from `tbl_items` GROUP BY `itemrequest` ORDER BY `count` DESC, `itemrequest` ASC";
-    //     $data= $con->prepare($sql);
-    //     $data->execute();
-    //     $result = $data->fetchAll(PDO::FETCH_ASSOC);
-    //     foreach($result as $row){
-    //         $count[] = $row['count'];
-    //     }
-    //     unset($count[0]);
-    //     return $count;
-    // }
+    public function getCountAppTodayREG(){
+        $current_date = date("Y-m-d");
+        $con = $this->con();
+        $sql = "SELECT COUNT(`transactionid`) AS `count` FROM `tbl_transaction` WHERE `dateapp` LIKE '$current_date%'";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        foreach($result as $row){
+            $count = $row['count'];
+        }
+        return $count;
+    }
+
+    public function getCountDailyAppREG($date){
+        $con = $this->con();
+        $sql = "SELECT COUNT(`transactionid`) AS `count` FROM `tbl_transaction` WHERE `dateapp` LIKE '$date%'";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        foreach($result as $row){
+            $count[] = $row['count'];
+        }
+        return $count;
+    }
+
+    public function getCountAppSevenDaysSP(){
+        $app_count = array();
+        foreach($this->getLastSevenDays() as $date){
+            $getcount = $this->getCountDailyAppSP($date);
+            foreach($getcount as $count){
+                $app_count[] = $count;
+            }
+        }
+        return $app_count;
+    }
+
+    public function getCountAppTodaySP(){
+        $current_date = date("Y-m-d");
+        $con = $this->con();
+        $sql = "SELECT COUNT(`transactionid`) AS `count` FROM `tbl_spctransaction` WHERE `dateapp` LIKE '$current_date%'";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        foreach($result as $row){
+            $count = $row['count'];
+        }
+        return $count;
+    }
+
+    public function getCountDailyAppSP($date){
+        $con = $this->con();
+        $sql = "SELECT COUNT(`transactionid`) AS `count` FROM `tbl_spctransaction` WHERE `dateapp` LIKE '$date%'";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        foreach($result as $row){
+            $count[] = $row['count'];
+        }
+        return $count;
+    }
 
 
     //SELECT COUNT(`itemrequest`) as `count`, `itemrequest` from `tbl_spcitems` GROUP BY `itemrequest`
