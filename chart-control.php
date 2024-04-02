@@ -6,7 +6,6 @@
         labels: ["Regular Transactions", "Special Transactions"],
         datasets: [{
         maxBarThickness: 30,
-        // label: 'Number of Transactions Received Today',
         data: [<?php echo $chart->transReceivedREG().', '.$chart->transReceivedSP(); ?> ],
         backgroundColor: [
             'rgba(41, 41, 110, 0.6)',
@@ -43,7 +42,6 @@
         labels: ["Transactions Received", "Transactions Done"],
         datasets: [{
         maxBarThickness: 30,
-        // label: 'Number of Transactions Received Today',
         data: [<?php echo $chart->transReceivedTotal().', '.$chart->transDoneTotal(); ?> ],
         backgroundColor: [
             'rgba(247, 0, 0, 0.6)',
@@ -180,6 +178,384 @@
     });
 </script>
 
+<script>
+    const pie01 = document.getElementById('pie01');
+    new Chart(pie01, {
+    type: 'doughnut',
+    data: {
+        labels: <?php echo '[" '.implode(' ", " ',$chart->pg_mtReqDocNameREG()).' "] ' ?>,
+        datasets: [{
+        data: <?php echo '[" '.implode(' ", " ',$chart->pg_mtReqDocCountREG()).' "] ' ?>,
+        backgroundColor: [
+            'rgba(255,151,239, 0.7)',
+            'rgba(255,217,0, 0.7)',
+            'rgba(114,0,255, 0.7)',
+            'rgba(255,0,0, 0.7)',
+            'rgba(0,50,165, 0.7)',
+            'rgba(0,255,60, 0.7)',
+            'rgba(0,126,255, 0.7)',
+            'rgba(255,191,99, 0.7)',
+            'rgba(172,54,54, 0.7)',
+            'rgba(15,125,0, 0.7)',
+            'rgba(255,132,0, 0.7)',
+        ],
+        borderColor: [
+            'rgba(255,151,239, 1)',
+            'rgba(255,217,0, 1)',
+            'rgba(114,0,255, 1)',
+            'rgba(255,0,0, 1)',
+            'rgba(0,50,165, 1)',
+            'rgba(0,255,60, 1)',
+            'rgba(0,126,255, 1)',
+            'rgba(255,191,99, 1)',
+            'rgba(172,54,54, 1)',
+            'rgba(15,125,0, 1)',
+            'rgba(255,132,0, 1)',
+        ],
+        borderWidth:0.5,
+        }]
+    },
+    options: {
+        legend: {
+            position: 'bottom'
+        },
+    //     scales: {
+    //         xAxes: [{
+    //             ticks: {
+    //                 beginAtZero: true
+    //             }
+    //         }]
+    //     }
+    }
+    });
+</script>
+
+<script>
+    const pie02 = document.getElementById('pie02');
+    new Chart(pie02, {
+    type: 'doughnut',
+    data: {
+        labels: <?php echo '[" '.implode(' ", " ',$chart->pg_mtReqDocNameSP()).' "] ' ?>,
+        datasets: [{
+        data: <?php echo '[" '.implode(' ", " ',$chart->pg_mtReqDocCountSP()).' "] ' ?>,
+        backgroundColor: [
+            'rgba(255,151,239, 0.7)',
+            'rgba(255,217,0, 0.7)',
+            'rgba(114,0,255, 0.7)',
+            'rgba(255,0,0, 0.7)',
+            'rgba(0,50,165, 0.7)',
+            'rgba(0,255,60, 0.7)',
+            'rgba(0,126,255, 0.7)',
+            'rgba(255,191,99, 0.7)',
+            'rgba(172,54,54, 0.7)',
+            'rgba(15,125,0, 0.7)',
+            'rgba(255,132,0, 0.7)',
+        ],
+        borderColor: [
+            'rgba(255,151,239, 1)',
+            'rgba(255,217,0, 1)',
+            'rgba(114,0,255, 1)',
+            'rgba(255,0,0, 1)',
+            'rgba(0,50,165, 1)',
+            'rgba(0,255,60, 1)',
+            'rgba(0,126,255, 1)',
+            'rgba(255,191,99, 1)',
+            'rgba(172,54,54, 1)',
+            'rgba(15,125,0, 1)',
+            'rgba(255,132,0, 1)',
+        ],
+        borderWidth:0.5,
+        }]
+    },
+    options: {
+        legend: {
+            position: 'bottom'
+        },
+    //     scales: {
+    //         xAxes: [{
+    //             ticks: {
+    //                 beginAtZero: true
+    //             }
+    //         }]
+    //     }
+    }
+    });
+</script>
+    
+<script>
+    const pie01a = document.getElementById('pie01a');
+    new Chart(pie01a, {
+    type: 'doughnut',
+    data: {
+        labels: <?php echo '[" '.implode(' ", " ',$chart->pg_wkmrdocNameREG()).' "] ' ?>,
+        datasets: [{
+        data: <?php echo '[" '.implode(' ", " ',$chart->pg_wkmrDocCountREG()).' "] ' ?>,
+        backgroundColor: [
+            'rgba(255,151,239, 0.7)',
+            'rgba(255,217,0, 0.7)',
+            'rgba(114,0,255, 0.7)',
+            'rgba(255,0,0, 0.7)',
+            'rgba(0,50,165, 0.7)',
+            'rgba(0,255,60, 0.7)',
+            'rgba(0,126,255, 0.7)',
+            'rgba(255,191,99, 0.7)',
+            'rgba(172,54,54, 0.7)',
+            'rgba(15,125,0, 0.7)',
+            'rgba(255,132,0, 0.7)',
+        ],
+        borderColor: [
+            'rgba(255,151,239, 1)',
+            'rgba(255,217,0, 1)',
+            'rgba(114,0,255, 1)',
+            'rgba(255,0,0, 1)',
+            'rgba(0,50,165, 1)',
+            'rgba(0,255,60, 1)',
+            'rgba(0,126,255, 1)',
+            'rgba(255,191,99, 1)',
+            'rgba(172,54,54, 1)',
+            'rgba(15,125,0, 1)',
+            'rgba(255,132,0, 1)',
+        ],
+        borderWidth:0.5,
+        }]
+    },
+    options: {
+        legend: {
+            position: 'bottom'
+        },
+        
+    //     scales: {
+    //         xAxes: [{
+    //             ticks: {
+    //                 beginAtZero: true
+    //             }
+    //         }]
+    //     }
+    }
+    });
+    //}else{
+   //     document.write("No Data");
+    //}
+</script>
+
+<script>
+    const pie01b = document.getElementById('pie01b');
+    new Chart(pie01b, {
+    type: 'doughnut',
+    data: {
+        labels: <?php echo '[" '.implode(' ", " ',$chart->pg_tdReqDocNameREG()).' "] ' ?>,
+        datasets: [{
+        data: <?php echo '[" '.implode(' ", " ',$chart->pg_tdReqDocCountREG()).' "] ' ?>,
+        backgroundColor: [
+            'rgba(255,151,239, 0.7)',
+            'rgba(255,217,0, 0.7)',
+            'rgba(114,0,255, 0.7)',
+            'rgba(255,0,0, 0.7)',
+            'rgba(0,50,165, 0.7)',
+            'rgba(0,255,60, 0.7)',
+            'rgba(0,126,255, 0.7)',
+            'rgba(255,191,99, 0.7)',
+            'rgba(172,54,54, 0.7)',
+            'rgba(15,125,0, 0.7)',
+            'rgba(255,132,0, 0.7)',
+        ],
+        borderColor: [
+            'rgba(255,151,239, 1)',
+            'rgba(255,217,0, 1)',
+            'rgba(114,0,255, 1)',
+            'rgba(255,0,0, 1)',
+            'rgba(0,50,165, 1)',
+            'rgba(0,255,60, 1)',
+            'rgba(0,126,255, 1)',
+            'rgba(255,191,99, 1)',
+            'rgba(172,54,54, 1)',
+            'rgba(15,125,0, 1)',
+            'rgba(255,132,0, 1)',
+        ],
+        borderWidth:0.5,
+        }]
+    },
+    options: {
+        legend: {
+            position: 'bottom'
+        },
+    //     scales: {
+    //         xAxes: [{
+    //             ticks: {
+    //                 beginAtZero: true
+    //             }
+    //         }]
+    //     }
+    }
+    });
+</script>
+
+<script>
+    const pie02a = document.getElementById('pie02a');
+    new Chart(pie02a, {
+    type: 'doughnut',
+    data: {
+        labels: <?php echo '[" '.implode(' ", " ',$chart->pg_wkmrdocNameSP()).' "] ' ?>,
+        datasets: [{
+        data: <?php echo '[" '.implode(' ", " ',$chart->pg_wkmrDocCountSP()).' "] ' ?>,
+        backgroundColor: [
+            'rgba(255,151,239, 0.7)',
+            'rgba(255,217,0, 0.7)',
+            'rgba(114,0,255, 0.7)',
+            'rgba(255,0,0, 0.7)',
+            'rgba(0,50,165, 0.7)',
+            'rgba(0,255,60, 0.7)',
+            'rgba(0,126,255, 0.7)',
+            'rgba(255,191,99, 0.7)',
+            'rgba(172,54,54, 0.7)',
+            'rgba(15,125,0, 0.7)',
+            'rgba(255,132,0, 0.7)',
+        ],
+        borderColor: [
+            'rgba(255,151,239, 1)',
+            'rgba(255,217,0, 1)',
+            'rgba(114,0,255, 1)',
+            'rgba(255,0,0, 1)',
+            'rgba(0,50,165, 1)',
+            'rgba(0,255,60, 1)',
+            'rgba(0,126,255, 1)',
+            'rgba(255,191,99, 1)',
+            'rgba(172,54,54, 1)',
+            'rgba(15,125,0, 1)',
+            'rgba(255,132,0, 1)',
+        ],
+        borderWidth:0.5,
+        }]
+    },
+    options: {
+        legend: {
+            position: 'bottom'
+        },
+        
+    //     scales: {
+    //         xAxes: [{
+    //             ticks: {
+    //                 beginAtZero: true
+    //             }
+    //         }]
+    //     }
+    }
+    });
+    //}else{
+   //     document.write("No Data");
+    //}
+</script>
+
+<script>
+    const pie02b = document.getElementById('pie02b');
+    new Chart(pie02b, {
+    type: 'doughnut',
+    data: {
+        labels: <?php echo '[" '.implode(' ", " ',$chart->pg_tdReqDocNameSP()).' "] ' ?>,
+        datasets: [{
+        data: <?php echo '[" '.implode(' ", " ',$chart->pg_tdReqDocCountSP()).' "] ' ?>,
+        backgroundColor: [
+            'rgba(255,151,239, 0.7)',
+            'rgba(255,217,0, 0.7)',
+            'rgba(114,0,255, 0.7)',
+            'rgba(255,0,0, 0.7)',
+            'rgba(0,50,165, 0.7)',
+            'rgba(0,255,60, 0.7)',
+            'rgba(0,126,255, 0.7)',
+            'rgba(255,191,99, 0.7)',
+            'rgba(172,54,54, 0.7)',
+            'rgba(15,125,0, 0.7)',
+            'rgba(255,132,0, 0.7)',
+        ],
+        borderColor: [
+            'rgba(255,151,239, 1)',
+            'rgba(255,217,0, 1)',
+            'rgba(114,0,255, 1)',
+            'rgba(255,0,0, 1)',
+            'rgba(0,50,165, 1)',
+            'rgba(0,255,60, 1)',
+            'rgba(0,126,255, 1)',
+            'rgba(255,191,99, 1)',
+            'rgba(172,54,54, 1)',
+            'rgba(15,125,0, 1)',
+            'rgba(255,132,0, 1)',
+        ],
+        borderWidth:0.5,
+        }]
+    },
+    options: {
+        legend: {
+            position: 'bottom',
+            // align: 'start',
+        },
+    //     scales: {
+    //         xAxes: [{
+    //             ticks: {
+    //                 beginAtZero: true
+    //             }
+    //         }]
+    //     }
+    }
+    });
+</script>
+
+
+<!-- <script>
+    const pie02a = document.getElementById('pie02a');
+    new Chart(pie02a, {
+    type: 'doughnut',
+    data: {
+        labels: <?php //echo '[" '.implode(' ", " ',$chart->pg_wkmrdocNameSP()).' "] ' ?>,
+        datasets: [{
+        label: 'Number of Completed Requests Done',
+        data: <?php //echo '[" '.implode(' ", " ',$chart->pg_wkmrDocCountSP()).' "] ' ?>,
+        backgroundColor: [
+            'rgb(255,217,0)', // sam
+            'rgb(114,0,255)',  // dentistry
+            'rgb(255,0,0)',   // elams
+            'rgb(0,50,165)',  //gradsch
+            'rgb(255,151,239)', // medicine
+            'rgb(0,255,60)',  // medtech
+            'rgb(0,126,255)',  // NHM
+            'rgb(255,191,99)', // nursing
+            'rgb(172,54,54)', // opto
+            'rgb(15,125,0)',  // pharmacy
+            'rgb(255,132,0)', // scitech
+        ],
+        // borderColor: [
+        //     'rgba(41, 41, 110, 1)',
+        //     'rgba(41, 41, 110, 1)',
+        //     'rgba(41, 41, 110, 1)',
+        //     'rgba(41, 41, 110, 1)',
+        //     'rgba(41, 41, 110, 1)',
+        //     'rgba(41, 41, 110, 1)',
+        //     'rgba(41, 41, 110, 1)',
+        //     'rgba(41, 41, 110, 1)',
+        //     'rgba(41, 41, 110, 1)',
+        //     'rgba(41, 41, 110, 1)',
+        //     'rgba(41, 41, 110, 1)',
+        //     'rgba(41, 41, 110, 1)',
+        //     'rgba(41, 41, 110, 1)',
+        //     'rgba(41, 41, 110, 1)',
+        //     'rgba(41, 41, 110, 1)'
+        // ],
+        // borderWidth:0.75,
+        }]
+    },
+    options: {
+        legend: {
+            position: 'right'
+        },
+    //     scales: {
+    //         xAxes: [{
+    //             ticks: {
+    //                 beginAtZero: true
+    //             }
+    //         }]
+    //     }
+    }
+    });
+</script> -->
     
     <!-- <script>
     const schoolbar = document.getElementById('chart_schools');
