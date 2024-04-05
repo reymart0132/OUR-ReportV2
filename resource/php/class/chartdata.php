@@ -67,6 +67,199 @@ class chartdata extends config{
             // $item[] = $row['itemrequest'];
             echo "<li>".$row['itemrequest']."</li>";
         }
+        // return $item;
+    }
+
+    public function pg_tdReqDocNameREG(){
+        $con = $this->con();
+        $sql = "SELECT `itemrequest`, SUM(`quantity`) AS `total` FROM  (SELECT `itemrequest`, `quantity` FROM `tbl_items` WHERE DATE(`recdate`) = CURDATE()) AS `itemlist` GROUP BY `itemrequest` ASC";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        if(empty($result)){
+            $item[] = "Insufficient Data";
+        }else{
+            foreach($result as $row){
+                $item[] = $row['itemrequest'];
+            }
+        }
+        return $item;
+    }
+
+    public function pg_tdReqDocCountREG(){
+        $con = $this->con();
+        $sql = "SELECT `itemrequest`, SUM(`quantity`) AS `total` FROM  (SELECT `itemrequest`, `quantity` FROM `tbl_items` WHERE DATE(`recdate`) =  CURDATE()) AS `itemlist` GROUP BY `itemrequest` ASC";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        if(empty($result)){
+            $count[] = 1;
+        }else{
+            foreach($result as $row){
+                $count[] = $row['total'];
+            }
+        }
+        return $count;
+    }
+
+    public function pg_tdReqDocNameSP(){
+        $con = $this->con();
+        $sql = "SELECT `itemrequest`, SUM(`quantity`) AS `total` FROM  (SELECT `itemrequest`, `quantity` FROM `tbl_spcitems` WHERE DATE(`recdate`) = CURDATE()) AS `itemlist` GROUP BY `itemrequest` ASC";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        if(empty($result)){
+            $item[] = "Insufficient Data";
+        }else{
+            foreach($result as $row){
+                $item[] = $row['itemrequest'];
+            }
+        }
+        return $item;
+    }
+
+    public function pg_tdReqDocCountSP(){
+        $con = $this->con();
+        $sql = "SELECT `itemrequest`, SUM(`quantity`) AS `total` FROM  (SELECT `itemrequest`, `quantity` FROM `tbl_spcitems` WHERE DATE(`recdate`) = CURDATE()) AS `itemlist` GROUP BY `itemrequest` ASC";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        if(empty($result)){
+            $count[] = 1;
+        }else{
+            foreach($result as $row){
+                $count[] = $row['total'];
+            }
+        }
+        return $count;
+    }
+
+    public function pg_mtReqDocNameREG(){
+        $con = $this->con();
+        $sql = "SELECT `itemrequest`, SUM(`quantity`) AS `total` FROM  (SELECT `itemrequest`, `quantity` FROM `tbl_items` WHERE MONTH(`recdate`) = MONTH(NOW()) ) AS `itemlist` GROUP BY `itemrequest` ASC";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        if(empty($result)){
+            $item[] = "Insufficient Data";
+        }else{
+            foreach($result as $row){
+                $item[] = $row['itemrequest'];
+            }
+        }
+        return $item;
+    }
+
+    public function pg_mtReqDocCountREG(){
+        $con = $this->con();
+        $sql = "SELECT `itemrequest`, SUM(`quantity`) AS `total` FROM  (SELECT `itemrequest`, `quantity` FROM `tbl_items` WHERE MONTH(`recdate`) = MONTH(NOW()) ) AS `itemlist` GROUP BY `itemrequest` ASC";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        if(empty($result)){
+            $count[] = 1;
+        }else{
+            foreach($result as $row){
+                $count[] = $row['total'];
+            }
+        }
+        return $count;
+    }
+
+    public function pg_mtReqDocNameSP(){
+        $con = $this->con();
+        $sql = "SELECT `itemrequest`, SUM(`quantity`) AS `total` FROM  (SELECT `itemrequest`, `quantity` FROM `tbl_spcitems` WHERE MONTH(`recdate`) = MONTH(NOW()) ) AS `itemlist` GROUP BY `itemrequest` ASC";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        if(empty($result)){
+            $item[] = "Insufficient Data";
+        }else{
+            foreach($result as $row){
+                $item[] = $row['itemrequest'];
+            }
+        }
+        return $item;
+    }
+
+    public function pg_mtReqDocCountSP(){
+        $con = $this->con();
+        $sql = "SELECT `itemrequest`, SUM(`quantity`) AS `total` FROM  (SELECT `itemrequest`, `quantity` FROM `tbl_spcitems` WHERE MONTH(`recdate`) = MONTH(NOW()) ) AS `itemlist` GROUP BY `itemrequest` ASC";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        if(empty($result)){
+            $count[] = 1;
+        }else{
+            foreach($result as $row){
+                $count[] = $row['total'];
+            }
+        }
+        return $count;
+    }
+
+    public function pg_wkmrdocNameREG(){
+        $con = $this->con();
+        $sql = "SELECT `itemrequest`, SUM(`quantity`) AS `total` FROM  (SELECT `itemrequest`, `quantity` FROM `tbl_items` WHERE WEEK(`recdate`) = WEEK(NOW()) ) AS `itemlist` GROUP BY `itemrequest` ASC";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        if(empty($result)){
+            $item[] = "Insufficient Data";
+        }else{
+            foreach($result as $row){
+                $item[] = $row['itemrequest'];
+            }
+        }
+        return $item;
+    }
+
+    public function pg_wkmrDocCountREG(){
+        $con = $this->con();
+        $sql = "SELECT `itemrequest`, SUM(`quantity`) AS `total` FROM  (SELECT `itemrequest`, `quantity` FROM `tbl_items` WHERE WEEK(`recdate`) = WEEK(NOW()) ) AS `itemlist` GROUP BY `itemrequest` ASC";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        if(empty($result)){
+            $count[] = 1;
+        }else{
+            foreach($result as $row){
+                $count[] = $row['total'];
+            }
+        }
+        return $count;
+    }
+
+    public function pg_wkmrDocNameSP(){
+        $con = $this->con();
+        $sql = "SELECT `itemrequest`, SUM(`quantity`) AS `total` FROM  (SELECT `itemrequest`, `quantity` FROM `tbl_spcitems` WHERE WEEK(`recdate`) = WEEK(NOW()) ) AS `itemlist` GROUP BY `itemrequest` ASC";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        if(empty($result)){
+            $item[] = "Insufficient Data";
+        }else{
+            foreach($result as $row){
+                $item[] = $row['itemrequest'];
+            }
+        }
+        return $item;
+    }
+
+    public function pg_wkmrDocCountSP(){
+        $con = $this->con();
+        $sql = "SELECT `itemrequest`, SUM(`quantity`) AS `total` FROM  (SELECT `itemrequest`, `quantity` FROM `tbl_spcitems` WHERE WEEK(`recdate`) = WEEK(NOW()) ) AS `itemlist` GROUP BY `itemrequest` ASC";
+        $data= $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        if(empty($result)){
+            $count[] = 1;
+        }else{
+            foreach($result as $row){
+                $count[] = $row['total'];
+            }
+        }
+        return $count;
     }
 
     public function encoderNamesREG(){
@@ -252,12 +445,12 @@ class chartdata extends config{
     }
 
 
-    //SELECT COUNT(`itemrequest`) as `count`, `itemrequest` from `tbl_spcitems` GROUP BY `itemrequest`
-     //           UNION ALL SELECT COUNT(`itemrequest`) as `count`, `itemrequest` from `tbl_items` GROUP BY `itemrequest` ORDER BY `count` DESC, `itemrequest` ASC
-
-
-    //SELECT `itemrequest`, COUNT(`itemrequest`) as `count` FROM (SELECT `itemrequest` from `tbl_spcitems` GROUP BY `itemrequest` UNION ALL SELECT `itemrequest` from `tbl_items` GROUP BY `itemrequest`) AS `ORIGIN`
-
-    //SELECT `itemrequest`, COUNT(`itemrequest`) as `count` FROM (SELECT `itemrequest` from `tbl_spcitems` GROUP BY `itemrequest` UNION ALL SELECT `itemrequest` from `tbl_items` GROUP BY `itemrequest`) AS `ORIGIN` GROUP BY `itemrequest`
 }
+//SELECT COUNT(`itemrequest`) as `count`, `itemrequest` from `tbl_spcitems` GROUP BY `itemrequest`
+ //           UNION ALL SELECT COUNT(`itemrequest`) as `count`, `itemrequest` from `tbl_items` GROUP BY `itemrequest` ORDER BY `count` DESC, `itemrequest` ASC
+
+
+//SELECT `itemrequest`, COUNT(`itemrequest`) as `count` FROM (SELECT `itemrequest` from `tbl_spcitems` GROUP BY `itemrequest` UNION ALL SELECT `itemrequest` from `tbl_items` GROUP BY `itemrequest`) AS `ORIGIN`
+
+//SELECT `itemrequest`, COUNT(`itemrequest`) as `count` FROM (SELECT `itemrequest` from `tbl_spcitems` GROUP BY `itemrequest` UNION ALL SELECT `itemrequest` from `tbl_items` GROUP BY `itemrequest`) AS `ORIGIN` GROUP BY `itemrequest`
 ?>
