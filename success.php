@@ -49,7 +49,7 @@ $tn = $_SESSION['tn'];
                     <p>Our Student Records Assistant (SRA) will contact you as soon as possible once we have verified your enrollment/ records.<br><br>Your request is now in the queue.
                         Once instructed to pay, please make the payment <b class="text-danger">within 5 working days</b>, or your transaction will be <b class="text-danger">forfeited.</p></b>
                     <p>You may check the status of your request by visiting the website below:</p>
-                    <p class="mb-0"><a href="https://ceumnlregistrar.com/ord/status" target="_blank">ceumnlregistrar.com/ord/status</a></p> <br>
+                    <p class="mb-0"><a href="checker" target="_blank">Document Status Checker</a></a></p> <br>
                     <div class="row justify-content-center">
                         <div class="col-md-6">
                             <a href="index.php" class="btn btn-hover color-3 w-100"> Return to Home</a>
