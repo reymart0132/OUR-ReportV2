@@ -30,7 +30,7 @@ echo "<div class='row mt-3'>
                     <canvas id='tally' style='width:100%;  height:300px;'></canvas>
                 </div>
                 <div class='col-lg-7 p-3 mx-2'>
-                    <h5><b>Application Volume for the Past 7 Working Days</b></h5>
+                    <h5><b>Application Volume for the Past Week</b></h5>
                     <canvas id='history' style='width:100%;  height:300px;'></canvas>
                 </div>
             </div>

@@ -63,7 +63,7 @@ $locker->formLockerCheck();
                                 <label for="status" class="form-label">Status</label>
                                 <select class="form-select" id="status" name="status" required>
                                     <option value="Undergraduate">Non-Degree Holder</option>
-                                    <option value="Graduate">Degree Holder</option>
+                                    <option value="Graduate">Bachelors Degree Holder</option>
                                     <option value="Masters">Masters Degree Holder</option>
                                     <option value="PHD">Doctorate Degree Holder</option>
                                 </select>
@@ -106,7 +106,7 @@ $locker->formLockerCheck();
                                      <span class="input-group-text" id="basic-addon3">fb.com/</span>
                                      <input type="text" class="form-control" id="basic-url" name ="facebook" aria-describedby="basic-addon3">
                                     </div>
-                                    <small class="small-text text-success text-end  ">*transactions with fb accounts will be prioritzied</small>
+                                    <small class="small-text text-success text-end  ">*for easier and faster communication</small>
                             </div>
                             <div class="col-12 mb-1">
                                 <small class="text-muted" ><b>*Please ensure the correctness of the email address,FB Messenger Account and Phone Number that you have entered as this will be used as the primary medium of communication that will be used to contact you.</b></small>

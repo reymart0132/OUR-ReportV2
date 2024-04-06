@@ -97,7 +97,10 @@ if(!empty($_POST)){
                                     <h6 class="card-title">For Certificate of Internship and Course Syllabus</h6>
                                     <p class="card-text text-danger" style="font-size: 14px;">
                                         <b>-Please proceed to your College / School / Department.</b><br> 
-                                        
+                                    </p>
+                                    <h6 class="card-title">For Certificate of Good Moral Character</h6>
+                                    <p class="card-text text-danger" style="font-size: 14px;">
+                                        <b>-Please proceed to Student Affairs Office (SAO) or email Ms. Jenny Ortiz (jsortiz@ceu.edu.ph)</b><br> 
                                     </p>
                                 </div>
                             </div>
