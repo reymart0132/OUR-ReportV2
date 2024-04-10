@@ -85,12 +85,12 @@ class update extends config{
         } else {
             header("HTTP/1.1 403 Forbidden");
         }
-        // $data = $con->prepare($sql);
-        // if ($data->execute()) {
-        //     $this->kcej_deleteItems();
-        // } else {
-        //     return false;
-        // }
+        $data = $con->prepare($sql);
+        if ($data->execute()) {
+            $this->kcej_deleteItems();
+        } else {
+            return false;
+        }
     }
     public function assignTo()
     {

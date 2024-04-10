@@ -217,15 +217,9 @@
     },
     options: {
         legend: {
-            position: 'bottom'
+            position: 'bottom',
+                        // align: 'start',
         },
-    //     scales: {
-    //         xAxes: [{
-    //             ticks: {
-    //                 beginAtZero: true
-    //             }
-    //         }]
-    //     }
     }
     });
 </script>
@@ -271,13 +265,6 @@
         legend: {
             position: 'bottom'
         },
-    //     scales: {
-    //         xAxes: [{
-    //             ticks: {
-    //                 beginAtZero: true
-    //             }
-    //         }]
-    //     }
     }
     });
 </script>
@@ -323,19 +310,8 @@
         legend: {
             position: 'bottom'
         },
-        
-    //     scales: {
-    //         xAxes: [{
-    //             ticks: {
-    //                 beginAtZero: true
-    //             }
-    //         }]
-    //     }
     }
     });
-    //}else{
-   //     document.write("No Data");
-    //}
 </script>
 
 <script>
@@ -379,13 +355,6 @@
         legend: {
             position: 'bottom'
         },
-    //     scales: {
-    //         xAxes: [{
-    //             ticks: {
-    //                 beginAtZero: true
-    //             }
-    //         }]
-    //     }
     }
     });
 </script>
@@ -431,19 +400,8 @@
         legend: {
             position: 'bottom'
         },
-        
-    //     scales: {
-    //         xAxes: [{
-    //             ticks: {
-    //                 beginAtZero: true
-    //             }
-    //         }]
-    //     }
     }
     });
-    //}else{
-   //     document.write("No Data");
-    //}
 </script>
 
 <script>
@@ -488,13 +446,6 @@
             position: 'bottom',
             // align: 'start',
         },
-    //     scales: {
-    //         xAxes: [{
-    //             ticks: {
-    //                 beginAtZero: true
-    //             }
-    //         }]
-    //     }
     }
     });
 </script>

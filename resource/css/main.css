@@ -262,9 +262,11 @@ header{
     transition: all .4s ease-in-out;
 }
 .highlight-total {
-    background-color: rgb(239, 84, 84);
+    background-color: #DC64A1;
     padding: 2%;
     border-radius: 30px;
+    color: #fff;
+    font-weight:700;
 }
 .loader-container {
     position: fixed;

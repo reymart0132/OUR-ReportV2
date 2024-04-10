@@ -59,7 +59,8 @@ class chartdata extends config{
 
     public function mostReqDocName(){
         $con = $this->con();
-        $sql = "SELECT `itemrequest`, COUNT(`itemrequest`) as `count` FROM (SELECT `itemrequest` from `tbl_spcitems` UNION ALL SELECT `itemrequest` from `tbl_items` )AS `ORIGIN` GROUP BY `itemrequest` ORDER BY `count` DESC LIMIT 5";
+        // $sql = "SELECT `itemrequest`, COUNT(`itemrequest`) as `count` FROM (SELECT `itemrequest` from `tbl_spcitems` UNION ALL SELECT `itemrequest` from `tbl_items` )AS `ORIGIN` GROUP BY `itemrequest` ORDER BY `count` DESC LIMIT 5";
+        $sql = "SELECT * FROM ( SELECT `itemrequest`, sum(`quantity`) AS `total` from tbl_items group by `itemrequest` UNION ALL SELECT `itemrequest`, sum(`quantity`) AS `total` from tbl_spcitems group by `itemrequest` ) AS `merged` ORDER BY `total` DESC LIMIT 5";
         $data= $con->prepare($sql);
         $data->execute();
         $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -80,7 +81,7 @@ class chartdata extends config{
             $item[] = "Insufficient Data";
         }else{
             foreach($result as $row){
-                $item[] = $row['itemrequest'];
+                $item[] = $row['itemrequest']." (".$row['total'].")";
             }
         }
         return $item;
@@ -112,7 +113,7 @@ class chartdata extends config{
             $item[] = "Insufficient Data";
         }else{
             foreach($result as $row){
-                $item[] = $row['itemrequest'];
+                $item[] = $row['itemrequest']." (".$row['total'].")";
             }
         }
         return $item;
@@ -144,7 +145,7 @@ class chartdata extends config{
             $item[] = "Insufficient Data";
         }else{
             foreach($result as $row){
-                $item[] = $row['itemrequest'];
+                $item[] = $row['itemrequest']." (".$row['total'].")";
             }
         }
         return $item;
@@ -176,7 +177,7 @@ class chartdata extends config{
             $item[] = "Insufficient Data";
         }else{
             foreach($result as $row){
-                $item[] = $row['itemrequest'];
+                $item[] = $row['itemrequest']." (".$row['total'].")";
             }
         }
         return $item;
@@ -208,7 +209,7 @@ class chartdata extends config{
             $item[] = "Insufficient Data";
         }else{
             foreach($result as $row){
-                $item[] = $row['itemrequest'];
+                $item[] = $row['itemrequest']." (".$row['total'].")";
             }
         }
         return $item;
@@ -240,7 +241,7 @@ class chartdata extends config{
             $item[] = "Insufficient Data";
         }else{
             foreach($result as $row){
-                $item[] = $row['itemrequest'];
+                $item[] = $row['itemrequest']." (".$row['total'].")";
             }
         }
         return $item;

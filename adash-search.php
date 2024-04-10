@@ -58,7 +58,8 @@
               <i class="fas fa-question-circle me-2"></i> Main Menu</a>
               
               <div class="item mt-3">
-              <a class="sub-btn bg-selected" href="adashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
+              <a class="sub-btn" href="adashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
+              <a class="sub-btn bg-selected" href="adash-search"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
             </div>
             <a class="list-group-item list-group-item-action fw-bold mt-5">
               <i class="fas fa-magnifying-glass me-2"></i> For Review </a>
