@@ -47,7 +47,6 @@ class update extends config{
             header("HTTP/1.1 403 Forbidden");
         }
         $data= $con->prepare($sql);
-    
         if($data->execute()){
             return true;
         }else{

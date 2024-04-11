@@ -17,6 +17,14 @@ $locker = new locker();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500&display=swap" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="vendor/css/dataTables.css">
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jszip.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/pdfmake.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/vfs_fonts.js"></script>
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/buttons.html5.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/buttons.print.min.js"></script>
     <title>Dashboard</title>
     <link rel="icon" type="image/x-icon" href="resource/img/ceu.png" />
   </head>
@@ -167,7 +175,7 @@ $locker = new locker();
           el.classList.toggle("toggled")
         }
       </script>
-      <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
+      <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>  -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
        <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -260,5 +268,11 @@ $locker = new locker();
             </div>
           </div>
         </div>
+        <script>
+          $(document).ready(function(){
+          window.$('#dataTable').DataTable({
+            });
+        });
+      </script> 
   </body>
 </html>

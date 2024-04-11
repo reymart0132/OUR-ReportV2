@@ -17,7 +17,7 @@ public function viewFirstTable(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Discounts for Review </h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%'>";
+  echo "<table id='dataTable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%'>";
   echo "<thead class='thead-dark'>";
   echo "<th class='d-none d-sm-table-cell'>Student Number</th>";
   echo "<th>Fullname</th>";
@@ -52,7 +52,7 @@ public function viewApproveTable(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Discounts for Review </h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%'>";
+  echo "<table id='dataTable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%'>";
   echo "<thead class='thead-dark'>";
   echo "<th class='d-none d-sm-table-cell'>Student Number</th>";
   echo "<th>Fullname</th>";
@@ -88,8 +88,7 @@ public function viewApproveTable(){
     $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
     echo "<h3 class='text-center p-3'> Regular Transaction List </h3>";
-    echo "<div class='table-responsive'>";
-    echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+    echo "<table id='dataTable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
     echo "<thead class='thead-dark'>";
     echo "<th>Transaction Number</th>";
     echo "<th style='width: 250px;'>Name</th>";
@@ -120,8 +119,9 @@ public function viewApproveTable(){
           }                    
     echo       "<a href='ainfo.php?tID=$data[transactionid]&type=reg' class='btn btn-sm  btn-warning m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>        
                <a href='#' class='btn btn-sm btn-danger remove-request' data-bs-toggle='modal' data-bs-target='#confirmationModal' data-transaction-id='$data[transactionid]' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
-                    </td>";
+                    </td></tr>";
     }
+  echo "</table>";
   }
   public function tbl_forAssignREG()
   {
@@ -133,7 +133,7 @@ public function viewApproveTable(){
     $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
     echo "<h3 class='text-center p-3'> Payment and Assignment Transaction List </h3>";
-    echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+    echo "<table id='dataTable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
     echo "<thead class='thead-dark'>";
     echo "<th>Transaction Number</th>";
     echo "<th style='width: 250px;'>Name</th>";
@@ -170,7 +170,7 @@ public function viewApproveTable(){
     $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
     echo "<h3 class='text-center p-3'> Payment and Assignment Transaction List </h3>";
-    echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+    echo "<table id='dataTable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
     echo "<thead class='thead-dark'>";
     echo "<th>Transaction Number</th>";
     echo "<th style='width: 250px;'>Name</th>";
@@ -205,7 +205,7 @@ public function viewApproveTable(){
     $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
     echo "<h3 class='text-center p-3'> Payment and Assignment Transaction List </h3>";
-    echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+    echo "<table id='dataTable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
     echo "<thead class='thead-dark'>";
     echo "<th>Transaction Number</th>";
     echo "<th style='width: 250px;'>Name</th>";
@@ -246,7 +246,7 @@ public function viewApproveTable(){
     $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
     echo "<h3 class='text-center p-3'> Payment and Assignment Transaction List </h3>";
-    echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+    echo "<table id='dataTable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
     echo "<thead class='thead-dark'>";
     echo "<th>Transaction Number</th>";
     echo "<th style='width: 250px;'>Name</th>";
@@ -287,7 +287,7 @@ public function viewApproveTable(){
     $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
     echo "<h3 class='text-center p-3'> Payment and Assignment Transaction List </h3>";
-    echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+    echo "<table id='dataTable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
     echo "<thead class='thead-dark'>";
     echo "<th>Transaction Number</th>";
     echo "<th style='width: 250px;'>Name</th>";
@@ -334,8 +334,7 @@ public function viewApproveTable(){
     $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
     echo "<h3 class='text-center p-3'> Applications List - Pending </h3>";
-    echo "<div class='table-responsive'>";
-    echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+    echo "<table id='dataTable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
     echo "<thead class='thead-dark'>";
     echo "<th>Transaction Number</th>";
     echo "<th style='width: 250px;'>Name</th>";
@@ -369,6 +368,7 @@ public function viewApproveTable(){
                 <a href='#' class='btn btn-sm btn-danger remove-request' data-bs-toggle='modal' data-bs-target='#confirmationModal' data-transaction-id='$data[transactionid]' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
                     </td>";
     }
+   echo "</table>";
   }
 
   public function kcej_sTrans()
@@ -385,7 +385,7 @@ public function viewApproveTable(){
 
     echo "<h3 class='text-center p-3'> Applications List - Pending </h3>";
     echo "<div class='table-responsive'>";
-    echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+    echo "<table id='dataTable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
     echo "<thead class='thead-dark'>";
     echo "<th>Transaction Number</th>";
     echo "<th style='width: 250px;'>Name</th>";
@@ -434,7 +434,7 @@ public function viewApproveTable(){
 
     echo "<h3 class='text-center p-3'> Applications List - For Signature </h3>";
     echo "<div class='table-responsive'>";
-    echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+    echo "<table id='dataTable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
     echo "<thead class='thead-dark'>";
     echo "<th>Transaction Number</th>";
     echo "<th style='width: 250px;'>Name</th>";
@@ -483,7 +483,7 @@ public function viewApproveTable(){
 
     echo "<h3 class='text-center p-3'> Applications List - For Signature </h3>";
     echo "<div class='table-responsive'>";
-    echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+    echo "<table id='dataTable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
     echo "<thead class='thead-dark'>";
     echo "<th>Transaction Number</th>";
     echo "<th style='width: 250px;'>Name</th>";
@@ -529,8 +529,7 @@ public function viewApproveTable(){
     $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
     echo "<h3 class='text-center p-3'> For Release Applications </h3>";
-    echo "<div class='table-responsive'>";
-    echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+    echo "<table id='dataTable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
     echo "<thead class='thead-dark'>";
     echo "<th>Transaction Number</th>";
     echo "<th style='width: 250px;'>Name</th>";
@@ -564,6 +563,7 @@ public function viewApproveTable(){
                 <a href='#' class='btn btn-sm btn-danger remove-request' data-bs-toggle='modal' data-bs-target='#confirmationModal' data-transaction-id='$data[transactionid]' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
                     </td>";
     }
+    echo "</table>";
   }
   
   public function kcej_releasedDocs()
@@ -576,8 +576,7 @@ public function viewApproveTable(){
     $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
     echo "<h3 class='text-center p-3'> Released Applications </h3>";
-    echo "<div class='table-responsive'>";
-    echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+    echo "<table id='dataTable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
     echo "<thead class='thead-dark'>";
     echo "<th>Transaction Number</th>";
     echo "<th style='width: 250px;'>Name</th>";
@@ -616,5 +615,6 @@ public function viewApproveTable(){
       echo       "<a href='info.php?tID=".$data['transactionid']."&type=".$data['apptype']."' class='btn btn-sm  btn-warning m-1' target='_blank' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>
                       </td>";
     }
+    echo "</table>";
   }
 }
