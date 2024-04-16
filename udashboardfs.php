@@ -51,6 +51,7 @@ $user = new user();
                         <i class="fas fa-question-circle me-2"></i> Menu</a>
 
                     <div class="item mt-3">
+                        <a class="sub-btn" href="alldash-search"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
                         <a class="sub-btn" href="udashboard"><i class="fa-solid fa-house"></i> Pending </a>
                     </div>
 

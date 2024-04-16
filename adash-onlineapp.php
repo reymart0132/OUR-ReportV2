@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
+isLogin();
 $table = new viewtable();
 $user = new user();
 isRAdmin($user->data()->groups);
@@ -42,7 +43,7 @@ $locker = new locker();
               
               <div class="item mt-3">
               <a class="sub-btn " href="adashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
-              <a class="sub-btn" href="adash-search"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
+              <a class="sub-btn" href="alldash-search"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
             </div>
               <a class="list-group-item list-group-item-action fw-bold mt-5">
               <i class="fas fa-magnifying-glass me-2"></i> For Review </a>

@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
+isLogin();
 $table = new viewtable();
 $user = new user();
 kcej_isReleasing($user->data()->groups);
@@ -52,6 +53,7 @@ kcej_isReleasing($user->data()->groups);
                         <i class="fas fa-question-circle me-2"></i> Menu</a>
 
                     <div class="item mt-3">
+                        <a class="sub-btn" href="alldash-search"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
                         <a class="sub-btn bg-selected" href="rdashboard"><i class="fa-solid fa-house"></i> For Release </a>
                     </div>
 
