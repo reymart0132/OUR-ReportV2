@@ -48,5 +48,16 @@ class transaction extends config
         // die();
         $data->execute();
     }
+    public function editTransactionreg()
+    {
+        $currentDateTime = date("Y-m-d H:i:s");
+        $config = new config;
+        $con = $config->con();
+        $sql = "UPDATE `tbl_transaction` SET `price`= '$this->price',`points`= '$this->points',`summary`='$this->summary' where `transactionid` = '$this->transactionid'";
+        $data = $con->prepare($sql);
+        // var_dump($data);
+        // die();
+        $data->execute();
+    }
 
 }

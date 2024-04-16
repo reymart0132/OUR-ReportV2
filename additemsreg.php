@@ -1,14 +1,9 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
-$locker = new locker();
-$locker->formLockerCheck();
 $view = new view();
-if (!empty($_SESSION['info'])) {
-    // var_dump($_SESSION['info']);
-}else{
-    header("HTTP/1.1 403 Forbidden");
-    exit;
-}
+$user = new user();
+isRAdmin($user->data()->groups);
+$tn = $_GET['transactionID'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -50,7 +45,7 @@ if (!empty($_SESSION['info'])) {
     </header>
     <section class="section1">
         <div class="container-fluid p-3">
-            <form action="docprocess.php" method ="POST" onsubmit="disableButtonAndSubmit();">
+            <form action="additemprocessreg.php" method ="POST">
             <div class="row ofh justify-content-center">
                     <div class="col-md-8">
                         <div class="form-container ">
@@ -65,7 +60,7 @@ if (!empty($_SESSION['info'])) {
                                 <table class="table table-bordered table-sm">
                                     <thead>
                                         <tr>
-                                            <th class="px-2 py-1 d-none">Item Code</th>
+                                            <th class="px-2 py-1">Item Code</th>
                                             <th class="px-2 py-1">Item</th>
                                             <th class="px-2 py-1">Price</th>
                                             <th class="px-2 py-1">Quantity</th>
@@ -85,25 +80,13 @@ if (!empty($_SESSION['info'])) {
                             <strong>Total Price: ₱</strong> <span id="totalPrice"><b>0</b></span>
                             <input type="hidden" id="hiddenPrice" name="hiddenPrice" value="0" readonly>
                             <input type="hidden" id="totalPoints" name="points" placeholder="Total Points" readonly>
+                            <input type="hidden" value="<?php echo $tn; ?>" name="tn" placeholder="Total Points" readonly>
                         </div>
                         <div class="mt-3">
                             <h6>Order Summary</h6>
                             <textarea id="itemList" name="items" class="form-control" rows="6" readonly></textarea>
                         </div>
-                        <div class="mt-3">
-                            <strong>Special Instructions</span>
-                            <textarea id="" class="form-control" name="sinstruction" rows="12" 
-                            placeholder="Kindly put the detail of the request here such as what school year and semester or special instructions.
-                            Example:
-                            Certificate of Enrolment - SY2022-2023-1 , SY2022-2023-2 
-                            Certificate of Grade - SY2022-2023-1, - SY2021-2022-1 
-                            Please input NA if there is none.
-                            " required></textarea>
-                        </div>
-                        <div class="pt-3 d-flex justify-content-center">
-                            <div class="g-recaptcha" data-sitekey="6LcZHmwoAAAAAMud5aRHZVyMKm80GzSqMM6fFoXz"></div>
-                        </div>
-                        <input type="submit" value="Place Order" id="submitBtn" class="btn btn-primary col-12 mt-5">
+                        <input type="submit" value="Place Order" class="btn btn-primary col-12 mt-5">
                     </div>
                 </form>
             </div>
@@ -116,32 +99,7 @@ if (!empty($_SESSION['info'])) {
 </footer>
 <button onclick="topFunction()" id="topButton" title="Return to Top"><i class="fa-solid fa-arrow-up"></i></button>
 
-  <script>
-    function disableButtonAndSubmit() {
-        // Get the submit button by its ID
-        var btn = document.getElementById("submitBtn");
-        
-        // Disable the button to prevent further clicks
-        btn.disabled = true;
-
-        // Optionally, show some feedback to the user that the form is being processed
-        btn.value = 'Processing...';
-
-        // Set a timeout to re-enable the button after 20 seconds (20000 milliseconds)
-        setTimeout(function() {
-            btn.disabled = false;
-            btn.value = 'Submit'; // Reset button text (optional)
-        }, 20000);
-
-        // Here, you would normally submit the form. For demonstration, we'll simulate it.
-        // Remove the next line if your form is being submitted in the usual way (without AJAX).
-        // event.preventDefault(); // Prevent form submission for demo purposes
-        // alert('Form submitted! Button will be re-enabled in 20 seconds.');
-        
-        // If you're using AJAX to submit the form, you'd place your AJAX call here.
-        // And in your AJAX callback, you might re-enable the button immediately upon completion/failure.
-    }
-    </script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
@@ -149,7 +107,7 @@ if (!empty($_SESSION['info'])) {
     <script src="resource/js/rtt.js"></script>
     
     <script src="vendor/js/bootstrap-select.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <script>
     let firstChange = true; // Flag to track the first change
 

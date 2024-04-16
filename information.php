@@ -33,7 +33,7 @@ $locker->formLockerCheck();
     </div>
     <?php require_once('resource/menu/nav.php') ?>
     
-    <header class="container-fluid header animate__animated  animate__slideInLeft">
+    <header class="container-fluid header  animate__slideInLeft">
         <div class="card bg-ceu">
             <div class="row">
                 <div class="col-lg-12 p-0 bg-registrar2 d-none d-lg-block">
@@ -63,7 +63,7 @@ $locker->formLockerCheck();
                                 <label for="status" class="form-label">Status</label>
                                 <select class="form-select" id="status" name="status" required>
                                     <option value="Undergraduate">Non-Degree Holder</option>
-                                    <option value="Graduate">Bachelors Degree Holder</option>
+                                    <option value="Graduate">Bachelor's Degree Holder</option>
                                     <option value="Masters">Masters Degree Holder</option>
                                     <option value="PHD">Doctorate Degree Holder</option>
                                 </select>

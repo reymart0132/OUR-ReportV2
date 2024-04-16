@@ -47,7 +47,6 @@ class update extends config{
             header("HTTP/1.1 403 Forbidden");
         }
         $data= $con->prepare($sql);
-    
         if($data->execute()){
             return true;
         }else{
@@ -89,6 +88,8 @@ class update extends config{
         if ($data->execute()) {
             // $this->kcej_deleteItems();
             return true;
+            // $this->kcej_deleteItems();
+            return true;
         } else {
             return false;
         }
@@ -108,7 +109,7 @@ class update extends config{
         }
         $data = $con->prepare($sql);
         if ($data->execute()) {
-            // $this->kcej_deleteItems();
+            //$this->kcej_deleteItems();
             return true;
         } else {
             return false;

@@ -436,11 +436,11 @@ small{
      border-color: #764ba2;
  }
 
- /* New hover effect */
+ /* New hover effect
  .form-container:hover {
      transform: scale(1.02);
      /* Scale up by 2% on hover */
- }
+ /* } */ 
 
 
  .btn-standby {

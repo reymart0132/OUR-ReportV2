@@ -599,4 +599,6 @@ function kcej_vfnotes(){
         return false;
     }
 }
+
+// 1 - ENCODER, 2 - VERIFIER, 3 - RELEASING, 4 - SPECIAL
  ?>
