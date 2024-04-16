@@ -53,6 +53,7 @@ isSPC($user->data()->groups);
                         <i class="fas fa-house me-2"></i> Menu</a>
                     
                     <div class="item mt-3">
+                        <a class="sub-btn" href="alldash-search"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
                         <a class="sub-btn " href="sdashboard.php"><i class="fa-solid fa-magnifying-glass"></i>Review </a>
                     </div>
                     

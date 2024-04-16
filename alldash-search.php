@@ -3,8 +3,8 @@
   isLogin();
   $table = new viewtable();
   $user = new user();
-  isRAdmin($user->data()->groups);
-  $locker = new locker();
+  // $locker = new locker();
+
 ?>
 
 <!DOCTYPE html>
@@ -18,8 +18,14 @@
     <script src="https://kit.fontawesome.com/03ca298d2d.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">
+    <script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
 
     <title>Dashboard</title>
     <link rel="icon" type="image/x-icon" href="resource/img/ceu.png" />
@@ -52,27 +58,21 @@
               <i class="fas fa-question-circle me-2"></i> Main Menu</a>
               
               <div class="item mt-3">
-              <a class="sub-btn bg-selected" href="adashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
-              <a class="sub-btn" href="adash-search"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
-            </div>
-            <a class="list-group-item list-group-item-action fw-bold mt-5">
-              <i class="fas fa-magnifying-glass me-2"></i> For Review </a>
-            <div class="item">
-              <a class="sub-btn" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
-            </div>
-            <a class="list-group-item list-group-item-action fw-bold mt-5">
-              <i class="fas fa-check me-2"></i> For Assignment </a>
-            <div class="item">
-              <a class="sub-btn" href="adash-asgn1"><i class="fa-solid fa-globe"></i> Online Requests</a>
-            </div>
-            <div class="item">
-              <a class="sub-btn" href="adash-asgn2"><i class="fa-solid fa-star"></i> Special Requests</a>
-            </div>
-            <a class="list-group-item list-group-item-action fw-bold mt-5">
-              <i class="fa-solid fa-folder me-2"></i> Releasing Section </a>
-            <div class="item">
-              <a class="sub-btn" href="rdashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
-            </div>
+                <?php
+                  if($user->data()->groups == 1){
+                    echo "<a class='sub-btn' href='udashboard'><i class='fa-solid fa-house'></i> Dashboard</a>";
+                  }elseif($user->data()->groups == 2){
+                    echo "<a class='sub-btn' href='adashboard'><i class='fa-solid fa-house'></i> Dashboard</a>";
+                  }elseif($user->data()->groups == 3){
+                    echo "<a class='sub-btn' href='rdashboard'><i class='fa-solid fa-house'></i> Dashboard</a>";
+                  }elseif($user->data()->groups == 4){
+                    echo "<a class='sub-btn' href='sdashboard'><i class='fa-solid fa-house'></i> Dashboard</a>";
+                  }else{
+                    // display nothing
+                  }
+                ?>
+                
+              </div>
             
             <script type="text/javascript">
               $(document).ready(function(){
@@ -100,14 +100,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav  ms-auto mb-2 mb-lg-0">
               
-                <div class="row text-center me-3">
+                <!-- <div class="row text-center me-3">
                   <div class="col-md-3 px-0">
-                    <a href="locker.php?landing=adashboard" class="btn btn-sm <?php $locker->lockerButtonClr(); ?>"><?php $locker->lockerButton(); ?></a>
+                    <a href="locker.php?landing=adashboard" class="btn btn-sm <?php //$locker->lockerButtonClr(); ?>"><?php //$locker->lockerButton(); ?></a>
                   </div>
                   <div class="col-md-9">
-                    <?php $locker->lockerStatusDisp(); ?>
+                    <?php //$locker->lockerStatusDisp(); ?>
                   </div>
-                </div>
+                </div> -->
 
                 <li class="nav-item dropdown ">
                   
@@ -125,26 +125,54 @@
             </div>
           </nav>
           
-          <div class="p-3">
+          <!-- <div class="p-3">
 
               <h1>Dashboard</h1>
 
-          </div>
+          </div> -->
 
           <div class="container-fluid p-5">
-            <!-- <div class="row"> -->
-              <!-- <div class="col-md p-5 content container-fluid"> -->
-                  <?php include 'charts.php'; ?>
+            <div class="row">
+              <div class="col-md p-5 content">
+                <div class="row justify-content-md-center">
+                  <div class="col-md-3 pt-3 content">
+                    <h3 class="text-center p-3"><i class="fa-solid fa-magnifying-glass fa-beat-fade fa-lg"></i> Search All</h3>
+                  </div>
+                  <div class="col-md-9 pt-3">
+                    <form method="get">
+                      <div class="row form-group">
+                        <div class="col col-md-9">
+                          <label for="searchName">Enter Name of Student or Transaction ID</label>
+                          <input type="text" class="form-control" name="searchName" id="searchName" value="<?php if(!empty($_GET['searchName'])){echo $_GET['searchName'];}?>" autocomplete="off" required>
+                        </div>
+                        <div class="col col-md-3 align-self-end">
+                          <div class="d-grid ">
+                          <button type="submit" id="submitSearch" class="btn btn-primary btn-lg mt-1">Search</button>
+            </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
 
-              <!-- </div> -->
-            <!-- </div> -->
+                <?php 
+                    if(!empty($_GET['searchName'])){
+                      $searchtable = new searchAllTable($_GET['searchName']);
+                      $searchtable->searchTable();
+                    }
+                  ?>
+
+
+
+              </div>
+            </div>
           </div>
         </div>
       </div>
      </div>
     </header>
 
-      <?php include 'chart-control.php'; ?>
+      
       <script type="text/javascript">
         var el = document.getElementById("wrapper")
         var toggleButton = document.getElementById("menu-toggle")
@@ -157,5 +185,24 @@
       <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
      
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+        <script type="text/javascript">
+          $(document).ready( function () {
+            $('#scholartable').DataTable({
+              "ordering": false,
+              "searching": false
+            });
+          });
+        </script>
+        <script type="text/javascript">
+          $(document).ready( function () {
+            $('#scholartable2').DataTable({
+              "ordering": false,
+              "searching": false
+            });
+          });
+        </script>
     </body>
 </html>

@@ -88,6 +88,8 @@ class update extends config{
         if ($data->execute()) {
             // $this->kcej_deleteItems();
             return true;
+            // $this->kcej_deleteItems();
+            return true;
         } else {
             return false;
         }

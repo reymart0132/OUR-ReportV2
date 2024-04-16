@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
+isLogin();
 $info = new info();
 $user = new user();
 if (!empty($_GET['tID']) && !empty($_GET['type'])) {

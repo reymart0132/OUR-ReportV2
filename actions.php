@@ -49,6 +49,7 @@ if($_GET['state'] == '1' && ($user->data()->groups == '1' || $user->data()->grou
   $action = new update($_GET['transactionID'], $_GET['type'], '' ,$user->data()->id);
   $action->kcej_setStateRL();
   header('Location:rdashboard.php');
+
 }elseif($_GET['state'] == '4' && !empty($user->data()->groups)){  // remove transaction
   $action = new update($_GET['transactionID'], $_GET['type'],$_GET['info']);
   $action->kcej_setStateDL();
