@@ -80,7 +80,7 @@
                     </div>
 
                 </div>
-                <div class="col-12 px-2 mt-2  text-center">
+                <div class="col-12 px-2 mt-2  text-center d-none d-lg-block">
                     <div class="inner p-2">
                         <img class="services" height="75px" src="resource/img/support.png" alt="Question and answer icons created by Linector">
                         <h6 class="card-title big-txt-ceu3 text-center mb-2 mt-4">OUR Live Chat Support Services via (FB Messenger)</h6>    

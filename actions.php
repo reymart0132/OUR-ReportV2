@@ -12,7 +12,7 @@ $assignName = kcej_getTransactionAssignName($_GET['transactionID'], $_GET['type'
 $clientName = kcej_getTransactionClientName($_GET['transactionID'], $_GET['type']);
 $assignEmail = kcej_getAssigneeEmail($assignName);
 
-if($_GET['state'] == '1' && $user->data()->groups == '1'){  // set for signature
+if($_GET['state'] == '1' && ($user->data()->groups == '1' || $user->data()->groups == '4')){  // set for signature
   $action = new update($_GET['transactionID'], $_GET['type']);
   $action->kcej_setStateFS();
   if($_GET['landing'] == 'udash'){
@@ -49,6 +49,7 @@ if($_GET['state'] == '1' && $user->data()->groups == '1'){  // set for signature
   $action = new update($_GET['transactionID'], $_GET['type'], '' ,$user->data()->id);
   $action->kcej_setStateRL();
   header('Location:rdashboard.php');
+
 }elseif($_GET['state'] == '4' && !empty($user->data()->groups)){  // remove transaction
   $action = new update($_GET['transactionID'], $_GET['type'],$_GET['info']);
   $action->kcej_setStateDL();

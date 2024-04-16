@@ -89,7 +89,7 @@ class searchAllTable extends config{
       $assignee0 = findAssignee($data0['assignee']);
       echo "<tr style='font-size: 13px'>";
       echo "<td>$data0[transactionid]</td>";
-      echo "<td>$fullname</td>";
+      echo "<td>$fullname0</td>";
       echo "<td>$data0[stdn]</td>";
       echo "<td>$data0[status]</td>";
       echo "<td>$data0[yeargrad]</td>";

@@ -172,7 +172,7 @@ $locker = new locker();
             var reason = document.getElementById('reasonInput').value;
             
             // Perform the removal process (You might need AJAX or form submission here)
-            window.location.href = 'actions.php?transactionID=' + transactionId+'&state=4&type=reg&landing=adash-online&info='+reason;
+            window.location.href = 'actions.php?transactionID=' + transactionId+'&state=4&type=reg&landing=adash-onlineapp&info='+reason;
             
             // Close the modal
             var modal = bootstrap.Modal.getInstance(confirmationModal);

@@ -13,8 +13,8 @@ class view extends config{
             $rows =$data-> fetchAll(PDO::FETCH_ASSOC);
             $x = 1;
                 foreach ($rows as $row) {
-                echo "<tr>
-                        <td class='px-2 py-1'>q$row[id]</td>
+                echo "<tr style='font-size:80%'>
+                        <td class='px-2 py-1 d-none'>q$row[id]</td>
                         <td class='px-2 py-1'>
                             <div><b>".strtoupper($row['appliedfor'])."</b></div>
                             <div class='notes text-danger'><small><em>$row[notes]</em></small</div>

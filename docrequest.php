@@ -65,7 +65,7 @@ if (!empty($_SESSION['info'])) {
                                 <table class="table table-bordered table-sm">
                                     <thead>
                                         <tr>
-                                            <th class="px-2 py-1">Item Code</th>
+                                            <th class="px-2 py-1 d-none">Item Code</th>
                                             <th class="px-2 py-1">Item</th>
                                             <th class="px-2 py-1">Price</th>
                                             <th class="px-2 py-1">Quantity</th>

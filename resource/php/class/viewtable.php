@@ -160,11 +160,11 @@ public function viewApproveTable(){
                   }
     echo "</table>";
   }
-  public function tbl_forAssignSPC()
+    public function tbl_forAssignSPC()
   {
 
     $con = $this->con();
-    $sql = "SELECT * FROM `tbl_SPCtransaction` WHERE `remarks` = 'PENDING'";
+    $sql = "SELECT * FROM `tbl_spctransaction` WHERE `remarks` = 'PENDING'";
     $data= $con->prepare($sql);
     $data->execute();
     $result = $data->fetchAll(PDO::FETCH_ASSOC);

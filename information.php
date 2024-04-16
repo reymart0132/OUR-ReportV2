@@ -101,12 +101,12 @@ $locker->formLockerCheck();
                                 <input type="email" class="form-control" id="emailAddress" name="emailAddress" required>
                             </div>
                             <div class="col-md-4 mb-1 ">
-                                 <label for="basic-url" class="form-label">Your Messenger URL</label>
+                                 <label for="basic-url" class="form-label">Facebook Username (optional)</label>
                                  <div class="input-group mb-3">
                                      <span class="input-group-text" id="basic-addon3">fb.com/</span>
                                      <input type="text" class="form-control" id="basic-url" name ="facebook" aria-describedby="basic-addon3">
                                     </div>
-                                    <small class="small-text text-success text-end  ">*for easier and faster communication</small>
+                                    <small class="small-text text-success text-end  ">*for easier and faster communication.<br> <b>example: fb.com/juan.delacruz23</b></small>
                             </div>
                             <div class="col-12 mb-1">
                                 <small class="text-muted" ><b>*Please ensure the correctness of the email address,FB Messenger Account and Phone Number that you have entered as this will be used as the primary medium of communication that will be used to contact you.</b></small>

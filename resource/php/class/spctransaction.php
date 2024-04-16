@@ -92,14 +92,14 @@ class spctransaction extends config
         if($this->doc1['error'] == '4'){
             $this->filename1 = "";
         }else{
-            $this->filename1 = "doc1" . $this->transactionid;
+            $this->filename1 = "doc1" . $this->transactionid .".pdf";
 
         }
 
         if($this->doc2['error'] == '4'){
             $this->filename2 = "";
         }else{
-            $this->filename2 = "doc2" . $this->transactionid;
+            $this->filename2 = "doc2" . $this->transactionid . ".pdf";
 
         }
         
@@ -111,12 +111,12 @@ class spctransaction extends config
     {
         $this->doc1['name'] = "doc1" . $this->transactionid;
         $storage2 = "doc1/";
-        $this->doc1File = $storage2 . $this->doc1['name'];
+        $this->doc1File = $storage2 . $this->doc1['name'] . ".pdf";
         move_uploaded_file($this->doc1tmp, $this->doc1File);
 
         $this->doc2['name'] = "doc2" . $this->transactionid;
         $storage = "doc2/";
-        $this->doc2File = $storage . $this->doc2['name'];
+        $this->doc2File = $storage . $this->doc2['name'] . ".pdf";
         move_uploaded_file($this->doc2tmp, $this->doc2File);
     }
 
