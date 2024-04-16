@@ -12,7 +12,7 @@ $assignName = kcej_getTransactionAssignName($_GET['transactionID'], $_GET['type'
 $clientName = kcej_getTransactionClientName($_GET['transactionID'], $_GET['type']);
 $assignEmail = kcej_getAssigneeEmail($assignName);
 
-if($_GET['state'] == '1' && $user->data()->groups == '1'){  // set for signature
+if($_GET['state'] == '1' && ($user->data()->groups == '1' || $user->data()->groups == '4')){  // set for signature
   $action = new update($_GET['transactionID'], $_GET['type']);
   $action->kcej_setStateFS();
   if($_GET['landing'] == 'udash'){

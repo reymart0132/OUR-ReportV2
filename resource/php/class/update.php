@@ -86,7 +86,8 @@ class update extends config{
         }
         $data = $con->prepare($sql);
         if ($data->execute()) {
-            $this->kcej_deleteItems();
+            // $this->kcej_deleteItems();
+            return true;
         } else {
             return false;
         }
@@ -106,7 +107,8 @@ class update extends config{
         }
         $data = $con->prepare($sql);
         if ($data->execute()) {
-            $this->kcej_deleteItems();
+            //$this->kcej_deleteItems();
+            return true;
         } else {
             return false;
         }

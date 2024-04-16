@@ -20,6 +20,11 @@ body {
   animation-fill-mode: forwards;
 }
 
+.txt-inst {
+  /* width: 300px; */
+  height: 200px;
+}
+
 .btn-pay{
   background-color: #fd8ec5;
   color:white;

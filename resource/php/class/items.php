@@ -43,4 +43,14 @@ class items extends config
         $data->execute();
     }
 
+    public function deleteItem()
+    {
+        $currentDateTime = date("Y-m-d H:i:s");
+        $config = new config;
+        $con = $config->con();
+        $sql = "DELETE FROM `tbl_items` WHERE `transnumber` = '$this->transactionid'";
+        $data = $con->prepare($sql);
+        $data->execute();
+    }
+
 }

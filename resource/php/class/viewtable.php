@@ -111,7 +111,9 @@ public function viewApproveTable(){
     }else{
       echo "<td>$data[facebook]</td>";
     }
-    echo "<td><a href='actions.php?landing=adash-onlineapp&state=5&transactionID=$data[transactionid]&type=reg' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='Awaiting Payment'><i class='fa-solid fa-check'></i></a><a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]&body=Good Day!%0D%0A%0D%0AWe have received and acknowledged your request.%0D%0A%0D%0ATotal Break down of your transaction is listed below:%0D%0A %0D%0A $data[summary] %0D%0ATotal Price: PHP$data[price].00 %0D%0A%0D%0APayments can be made through this link.%0D%0A https://ptipages.paynamics.net/ceu/default.aspx %0D%0A%0D%0A *Please send us the proof of payment to this email address for us to proceed with your documents. %0D%0A %0D%0A Release date is 15 working days after submission of proof of payment for TOR %0D%0A and 5 working days after submission of proof of payment for certificates (Please send it to this email thread for faster transaction) %0D%0A %0D%0A Thank you and Stay safe!' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
+    echo "<td><a href='actions.php?landing=adash-onlineapp&state=5&transactionID=$data[transactionid]&type=reg' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='Awaiting Payment'><i class='fa-solid fa-check'></i></a>
+    <a href='additemsreg.php?landing=adash-onlineapp&state=5&transactionID=$data[transactionid]&type=reg' class='btn btn-sm  btn-info m-1' data-toggle='tooltip' data-placement='top' title='Add Item'><i class='fa-solid fa-sack-dollar'></i></a>
+    <a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]&body=Good Day!%0D%0A%0D%0AWe have received and acknowledged your request.%0D%0A%0D%0ATotal Break down of your transaction is listed below:%0D%0A %0D%0A $data[summary] %0D%0ATotal Price: PHP$data[price] %0D%0A%0D%0APayments can be made through this link.%0D%0A https://ptipages.paynamics.net/ceu/default.aspx %0D%0A%0D%0A *Please send us the proof of payment to this email address for us to proceed with your documents. %0D%0A %0D%0A Release date is 15 working days after submission of proof of payment for TOR %0D%0A and 5 working days after submission of proof of payment for certificates (Please send it to this email thread for faster transaction) %0D%0A %0D%0A Thank you and Stay safe!' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
      if(empty($data['facebook'])){
             echo "<a href='#' class='btn btn-sm btn-secondary m-1 disabled' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook' disabled></i></a>";
     }else{
@@ -160,11 +162,11 @@ public function viewApproveTable(){
                   }
     echo "</table>";
   }
-  public function tbl_forAssignSPC()
+    public function tbl_forAssignSPC()
   {
 
     $con = $this->con();
-    $sql = "SELECT * FROM `tbl_SPCtransaction` WHERE `remarks` = 'PENDING'";
+    $sql = "SELECT * FROM `tbl_spctransaction` WHERE `remarks` = 'PENDING'";
     $data= $con->prepare($sql);
     $data->execute();
     $result = $data->fetchAll(PDO::FETCH_ASSOC);

@@ -404,7 +404,7 @@ function getAssigneeChart()
 {
     $config = new config;
     $con = $config->con();
-    $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points FROM tbl_accounts a LEFT JOIN tbl_transaction t ON a.id = t.assignee WHERE t.remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT','FOR RELEASE') OR t.remarks IS NULL AND a.groups = 1 GROUP BY a.id ORDER BY total_points ASC";
+    $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points FROM tbl_accounts a LEFT JOIN tbl_transaction t ON a.id = t.assignee AND t.remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT', 'FOR RELEASE') WHERE a.groups = 1 GROUP BY a.id ORDER BY total_points ASC;";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -438,13 +438,7 @@ function getnextAssigneeChartQ()
 {
     $config = new config;
     $con = $config->con();
-    $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points
-    FROM tbl_accounts a
-    LEFT JOIN tbl_transaction t ON a.id = t.assignee AND (t.remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT') OR t.remarks IS NULL)
-    WHERE a.groups = 1
-    GROUP BY a.id
-    ORDER BY total_points ASC;
-    ";
+    $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points FROM tbl_accounts a LEFT JOIN tbl_transaction t ON a.id = t.assignee AND t.remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT', 'FOR RELEASE') WHERE a.groups = 1 GROUP BY a.id ORDER BY total_points ASC";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -455,7 +449,7 @@ function getnextAssigneeChart2Q()
 {
     $config = new config;
     $con = $config->con();
-    $sql = "SELECT A.id, COALESCE(ST.transaction_count, 0) AS transaction_count FROM tbl_accounts A LEFT JOIN ( SELECT assignee, COUNT(*) AS transaction_count FROM tbl_spctransaction GROUP BY assignee ) ST ON A.id = ST.assignee WHERE A.groups = 4 ORDER BY transaction_count;";
+    $sql = "SELECT A.id, COALESCE(ST.transaction_count, 0) AS transaction_count FROM tbl_accounts A LEFT JOIN ( SELECT assignee, COUNT(*) AS transaction_count FROM tbl_spctransaction WHERE remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT','FOR RELEASE') GROUP BY assignee ) ST ON A.id = ST.assignee WHERE A.groups = 4 ORDER BY transaction_count ASC";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -466,13 +460,7 @@ function getnextAssigneeChart()
 {
     $config = new config;
     $con = $config->con();
-    $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points
-    FROM tbl_accounts a
-    LEFT JOIN tbl_transaction t ON a.id = t.assignee AND (t.remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT') OR t.remarks IS NULL)
-    WHERE a.groups = 1
-    GROUP BY a.id
-    ORDER BY total_points ASC;
-    ";
+    $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points FROM tbl_accounts a LEFT JOIN tbl_transaction t ON a.id = t.assignee AND t.remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT', 'FOR RELEASE') WHERE a.groups = 1 GROUP BY a.id ORDER BY total_points ASC;";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -483,7 +471,7 @@ function getnextAssigneeChart2()
 {
     $config = new config;
     $con = $config->con();
-    $sql = "SELECT A.id, COALESCE(ST.transaction_count, 0) AS transaction_count FROM tbl_accounts A LEFT JOIN ( SELECT assignee, COUNT(*) AS transaction_count FROM tbl_spctransaction GROUP BY assignee ) ST ON A.id = ST.assignee WHERE A.groups = 4 ORDER BY transaction_count;";
+    $sql = "SELECT A.id, COALESCE(ST.transaction_count, 0) AS transaction_count FROM tbl_accounts A LEFT JOIN ( SELECT assignee, COUNT(*) AS transaction_count FROM tbl_spctransaction WHERE remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT','FOR RELEASE') GROUP BY assignee ) ST ON A.id = ST.assignee WHERE A.groups = 4 ORDER BY transaction_count ASC";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -587,6 +575,28 @@ function kcej_isReleasing($user){
         exit();
     }else{
 
+    }
+}
+
+function kcej_vfnotes(){
+    $type = $_POST['type'];
+    $notes = $_POST['vfnotes'];
+    $transID = $_POST['transID'];
+    $config = new config;
+    $con = $config->con();
+    if($type == "reg"){
+        $sql = "UPDATE tbl_transaction SET `vfnotes` = '$notes' WHERE `transactionID` = '$transID'";
+    }else{
+        $sql = "";
+    }
+    //echo $type."<br>".$notes."<br>".$transID."<br>".$sql;
+    $data = $con->prepare($sql);
+    if($data->execute()){
+        echo"<div class='alert alert-primary' role='alert'>
+                Changes Saved.
+            </div>";
+    }else{
+        return false;
     }
 }
 

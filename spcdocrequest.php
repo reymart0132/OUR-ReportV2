@@ -50,7 +50,7 @@ if (!empty($_SESSION['info'])) {
     </header>
     <section class="section1">
         <div class="container-fluid p-3">
-            <form action="spcdocprocess.php" method ="POST" enctype="multipart/form-data">
+            <form action="spcdocprocess.php" method ="POST" enctype="multipart/form-data" onsubmit="disableButtonAndSubmit();">
             <div class="row ofh justify-content-center">
                     <div class="col-md-8">
                         <div class="form-container ">
@@ -99,7 +99,7 @@ if (!empty($_SESSION['info'])) {
                                         <div class="pt-3 d-flex justify-content-center">
                                             <div class="g-recaptcha" data-sitekey="6LcZHmwoAAAAAMud5aRHZVyMKm80GzSqMM6fFoXz"></div>
                                         </div>
-                                        <input type="submit" value="Place Order" class="btn btn-primary col-12 mt-2">
+                                        <input type="submit" id="submitBtn" value="Place Order" class="btn btn-primary col-12 mt-2">
                                     </div>
                                 </div>
                             </div>
@@ -195,6 +195,34 @@ if (!empty($_SESSION['info'])) {
         return validateFileInput(fileInput);
     }
 </script>
+
+  <script>
+    function disableButtonAndSubmit() {
+        // Get the submit button by its ID
+        var btn = document.getElementById("submitBtn");
+        
+        // Disable the button to prevent further clicks
+        btn.disabled = true;
+
+        // Optionally, show some feedback to the user that the form is being processed
+        btn.value = 'Processing...';
+
+        // Set a timeout to re-enable the button after 20 seconds (20000 milliseconds)
+        setTimeout(function() {
+            btn.disabled = false;
+            btn.value = 'Submit'; // Reset button text (optional)
+        }, 20000);
+
+        // Here, you would normally submit the form. For demonstration, we'll simulate it.
+        // Remove the next line if your form is being submitted in the usual way (without AJAX).
+        // event.preventDefault(); // Prevent form submission for demo purposes
+        // alert('Form submitted! Button will be re-enabled in 20 seconds.');
+        
+        // If you're using AJAX to submit the form, you'd place your AJAX call here.
+        // And in your AJAX callback, you might re-enable the button immediately upon completion/failure.
+    }
+    </script>
+
 
     <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
 </body>
