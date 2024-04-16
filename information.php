@@ -93,7 +93,7 @@ $locker->formLockerCheck();
                             </div>
                             <hr class="my-4">
                             <div class="col-md-4 mb-1">
-                                <label for="contactNumber" class="form-label">Contact Number</label>
+                                <label for="contactNumber" class="form-label">Contact Number / Viber / WeChat / WhatsApp</label>
                                 <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
                             </div>
                             <div class="col-md-4 mb-1">
@@ -109,7 +109,8 @@ $locker->formLockerCheck();
                                     <small class="small-text text-success text-end  ">*for easier and faster communication.<br> <b>example: fb.com/juan.delacruz23</b></small>
                             </div>
                             <div class="col-12 mb-1">
-                                <small class="text-muted" ><b>*Please ensure the correctness of the email address,FB Messenger Account and Phone Number that you have entered as this will be used as the primary medium of communication that will be used to contact you.</b></small>
+                                <small class="text-muted" ><b>Kindly make sure that your Facebook profile is not locked so that we can message you via Messenger.</b></small>
+                                <small class="text-muted" ><b>*Please ensure the correctness of the email address, FB Messenger Account and Phone Number that you have entered as this will be used as the primary medium of communication that will be used to contact you.</b></small>
                             </div>
                             <hr class="my-4">
                              <div class="row justify-content-center ">
