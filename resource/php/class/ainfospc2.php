@@ -1,6 +1,6 @@
 <?php
 
-class info extends config{
+class ainfospc2 extends config{
 
     public $tID, $type;
 
@@ -33,28 +33,34 @@ class info extends config{
             $reason = $result[0]['reason'];
             $contact = $result[0]['contactnumber'];
             $email = $result[0]['emailaddress'];
-            $dateapp = $result[0]['dateapp'];
+            $dateapp = date("m-d-Y - h:ia ", strtotime($result[0]['dateapp']));
             $remarks = $result[0]['remarks'];
-            $confirmed = date("m-d-Y - H:ia", strtotime($result[0]['dateconfirmed']));
             $points = $result[0]['points'];
             $price = $result[0]['price'];
             $inst = $result[0]['specialinstruction'];
             $summary = $result[0]['summary'];
+            
 
             if(!empty($result[0]['paymentdate'])){
-                $paid = date("m-d-Y - H:ia", strtotime($result[0]['paymentdate']));
+                $paid = date("m-d-Y - h:ia", strtotime($result[0]['paymentdate']));
             }else{
                 $paid = "N/A";
             }
 
+            if(!empty($result[0]['dateconfirmed'])){
+                $confirmed = date("m-d-Y - h:ia", strtotime($result[0]['dateconfirmed']));
+            }else{
+                $confirmed = "N/A";
+            }
+
             if(!empty($result[0]['signeddate'])){
-                $signed = date("m-d-Y - H:ia", strtotime($result[0]['signeddate']));
+                $signed = date("m-d-Y - h:ia", strtotime($result[0]['signeddate']));
             }else{
                 $signed = "N/A";
             }
 
             if(!empty($result[0]['releasedate'])){
-                $released = date("m-d-Y - H:ia", strtotime($result[0]['releasedate']));
+                $released = date("m-d-Y - h:ia", strtotime($result[0]['releasedate']));
             }else{
                 $released = "N/A";
             }
