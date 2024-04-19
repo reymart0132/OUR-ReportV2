@@ -27,7 +27,7 @@ $body ="<p>Dear $name ,</p>
 <p>We have now received your request.</p>
 <p>Please take note of the transaction number&nbsp;$tn</p>
 <p>Our SRA will contact you as soon as possible; Your request is now on queue.
-Once instructed to pay, please make the payment within 5 working days or your transaction will be forfeited.</p>
+Once instructed to pay, please make the payment within 3 working days or your transaction will be forfeited.</p>
 <p>You may check the status of your request by visiting the website below</p>
 <p>ceumnlregistrar.com/ord/status</p>
 <br><p><b>THIS IS AN AUTO GENERATED EMAIL PLEASE DO NOT REPLY</b></p>";

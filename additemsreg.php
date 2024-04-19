@@ -4,6 +4,7 @@ $view = new view();
 $user = new user();
 isRAdmin($user->data()->groups);
 $tn = $_GET['transactionID'];
+$landing = $_GET['landing'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -81,6 +82,7 @@ $tn = $_GET['transactionID'];
                             <input type="hidden" id="hiddenPrice" name="hiddenPrice" value="0" readonly>
                             <input type="hidden" id="totalPoints" name="points" placeholder="Total Points" readonly>
                             <input type="hidden" value="<?php echo $tn; ?>" name="tn" placeholder="Total Points" readonly>
+                            <input type="hidden" id="landing" name="landing" value="<?php echo $landing; ?>">
                         </div>
                         <div class="mt-3">
                             <h6>Order Summary</h6>
