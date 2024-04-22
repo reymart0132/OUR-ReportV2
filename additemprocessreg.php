@@ -7,7 +7,7 @@ if (!empty($_POST['items']) && !empty($_POST['tn'])) {
     $summary = $_POST['items'];
     $tnumber = $_POST['tn'];
     $points = $_POST['points'];
-
+    $landing = $_POST['landing'];
 } else {
     header("HTTP/1.1 403 Forbidden");
     exit;
@@ -38,9 +38,9 @@ foreach ($matches as $match) {
             $transaction->editTransactionreg();
             for ($i = 0; $i < count($order); $i++) {
                 $item[$i] = new items($tnumber, "", $counts[$i], $order[$i]);
-                $item[$i]->insertItem2();
+                $item[$i]->insertItem();
             }
-            header("location:./sdashboard.php");
+            header("location:./".$landing.".php");
 
     //insert codes here
 

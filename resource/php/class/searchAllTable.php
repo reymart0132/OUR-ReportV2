@@ -53,10 +53,20 @@ class searchAllTable extends config{
       echo "<td>$data[reason]</td>";
       echo "<td>$data[remarks]</td>";
       echo "<td>$assignee</td>";
-      echo "<td>
-              <a href='ainfo2.php?tID=$data[transactionid]&type=reg' class='btn btn-sm  btn-warning m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>
-            </td>";
-      echo "</tr>";
+      echo "<td>";
+        $user = new user();
+        if($user->data()->groups == 1){
+          echo "<a href='info.php?tID=$data[transactionid]&type=reg' class='btn btn-sm  btn-warning m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>";
+        }elseif($user->data()->groups == 2){
+          echo "<a href='ainfo3.php?tID=$data[transactionid]&type=reg' class='btn btn-sm  btn-warning m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>";
+        }elseif($user->data()->groups == 3){
+          echo "<a href='info.php?tID=$data[transactionid]&type=reg' class='btn btn-sm  btn-warning m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>";
+        }elseif($user->data()->groups == 4){
+          echo "<a href='sinfo2.php?tID=$data[transactionid]&type=reg' class='btn btn-sm  btn-warning m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>";
+        }else{
+          // display nothing
+        }
+      echo "</td></tr>";
     }
   echo "</table></div>";
 
@@ -98,10 +108,20 @@ class searchAllTable extends config{
       echo "<td>$data0[reason]</td>";
       echo "<td>$data0[remarks]</td>";
       echo "<td>$assignee0</td>";
-      echo "<td>
-              <a href='ainfo3.php?tID=$data0[transactionid]&type=sp' class='btn btn-sm  btn-warning m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>
-            </td>";
-      echo "</tr>";
+      echo "<td>";
+        $user = new user();
+        if($user->data()->groups == 1){
+          echo "<a href='info.php?tID=$data0[transactionid]&type=sp' class='btn btn-sm  btn-warning m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>";
+        }elseif($user->data()->groups == 2){
+          echo "<a href='ainfo3.php?tID=$data0[transactionid]&type=sp' class='btn btn-sm  btn-warning m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>";
+        }elseif($user->data()->groups == 3){
+          echo "<a href='info.php?tID=$data0[transactionid]&type=sp' class='btn btn-sm  btn-warning m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>";
+        }elseif($user->data()->groups == 4){
+          echo "<a href='sinfo2.php?tID=$data0[transactionid]&type=sp' class='btn btn-sm  btn-warning m-1' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>";
+        }else{
+          // display nothing
+        }
+      echo "</td></tr>";
     }
   echo "</table></div>";
   }
