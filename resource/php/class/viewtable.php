@@ -336,7 +336,7 @@ public function viewApproveTable(){
     $assignee = $user->data()->id;
     $con = $this->con();
     // echo $assignee;
-    $sql = "SELECT *, 'reg' as `apptype` from `tbl_transaction` WHERE `assignee` = '$assignee' AND `remarks` = 'ASSIGNED'";
+    $sql = "SELECT *, 'reg' as `apptype` from `tbl_transaction` WHERE `assignee` = '$assignee' AND `remarks` = 'ASSIGNED' ORDER BY `dateapp` DESC";
     $data= $con->prepare($sql);
 
     $data->execute();
