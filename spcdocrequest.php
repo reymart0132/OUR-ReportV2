@@ -59,12 +59,11 @@ if (!empty($_SESSION['info'])) {
                                 CheckError($_GET['error']);
                             }
                             ?>
-                            <h6> Please select the type of special document you would like to request. </h6>
-                            
                             <div class="container mt-2">
                                 <div class="row justify-content-center">
                                     <div class="col-md-12 b-3">
-                                        <label for="tod" class="form-label">Type of Document</label>
+                                        <label for="tod" class="form-label">Type of Document (Please read instructions below).</label><br>
+                                        <small class="text-danger"><b>Please select the type of special document you would like to request. For Abroad Forms please select "Abroad Forms" in the drop down menu and indicate which abroad form you would like to request (WES/NCLEX/etc.) </b></small>
                                         <select class="form-select" id="tod" name="tod" required onchange="toggleTextBox()">
                                             <option value="CAV">CHED CERTIFICATION AUTHENTICATION &amp; VERIFICATION (CAV)</option>
                                             <option value="CAV-UG">CHED CERTIFICATION AUTHENTICATION &amp; VERIFICATION (CAV)- Undergrad</option>
