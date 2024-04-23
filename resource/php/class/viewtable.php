@@ -633,4 +633,33 @@ public function viewApproveTable(){
     }
     echo "</table>";
   }
+
+  public function kcej_tblaccts()
+  {
+    $con = $this->con();
+    $sql = "SELECT * FROM `tbl_accounts`";
+    $data= $con->prepare($sql);
+    $data->execute();
+    $result = $data->fetchAll(PDO::FETCH_ASSOC);
+
+    echo "<h3 class='text-center p-3'> User Accounts </h3>";
+    echo "<table id='dataTable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+    echo "<thead class='thead-dark'>";
+    echo "<th>Username</th>";
+    echo "<th>Name</th>";
+    echo "<th>Groups</th>";
+    echo "<th>Status</th>";
+
+    echo "</thead>";
+
+    foreach ($result as $data) {
+    echo "<tr style='font-size: 13px'>";
+    echo "<td>$data[username]</td>";
+    echo "<td>$data[name]</td>";
+    echo "<td>$data[groups]</td>";
+    echo "<td>(status here)</td>";
+    echo "</tr>";
+    }
+    echo "</table>";
+  }
 }

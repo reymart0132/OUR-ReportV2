@@ -20,6 +20,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="vendor/css/dataTables.css">
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jszip.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/pdfmake.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/vfs_fonts.js"></script>
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/buttons.html5.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/buttons.print.min.js"></script>
 
     <title>Dashboard</title>
     <link rel="icon" type="image/x-icon" href="resource/img/ceu.png" />
@@ -51,7 +59,7 @@
             <a class="list-group-item list-group-item-action fw-bold">
               <i class="fas fa-question-circle me-2"></i> Main Menu</a>
               
-              <div class="item mt-3">
+            <!-- <div class="item mt-3">
               <a class="sub-btn bg-selected" href="adashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
               <a class="sub-btn" href="adash-search"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
             </div>
@@ -72,7 +80,7 @@
               <i class="fa-solid fa-folder me-2"></i> Releasing Section </a>
             <div class="item">
               <a class="sub-btn" href="rdashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
-            </div>
+            </div> -->
             
             <script type="text/javascript">
               $(document).ready(function(){
@@ -100,14 +108,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav  ms-auto mb-2 mb-lg-0">
               
-                <div class="row text-center me-3">
+                <!-- <div class="row text-center me-3">
                   <div class="col-md-3 px-0">
                     <a href="locker.php?landing=adashboard" class="btn btn-sm <?php $locker->lockerButtonClr(); ?>"><?php $locker->lockerButton(); ?></a>
                   </div>
                   <div class="col-md-9">
-                    <?php $locker->lockerStatusDisp(); ?>
+                    <?php //$locker->lockerStatusDisp(); ?>
                   </div>
-                </div>
+                </div> -->
 
                 <li class="nav-item dropdown ">
                   
@@ -116,11 +124,6 @@
 
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a href='#' class='dropdown-item'><i class="fa-solid fa-key"></i> Change Password</a></li>
-                    <?php 
-                      if(($user->data()->username == "JANATALIO") || ($user->data()->username == "RBOLASOC")){
-                        echo "<li><a href= 'acctmgt' class='dropdown-item'><i class='fa-solid fa-user-gear'></i> Accounts</a></li>";
-                      }
-                    ?>
                     <li><a href= 'logout.php' class='dropdown-item'><i class="fa-solid fa-person-walking-arrow-right"></i> Logout</a></li>
                     <!-- <li><a href= '#' class='dropdown-item'>Item 3</a></li>
                     <li><a href='#' class='dropdown-item'>Item 4</a></li> -->
@@ -139,8 +142,9 @@
           <div class="container-fluid p-5">
             <!-- <div class="row"> -->
               <!-- <div class="col-md p-5 content container-fluid"> -->
-                  <?php include 'charts.php'; ?>
-
+                  <?php 
+                    $table->kcej_tblaccts(); 
+                  ?>
               <!-- </div> -->
             <!-- </div> -->
           </div>
@@ -148,19 +152,23 @@
       </div>
      </div>
     </header>
+    <script>
+          $(document).ready(function(){
+          window.$('#dataTable').DataTable({
+            });
+        });
+    </script>  
+    <script type="text/javascript">
+      var el = document.getElementById("wrapper")
+      var toggleButton = document.getElementById("menu-toggle")
 
-      <?php include 'chart-control.php'; ?>
-      <script type="text/javascript">
-        var el = document.getElementById("wrapper")
-        var toggleButton = document.getElementById("menu-toggle")
-
-        toggleButton.onclick = function(){
-          el.classList.toggle("toggled")
-        }
-      </script>
-      <script src="resource/js/loader.js"></script>
-      <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      toggleButton.onclick = function(){
+        el.classList.toggle("toggled")
+      }
+    </script>
+    <script src="resource/js/loader.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
      
     </body>
 </html>
