@@ -95,5 +95,4 @@ class view extends config{
                 echo 'success';
             }
         }
-
 }
