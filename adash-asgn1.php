@@ -133,7 +133,7 @@ $locker = new locker();
               <div class="col-md-4 p-5 content ">
                 <small class="text-muted my-2">Next Assignee:&nbsp;<span class="text-danger"><?php echo getnextAssigneeChart();?></span></small>
                 <h4 class="text-center my-3">Total Points per Resource</h4>
-               <canvas id="myChart" width="400px"></canvas>
+               <canvas id="myChart" height="250px" width="400px"></canvas>
 .              </div>
             </div>
           </div>
