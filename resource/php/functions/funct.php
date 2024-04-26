@@ -438,7 +438,11 @@ function getnextAssigneeChartQ()
 {
     $config = new config;
     $con = $config->con();
-    $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points FROM tbl_accounts a LEFT JOIN tbl_transaction t ON a.id = t.assignee AND t.remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT', 'FOR RELEASE') WHERE a.groups = 1 GROUP BY a.id ORDER BY total_points ASC";
+    // $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points FROM tbl_accounts a LEFT JOIN tbl_transaction t ON a.id = t.assignee AND t.remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT', 'FOR RELEASE') WHERE a.groups = 1 GROUP BY a.id ORDER BY total_points ASC";
+
+    $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points FROM tbl_accounts a LEFT JOIN tbl_transaction t ON a.id = t.assignee AND t.remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT', 'FOR RELEASE') WHERE a.groups = 1 AND a.id NOT IN ('33', '37') GROUP BY a.id ORDER BY total_points ASC";
+    //mel and cha are exempted
+
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchAll(PDO::FETCH_ASSOC);
