@@ -540,7 +540,8 @@ public function viewApproveTable(){
     $data= $con->prepare($sql);
     $data->execute();
     $result = $data->fetchAll(PDO::FETCH_ASSOC);
-
+  
+    
     echo "<h3 class='text-center p-3'> For Release Applications </h3>";
     echo "<table id='dataTable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
     echo "<thead class='thead-dark'>";
@@ -555,6 +556,8 @@ public function viewApproveTable(){
     echo "</thead>";
 
     foreach ($result as $data) {
+    $id = $data['transactionid'];
+
     echo "<tr style='font-size: 13px'>";
     echo "<td>$data[transactionid]</td>";
     echo "<td>$data[fullname]</td>";
@@ -566,8 +569,22 @@ public function viewApproveTable(){
     }else{
       echo "<td>$data[facebook]</td>";
     }
+
     echo "<td> ".str_replace('%0D%0A',' <br> ',str_replace('%0D%0A',' <br> ',$data['summary']) )."</td>";
-    echo "<td><a href='actions.php?transactionID=".$data['transactionid']."&state=3&type=".$data['apptype']."' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='Set as Released'><i class='fa-solid fa-check'></i></a>";
+
+    echo "<td><button class='btn btn-sm btn-success m-1' type='button' data-bs-toggle='modal' data-bs-target='#release$id' data-id='$id'><i class='fa-solid fa-check'></i></button>";
+
+//     echo "<td><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>
+//   Launch demo modal
+// </button>";
+
+
+
+          include "modals.php";
+
+
+    // echo "<td><a href='actions.php?transactionID=".$data['transactionid']."&state=3&type=".$data['apptype']."' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='Set as Released'><i class='fa-solid fa-check'></i></a>";
+
     echo "<a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
      if(empty($data['facebook'])){
             echo "<a href='#' class='btn btn-sm  btn-secondary m-1 disabled' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook' disabled></i></a>";
@@ -601,7 +618,8 @@ public function viewApproveTable(){
     echo "<th>Release Date</th>";
     echo "<th>Released By</th>";
     echo "<th>Requested Documents</th>";
-    echo "<th style='width: 200px;'>Actions</th>";
+    echo "<th>Remarks</th>";
+    echo "<th style='width: 30px;'>Actions</th>";
     echo "</thead>";
 
     foreach ($result as $data) {
@@ -616,19 +634,16 @@ public function viewApproveTable(){
       echo "<td>$data[releasedate]</td>";
       echo "<td>$releasedby</td>";
       echo "<td> ".str_replace('%0D%0A',' <br> ',str_replace('%0D%0A',' <br> ',$data['summary']) )."</td>";
+      echo "<td>$data[releasing_remarks]</td>";
+
+      // echo "<td><a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
       // if(empty($data['facebook'])){
-      //   echo "<td>No Data</td>";
+      //         echo "<a href='#' class='btn btn-sm  btn-secondary m-1 disabled' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook' disabled></i></a>";
       // }else{
-      //   echo "<td>$data[facebook]</td>";
-      // }
-      //echo "<td><a href='actions.php?transactionID=".$data['transactionid']."&state=2' class='btn btn-sm  btn-secondary m-1' data-toggle='tooltip' data-placement='top' title='Set as For Signature'><i class='fa-solid fa-check'></i></a>";
-      echo "<td><a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
-      if(empty($data['facebook'])){
-              echo "<a href='#' class='btn btn-sm  btn-secondary m-1 disabled' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook' disabled></i></a>";
-      }else{
-        echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
-            }                    
-      echo       "<a href='info.php?tID=".$data['transactionid']."&type=".$data['apptype']."' class='btn btn-sm  btn-warning m-1' target='_blank' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>
+      //   echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
+      //       }             
+
+      echo "<td><a href='info.php?tID=".$data['transactionid']."&type=".$data['apptype']."' class='btn btn-sm  btn-warning m-1' target='_blank' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>
                       </td>";
     }
     echo "</table>";

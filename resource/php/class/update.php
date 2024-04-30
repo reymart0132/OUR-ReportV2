@@ -3,13 +3,14 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/ord/resource/php/class/core/init.php';
 
 class update extends config{
 
-    public $tID, $type, $info, $assignee;
+    public $tID, $type, $info, $assignee, $remarks;
 
-    function __construct( $transactionID = null, $type = null, $info=null, $assignee=null){
+    function __construct( $transactionID = null, $type = null, $info=null, $assignee=null, $remarks=null){
         $this->tID = $transactionID;
         $this->type = $type;
         $this->info = $info;
         $this->assignee = $assignee;
+        $this->remarks = $remarks;
     }
 
     public function kcej_setStateFS(){
@@ -40,9 +41,9 @@ class update extends config{
         $config = new config();
         $con = $this->con();
         if($this->type == 'reg'){
-            $sql = "UPDATE `tbl_transaction` SET `remarks` = 'RELEASED', `info`='$this->info', `releasedate` = now(), `releasedby` = '$this->assignee' WHERE `transactionid` = '$this->tID'";
+            $sql = "UPDATE `tbl_transaction` SET `remarks` = 'RELEASED', `info`='$this->info', `releasedate` = now(), `releasedby` = '$this->assignee', `releasing_remarks` = '$this->remarks' WHERE `transactionid` = '$this->tID'";
         }elseif($this->type == 'sp'){
-            $sql = "UPDATE `tbl_spctransaction` SET `remarks` = 'RELEASED', `info`='$this->info' ,`releasedate` = now(), `releasedby` = '$this->assignee' WHERE `transactionid` = '$this->tID'";
+            $sql = "UPDATE `tbl_spctransaction` SET `remarks` = 'RELEASED', `info`='$this->info' ,`releasedate` = now(), `releasedby` = '$this->assignee', `releasing_remarks` = '$this->remarks'  WHERE `transactionid` = '$this->tID'";
         }else{
             header("HTTP/1.1 403 Forbidden");
         }
