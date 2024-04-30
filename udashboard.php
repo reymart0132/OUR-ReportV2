@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
 $table = new viewtable();
 $user = new user();
+isUser($user->data()->groups);
 ?>
 
 <!DOCTYPE html>
@@ -54,22 +55,34 @@ $user = new user();
                     <small>Current Date and Time</small> 
                     <?php include 'clock.php'; ?>
                     </a>
-
+                    
                     <a class="list-group-item list-group-item-action fw-bold">
                         <i class="fas fa-question-circle me-2"></i> Menu</a>
-
+                        
+                        
+                        
+                            
                     <div class="item mt-3">
                         <a class="sub-btn" href="alldash-search"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
                         <a class="sub-btn bg-selected" href="udashboard"><i class="fa-solid fa-house"></i> Pending </a>
                     </div>
-
+                    
                     <!-- <div class="item">
                         <a class="sub-btn" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
                     </div> -->
-
+                    
                     <div class="item">
                         <a class="sub-btn" href="udashboardfs"><i class="fa-solid fa-star"></i> For Signature </a>
                     </div>
+                    
+
+
+                    <a class="list-group-item list-group-item-action fw-bold">
+                        <i class="fas fa-link me-2"></i> Links</a>
+                    <div class="item">
+                        <a href='switchgroup.php' class="btn btn-sm btn-info"><i class="fa-solid fa-arrow-right"></i> Special Transaction</a>
+                    </div>
+                    
 
                     <script type="text/javascript">
                         $(document).ready(function () {
