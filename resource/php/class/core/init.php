@@ -3,7 +3,6 @@ date_default_timezone_set('Asia/Manila');
 session_start();
 $GLOBALS['config'] = array(
     'mysql' => array(
-<<<<<<< Updated upstream
         // 'host' => '109.106.254.187',
         // 'username' => 'ceumnlre_root',
         // 'password' => 'Eg5c272klko5',
@@ -11,11 +10,6 @@ $GLOBALS['config'] = array(
         'host' => '127.0.0.1:3306',
         'username' => 'root',
         'password' => '',
-=======
-        'host' => '109.106.254.187',
-        'username' => 'ceumnlre_root',
-        'password' => 'Eg5c272klko5',
->>>>>>> Stashed changes
         'db' => 'ceumnlre_ord'
     ),
     'remember'=>array(
