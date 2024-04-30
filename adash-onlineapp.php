@@ -3,6 +3,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php'
 isLogin();
 $table = new viewtable();
 $user = new user();
+isLogin();
 isRAdmin($user->data()->groups);
 $locker = new locker();
 ?>

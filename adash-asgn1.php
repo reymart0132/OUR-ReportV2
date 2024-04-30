@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
 $table = new viewtable();
 $user = new user();
+isLogin();
 isRAdmin($user->data()->groups);
 $locker = new locker();
 ?>
@@ -133,11 +134,7 @@ $locker = new locker();
               <div class="col-md-5 p-5 content ">
                 <small class="text-muted my-2">Next Assignee:&nbsp;<span class="text-danger"><?php echo getnextAssigneeChart();?></span></small>
                 <h4 class="text-center my-3">Total Points per Resource</h4>
-<<<<<<< Updated upstream
                <canvas id="myChart" height="250px" width="400px"></canvas>
-=======
-               <canvas id="myChart" width="550"></canvas>
->>>>>>> Stashed changes
 .              </div>
             </div>
           </div>

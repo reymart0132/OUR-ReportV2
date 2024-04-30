@@ -4,6 +4,28 @@
     margin: 0;
     overflow-x: hidden !important;
 }
+
+.btn-outline-sp{
+    --bs-btn-color: #667eea;
+    --bs-btn-border-color: #667eea;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #667eea;
+    --bs-btn-hover-border-color: #667eea;
+    --bs-btn-focus-shadow-rgb: 25, 135, 84;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #667eea;
+    --bs-btn-active-border-color: #667eea;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #667eea;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #667eea;
+    --bs-gradient: none;
+
+    width: 70%;
+    margin: 5px 0;
+    font-weight: bold;
+}
+
 .big-txt-ceu{
     font-weight: 800;
     color: #DC64A1;

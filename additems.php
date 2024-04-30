@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
 $view = new view();
 $user = new user();
+isLogin();
 isSPC($user->data()->groups);
 $tn = $_GET['transactionID'];
 ?>

@@ -8,6 +8,7 @@ if (!empty($_GET['tID']) && !empty($_GET['type'])) {
     header("HTTP/1.1 403 Forbidden");
     exit;
 }
+isLogin();
 isSPC($user->data()->groups);
 
 ?>
