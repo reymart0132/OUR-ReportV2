@@ -63,12 +63,29 @@ if (!empty($_SESSION['info'])) {
                                 <div class="row justify-content-center">
                                     <div class="col-md-12 b-3">
                                         <label for="tod" class="form-label">Type of Document (Please read instructions below).</label><br>
-                                        <small class="text-danger"><b>Please select the type of special document you would like to request. For Abroad Forms please select "Abroad Forms" in the drop down menu and indicate which abroad form you would like to request (WES/NCLEX/etc.) </b></small>
-                                        <select class="form-select" id="tod" name="tod" required onchange="toggleTextBox()">
+                                        <small class="text-danger"><b>Please select the type of special document you would like to request. For Abroad Forms please select "Abroad Forms" and indicate which abroad form you would like to request (WES/NCLEX/etc.) </b></small>
+
+                                        <!-- <select class="form-select" id="tod" name="tod" required onchange="toggleTextBox()">
                                             <option value="CAV">CHED CERTIFICATION AUTHENTICATION &amp; VERIFICATION (CAV)</option>
                                             <option value="CAV-UG">CHED CERTIFICATION AUTHENTICATION &amp; VERIFICATION (CAV)- Undergrad</option>
                                             <option value="Abroad Forms">Abroad Forms</option>
-                                        </select>
+                                        </select> -->
+
+                                        <div class="form-check d-flex justify-content-center">
+                                            <input type="radio" class="btn-check btn-spcitem" name="tod" id="sp1" value="CAV" autocomplete="off" checked onclick="toggleTextBox()">
+                                            <label class="btn btn-outline-sp btn-sm btn-block" for="sp1">CHED CERTIFICATION AUTHENTICATION &amp; VERIFICATION (CAV)</label>
+                                        </div>
+
+                                        <div class="form-check d-flex justify-content-center">
+                                            <input type="radio" class="btn-check btn-spcitem" name="tod" id="sp2" value="CAV-UG" autocomplete="off" onclick="toggleTextBox()">
+                                            <label class="btn btn-outline-sp btn-sm btn-block" for="sp2">CHED CERTIFICATION AUTHENTICATION &amp; VERIFICATION (CAV)- Undergraduate</label>
+                                        </div>
+
+                                        <div class="form-check d-flex justify-content-center">
+                                            <input type="radio" class="btn-check btn-spcitem" name="tod" id="sp3" value="Abroad Forms" autocomplete="off" onclick="toggleTextBox()">
+                                            <label class="btn btn-outline-sp btn-sm btn-block" for="sp3">ABROAD FORMS</label>
+                                        </div>
+
                                     </div>
 
                                     <div class="col-md-12 b-3 p-1" id="textboxContainer" style="display: none;">
@@ -142,21 +159,43 @@ if (!empty($_SESSION['info'])) {
     <script src="vendor/js/bootstrap-select.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
+
+    // function toggleTextBox() {
+    //     var selectedOption = document.getElementById("tod").value;
+    //     var textboxContainer = document.getElementById("textboxContainer");
+    //     var textbox = document.getElementById("textbox");
+    //     var title = document.getElementById("title1");
+    //     var file1 = document.getElementById("file1");
+
+    //     if (selectedOption === "Abroad Forms") {
+    //         textboxContainer.style.display = "block";
+    //         textbox.removeAttribute("readonly");
+    //         textbox.setAttribute('required', 'required')
+    //         title.innerHTML = "Signed Abroad Forms";
+    //         file1.setAttribute('required', 'required');
+            
+            
+    //     } else {
+    //         textboxContainer.style.display = "none";
+    //         textbox.setAttribute("readonly", "readonly");
+    //         title.innerHTML = "Transcript of Records";
+    //         textbox.removeAttribute("required");
+    //         file1.removeAttribute('required');
+    //     }
+    // }
+
     function toggleTextBox() {
-        var selectedOption = document.getElementById("tod").value;
         var textboxContainer = document.getElementById("textboxContainer");
         var textbox = document.getElementById("textbox");
         var title = document.getElementById("title1");
         var file1 = document.getElementById("file1");
 
-        if (selectedOption === "Abroad Forms") {
+        if (document.getElementById("sp3").checked) {
             textboxContainer.style.display = "block";
             textbox.removeAttribute("readonly");
             textbox.setAttribute('required', 'required')
             title.innerHTML = "Signed Abroad Forms";
             file1.setAttribute('required', 'required');
-            
-            
         } else {
             textboxContainer.style.display = "none";
             textbox.setAttribute("readonly", "readonly");
@@ -165,6 +204,7 @@ if (!empty($_SESSION['info'])) {
             file1.removeAttribute('required');
         }
     }
+    
 </script>
 <script>
     function validateFileInput(input) {

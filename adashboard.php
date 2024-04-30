@@ -3,6 +3,7 @@
   isLogin();
   $table = new viewtable();
   $user = new user();
+  isLogin();
   isRAdmin($user->data()->groups);
   $locker = new locker();
 ?>
@@ -116,6 +117,11 @@
 
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a href='#' class='dropdown-item'><i class="fa-solid fa-key"></i> Change Password</a></li>
+                    <?php 
+                      if(($user->data()->username == "JANATALIO") || ($user->data()->username == "RBOLASOC")){
+                        echo "<li><a href= 'acctmgt' class='dropdown-item'><i class='fa-solid fa-user-gear'></i> Accounts</a></li>";
+                      }
+                    ?>
                     <li><a href= 'logout.php' class='dropdown-item'><i class="fa-solid fa-person-walking-arrow-right"></i> Logout</a></li>
                     <!-- <li><a href= '#' class='dropdown-item'>Item 3</a></li>
                     <li><a href='#' class='dropdown-item'>Item 4</a></li> -->

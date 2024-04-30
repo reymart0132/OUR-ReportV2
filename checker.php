@@ -83,8 +83,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php'
                         <img class="services" height="75px" src="resource/img/support.png" alt="Question and answer icons created by Linector">
                         <h6 class="card-title big-txt-ceu3 text-center mb-2 mt-4">OUR Live Chat Support Services via (FB Messenger)</h6>    
                         <p class="itext">You may view our live support services below. OUR Chat support is only available Monday - Saturday from 8:00am to 4:00pm (GMT+8)</p>
-                        <a href="https://m.me/116733688185852" target="_blank" class="btn btn-hover color-3 text-center me-3 p-2"> Document Request Inquiries</a>
-                        <a href="https://m.me/118388904686307"  target="_blank" class="btn btn-hover color-3 text-center  me-3 p-2"> Check the Status of my Records/Clearance </a>
+                        <a href="https://m.me/116733688185852" target="_blank" class="btn btn-hover color-3 text-center me-3 p-2"> Document Request Inquiries /  Check the Status of my Records/Clearance</a>
+                        <!-- <a href="https://m.me/116733688185852" target="_blank" class="btn btn-hover color-3 text-center me-3 p-2"> Document Request Inquiries</a>
+                        <a href="https://m.me/118388904686307"  target="_blank" class="btn btn-hover color-3 text-center  me-3 p-2"> Check the Status of my Records/Clearance </a> -->
                     </div>
                 </div>
             </div>
@@ -110,7 +111,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php'
 
     <script>
       var chatbox = document.getElementById('fb-customer-chat');
-      chatbox.setAttribute("page_id", "118388904686307");
+      chatbox.setAttribute("page_id", "116733688185852");
+    //   chatbox.setAttribute("page_id", "118388904686307");
       chatbox.setAttribute("attribution", "biz_inbox");
     </script>
 

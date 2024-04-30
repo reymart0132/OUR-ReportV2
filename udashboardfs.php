@@ -2,6 +2,8 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
 $table = new viewtable();
 $user = new user();
+isLogin();
+isUser($user->data()->groups);
 ?>
 
 <!DOCTYPE html>
@@ -69,6 +71,12 @@ $user = new user();
 
                     <div class="item">
                         <a class="sub-btn bg-selected" href="udashboardfs"><i class="fa-solid fa-star"></i> For Signature </a>
+                    </div>
+
+                    <a class="list-group-item list-group-item-action fw-bold">
+                        <i class="fas fa-link me-2"></i> Links</a>
+                    <div class="item">
+                        <a href='switchgroup.php' class="btn btn-sm btn-info"><i class="fa-solid fa-arrow-right"></i> Special Transaction</a>
                     </div>
 
                     <script type="text/javascript">

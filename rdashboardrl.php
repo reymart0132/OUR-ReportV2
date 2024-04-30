@@ -4,6 +4,7 @@ isLogin();
 $table = new viewtable();
 $user = new user();
 kcej_isReleasing($user->data()->groups);
+$locker = new locker();
 ?>
 
 <!DOCTYPE html>

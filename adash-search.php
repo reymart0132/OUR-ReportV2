@@ -3,6 +3,7 @@
   isLogin();
   $table = new viewtable();
   $user = new user();
+  isLogin();
   isRAdmin($user->data()->groups);
   $locker = new locker();
 

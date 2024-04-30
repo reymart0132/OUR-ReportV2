@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
 $table = new viewtable();
 $user = new user();
+isLogin();
 isRAdmin($user->data()->groups);
 $locker = new locker();
 ?>
@@ -153,13 +154,13 @@ $locker = new locker();
 
           <div class="container-fluid p-5">
             <div class="row">
-              <div class="col-md-8 p-5 content">
+              <div class="col-md-7 p-5 content">
                 <?php $table->tbl_forAssignSPC(); ?>
               </div>
-              <div class="col-md-4 p-5 content ">
+              <div class="col-md-5 p-5 content ">
               <small class="text-muted my-2">Next Assignee:&nbsp;<span class="text-danger"><?php echo getnextAssigneeChart2();?></span></small>
                 <h4 class="text-center my-3">Total Points per Resource</h4>
-               <canvas id="myChart" width="400px"></canvas>
+               <canvas id="myChart" width="550px"></canvas>
               </div>
             </div>
           </div>

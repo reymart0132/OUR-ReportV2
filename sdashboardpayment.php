@@ -78,6 +78,13 @@ isSPC($user->data()->groups);
                         <a class="sub-btn" href="sdashboardsignature"><i class="fa-solid fa-star"></i> For Signature </a>
                     </div>
 
+
+                    <a class="list-group-item list-group-item-action fw-bold">
+                        <i class="fas fa-link me-2"></i> Links</a>
+                    <div class="item">
+                        <a href='switchgroup.php' class="btn btn-sm btn-info"><i class="fa-solid fa-arrow-right"></i> Regular Transaction</a>
+                    </div>
+
                     <script type="text/javascript">
                         $(document).ready(function () {
                             $('.sub-btn').click(function () {

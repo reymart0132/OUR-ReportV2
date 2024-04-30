@@ -9,7 +9,8 @@ class config{
     //private $password = 'Eg5c272klko5';
     public $pdo = null;
 
-    public function con(){
+    public function con()
+    {
         try {
             //hostinger
             // $this->pdo = new PDO('mysql:local=109.106.254.187:3306;dbname=ceumnlre_ord', $this->user, $this->password);
