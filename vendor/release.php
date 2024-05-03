@@ -12,13 +12,12 @@ $body2 ="<h5><b>---THIS IS AN AUTO-GENERATED EMAIL MESSAGE, PLEASE DO NOT REPLY 
 
         <p>Dear $clientName,</p><p>We appreciate your patience while we work on your request.</p>
 
-        <p>Kindly confirm the SPECIFIC DATE AND TIME (Schedule of Releasing of Documents is from Monday-Saturday 8:00am-5:00pm) you will have to pick up your document so we can log and prepare it prior to your visit.
-            We regret that we will not accommodate walk-in clients outside their confirmed date of appointment or without prior appointment from us. During your visit, kindly bring the following:</p>
+        <p>We are happy to inform you that your requested document has been completed.
+            You may claim your requested documents at the Office of the University Registrar (Releasing Section) and bring the following:</p>
 
         <ul>
             <li> One (1) valid identification </li>
             <li> Digital Screenshot or printed copy of this email confirmation </li>
-            <li> Please observe proper attire (no shorts/sando) </li>
         </ul>";
 
 $body3 ="<p> If someone will receive your documents on behalf of you, please provide an <b> authorization letter addressed to Dr. Rhoda C. Aguilar, University Registrar, and attach a valid ID and the representative's ID. </b></p>
@@ -27,7 +26,7 @@ $body3 ="<p> If someone will receive your documents on behalf of you, please pro
         
         <p>We would also want to request a few minutes of your time to assess the SRA <b>(".$assignName.")</b> who prepared your documents.</p>
         
-        <p>Kindly click on the link: https://docs.google.com/forms/d/e/1FAIpQLSfScVwx_K8WWMBVUG9cSmCVMTYgG1VSEReVWulpgnPp_iEoiQ/viewform </p>
+        <p>Kindly click on the link: https://docs.google.com/forms/d/e/1FAIpQLScCCgIDuFkoCqIoA4Op9_RParPH-onPFvlYkhhYvO3wM0SDFw/viewform </p>
         
         <p>Thank you & Stay Safe!</p>
         
