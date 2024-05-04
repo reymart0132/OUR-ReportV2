@@ -95,4 +95,26 @@ class view extends config{
                 echo 'success';
             }
         }
+
+        public function groupType(){
+            echo '<option data-tokens="1" value="1">Encoder 1</option>';
+            echo '<option data-tokens="2" value="2">Admin / Verifier</option>';
+            echo '<option data-tokens="3" value="3">Releasing</option>';
+            echo '<option data-tokens="4" value="4">Encoder 4</option>';
+        }
+
+        public function groupTypeName($type){
+            if($type == "1"){
+                $name = "Encoder 1";
+            }elseif($type == "2"){
+                $name = "Admin / Verifier";
+            }elseif($type == "3"){
+                $name = "Releasing";
+            }elseif($type == "4"){
+                $name = "Encoder 4";
+            }else{
+                $name = "";
+            }
+            return $name;
+        }
 }

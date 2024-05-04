@@ -636,6 +636,7 @@ public function viewApproveTable(){
 
   public function kcej_tblaccts()
   {
+    $view = new view();
     $con = $this->con();
     $sql = "SELECT * FROM `tbl_accounts`";
     $data= $con->prepare($sql);
@@ -648,16 +649,39 @@ public function viewApproveTable(){
     echo "<th>Username</th>";
     echo "<th>Name</th>";
     echo "<th>Groups</th>";
-    echo "<th>Status</th>";
+    echo "<th>Account Status</th>";
+    echo "<th>Actions</th>";
 
     echo "</thead>";
 
     foreach ($result as $data) {
+    $id = $data['id'];
     echo "<tr style='font-size: 13px'>";
-    echo "<td>$data[username]</td>";
-    echo "<td>$data[name]</td>";
-    echo "<td>$data[groups]</td>";
-    echo "<td>(status here)</td>";
+    echo "<form>";
+      echo "<td>$data[username]</td>";
+      echo "<td>$data[name]</td>";
+      echo "<td>";
+        echo "<select class='form-select' name='groups'>
+                <option data-tokens=$data[groups] value=$data[groups]>".$view->groupTypeName($data['groups'])."</option>
+                <option disabled>_____________________</option>";
+                $view->groupType();
+        echo "</select>";
+      echo "</td>";
+      echo "<td><select class='form-select' name='groups'>
+                <option data-tokens=$data[quote] value=$data[quote]>$data[quote]</option>
+                <option disabled>_____________________</option>
+                <option data-tokens=active value=active>Active</option>
+                <option data-tokens=inactive value=inactive>Inactive</option>
+              </td>";
+      echo "<td>
+              <button type='submit' class='btn btn-sm btn-success'>Save</button>
+            </td>";
+      // echo "<td>
+      //         <button type='submit' class='btn btn-sm btn-success'>Save</button>
+      //         <a href='#' class='btn btn-sm btn-danger' data-bs-toggle='modal' data-bs-target='#delUser$id' data-transaction-id='$id' data-toggle='tooltip' data-placement='top' title='Remove User'><i class='fa-solid fa-trash'></i> Delete</a>
+      //       </td>";
+      //       include "modals_accts.php";
+    echo "</form>";
     echo "</tr>";
     }
     echo "</table>";
