@@ -101,6 +101,8 @@ class view extends config{
             echo '<option data-tokens="2" value="2">Admin / Verifier</option>';
             echo '<option data-tokens="3" value="3">Releasing</option>';
             echo '<option data-tokens="4" value="4">Encoder 4</option>';
+            echo "<option disabled>_____________________</option>";
+            echo '<option data-tokens="0" value="0">Account Disabled</option>';
         }
 
         public function groupTypeName($type){

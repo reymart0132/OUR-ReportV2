@@ -648,7 +648,7 @@ public function viewApproveTable(){
     echo "<thead class='thead-dark'>";
     echo "<th>Username</th>";
     echo "<th>Name</th>";
-    echo "<th>Groups</th>";
+    // echo "<th>Groups</th>";
     echo "<th>Account Status</th>";
     echo "<th>Actions</th>";
 
@@ -667,12 +667,12 @@ public function viewApproveTable(){
                 $view->groupType();
         echo "</select>";
       echo "</td>";
-      echo "<td><select class='form-select' name='groups'>
-                <option data-tokens=$data[quote] value=$data[quote]>$data[quote]</option>
-                <option disabled>_____________________</option>
-                <option data-tokens=active value=active>Active</option>
-                <option data-tokens=inactive value=inactive>Inactive</option>
-              </td>";
+      // echo "<td><select class='form-select' name='groups'>
+      //           <option data-tokens=$data[quote] value=$data[quote]>$data[quote]</option>
+      //           <option disabled>_____________________</option>
+      //           <option data-tokens=active value=active>Active</option>
+      //           <option data-tokens=inactive value=inactive>Inactive</option>
+      //         </td>";
       echo "<td>
               <button type='submit' class='btn btn-sm btn-success'>Save</button>
             </td>";
