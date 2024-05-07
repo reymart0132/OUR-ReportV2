@@ -634,5 +634,9 @@ function kcej_vfnotes(){
     }
 }
 
+function kcej_clean($string){
+   return nl2br(preg_replace('/[^A-Za-z0-9\-!@:., \'\n\r\/]/', '', $string));
+}
+
 // 1 - ENCODER, 2 - VERIFIER, 3 - RELEASING, 4 - SPECIAL
  ?>
