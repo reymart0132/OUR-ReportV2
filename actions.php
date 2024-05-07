@@ -47,14 +47,6 @@ if($_GET['state'] == '1' && ($user->data()->groups == '1' || $user->data()->grou
   }
 }elseif($_GET['state'] == '3' && ($user->data()->groups == '3' || $user->data()->groups == '2')){  // set as released
   $action = new update($_GET['transactionID'], $_GET['type'], '' ,$user->data()->id, $_GET['remarks']);
-
-  // echo $_GET['transactionID']."<br>";
-  // echo $_GET['type']."<br>";
-  // echo $_GET['state']."<br>";
-  // echo $_GET['remarks']."<br>";
-
-  // die();
-
   $action->kcej_setStateRL();
   header('Location:rdashboard.php');
 

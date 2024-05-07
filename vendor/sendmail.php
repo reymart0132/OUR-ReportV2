@@ -29,7 +29,7 @@ $body ="<p>Dear $name ,</p>
 <p>Our SRA will contact you as soon as possible; Your request is now on queue.
 Once instructed to pay, please make the payment within 3 working days or your transaction will be forfeited.</p>
 <p>You may check the status of your request by visiting the website below</p>
-<p>ceumnlregistrar.com/ord/status</p>
+<p>ceumnlregistrar.com/ord/checker</p>
 <br><p><b>THIS IS AN AUTO GENERATED EMAIL PLEASE DO NOT REPLY</b></p>";
 
 try {

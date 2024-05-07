@@ -14,7 +14,7 @@ if (!empty($_SESSION['info']) && !empty($_POST['points'])) {
     $facebook = $_SESSION['info']['facebook'];
     $points = $_POST['points'];
     $price = $_POST['hiddenPrice'];
-    $specialinstruction = $_POST['sinstruction'];
+    $specialinstruction0 = $_POST['sinstruction'];
     $summary = $_POST['items'];
     $_SESSION['tn'] = $tnumber;
 } else {
@@ -28,6 +28,8 @@ if (!empty($_POST['items'])) {
     header("HTTP/1.1 403 Forbidden");
     exit;
 }
+
+
 
 $text = $_POST['items'];
 $pattern = '/^(.+?)\s*-\s*(\d+)\s*$/m';
@@ -64,6 +66,8 @@ if (!empty($_POST)) {
     $context = stream_context_create($options);
     $verify = file_get_contents($url, false, $context);
     $captcha_success = json_decode($verify);
+
+    $specialinstruction = kcej_clean($specialinstruction0);
 
     if ($captcha_success->success) {
         if (datevalidation($emailAdress) == false) {

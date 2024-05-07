@@ -115,7 +115,10 @@ public function viewApproveTable(){
     echo "<td> ".str_replace('%0D%0A',' <br> ',str_replace('%0D%0A',' <br> ',$data['summary']) )."</td>";
     echo "<td><a href='actions.php?landing=adash-onlineapp&state=5&transactionID=$data[transactionid]&type=reg' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='Awaiting Payment'><i class='fa-solid fa-check'></i></a>
     <a href='additemsreg.php?landing=adash-onlineapp&state=5&transactionID=$data[transactionid]&type=reg' class='btn btn-sm  btn-info' data-toggle='tooltip' data-placement='top' title='Add Item'><i class='fa-solid fa-sack-dollar'></i></a>
-    <a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]&body=Good Day!%0D%0A%0D%0AWe have received and acknowledged your request.%0D%0A%0D%0ATotal Break down of your transaction is listed below:%0D%0A %0D%0A $data[summary] %0D%0ATotal Price: PHP$data[price] %0D%0A%0D%0APayments can be made through this link.%0D%0A https://ptipages.paynamics.net/ceu/default.aspx %0D%0A%0D%0A *Please send us the proof of payment to this email address for us to proceed with your documents. %0D%0A %0D%0A Release date is 15 working days after submission of proof of payment for TOR %0D%0A and 5 working days after submission of proof of payment for certificates (Please send it to this email thread for faster transaction) %0D%0A %0D%0A Thank you and Stay safe!' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
+    <a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]&body=Good Day!%0D%0A%0D%0AWe have received and acknowledged your request.%0D%0A%0D%0ATotal Break down of your transaction is listed below:%0D%0A %0D%0A $data[summary] %0D%0ATotal Price: PHP$data[price].00 %0D%0A%0D%0APayments can be made through this link.%0D%0A https://ptipages.paynamics.net/ceu/default.aspx %0D%0A%0D%0A *Please send us the proof of payment to this email address for us to proceed with your documents.%0D%0A %0D%0ARelease date is 15 working days after submission of proof of payment for TOR%0Aand 5 working days after submission of proof of payment for certificates (Please send it to this email thread for faster transaction)%E2%80%8B.%0A%0A%E2%80%8B- For Diploma%2C processing will take up to 1 month%2C depending on the multiple signatories.%0A%0A%E2%80%8B- For CAV%2C processing will take up to 1 month%2C for it will be forwarded and processed by CHED.%0A %0A Thank you and Stay safe!' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
+    // echo "<td><a href='actions.php?landing=adash-onlineapp&state=5&transactionID=$data[transactionid]&type=reg' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='Awaiting Payment'><i class='fa-solid fa-check'></i></a>
+    // <a href='additemsreg.php?landing=adash-onlineapp&state=5&transactionID=$data[transactionid]&type=reg' class='btn btn-sm  btn-info' data-toggle='tooltip' data-placement='top' title='Add Item'><i class='fa-solid fa-sack-dollar'></i></a>
+    // <a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]&body=Good Day!%0D%0A%0D%0AWe have received and acknowledged your request.%0D%0A%0D%0ATotal Break down of your transaction is listed below:%0D%0A %0D%0A $data[summary] %0D%0ATotal Price: PHP$data[price] %0D%0A%0D%0APayments can be made through this link.%0D%0A https://ptipages.paynamics.net/ceu/default.aspx %0D%0A%0D%0A *Please send us the proof of payment to this email address for us to proceed with your documents. %0D%0A %0D%0A Release date is 15 working days after submission of proof of payment for TOR %0D%0A and 5 working days after submission of proof of payment for certificates (Please send it to this email thread for faster transaction) %0D%0A %0D%0A Thank you and Stay safe!' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
      if(empty($data['facebook'])){
             echo "<a href='#' class='btn btn-sm btn-secondary m-1 disabled' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook' disabled></i></a>";
     }else{
@@ -231,7 +234,9 @@ public function viewApproveTable(){
     echo "<td>$data[type]</td>";
     echo "<td> ".str_replace('%0D%0A',' <br> ',str_replace('%0D%0A',' <br> ',$data['summary']) )."</td>";
     echo "<td><a href='actions.php?transactionID=" . $data['transactionid'] . "&state=7&type='sp'&landing=sdash' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='Set as For Payment'><i class='fa-solid fa-check'></i></a>
-          <a href='additems.php?landing=adash-onlineapp&state=5&transactionID=$data[transactionid]&type=spc' class='btn btn-sm  btn-pay m-1' data-toggle='tooltip' data-placement='top' title='Add Item'><i class='fa-solid fa-sack-dollar'></i></a><a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]&body=Good Day!%0D%0A%0D%0AWe have received and acknowledged your request.%0D%0A%0D%0ATotal Break down of your transaction is listed below:%0D%0A %0D%0A ". (!empty($data['summary']) ? $data['summary'] : '')." %0D%0A Total Price: PHP". (!empty($data['price']) ? $data['price'] : '').".00 %0D%0A%0D%0APayments can be made through this link.%0D%0A https://ptipages.paynamics.net/ceu/default.aspx %0D%0A%0D%0A *Please send us the proof of payment to this email address for us to proceed with your documents. %0D%0A %0D%0A Release date is 15 working days after submission of proof of payment for TOR %0D%0A and 5 working days after submission of proof of payment for certificates (Please send it to this email thread for faster transaction) %0D%0A %0D%0A Thank you and Stay safe!' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
+          <a href='additems.php?landing=adash-onlineapp&state=5&transactionID=$data[transactionid]&type=spc' class='btn btn-sm  btn-pay m-1' data-toggle='tooltip' data-placement='top' title='Add Item'><i class='fa-solid fa-sack-dollar'></i></a><a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]&body=Good Day!%0D%0A%0D%0AWe have received and acknowledged your request.%0D%0A%0D%0ATotal Break down of your transaction is listed below:%0D%0A %0D%0A ". (!empty($data['summary']) ? $data['summary'] : '')." %0D%0A Total Price: PHP". (!empty($data['price']) ? $data['price'] : '')." %0D%0A%0D%0APayments can be made through this link.%0D%0A https://ptipages.paynamics.net/ceu/default.aspx %0D%0A%0D%0A *Please send us the proof of payment to this email address for us to proceed with your documents. %0D%0A %0D%0A Release date is 15 working days after submission of proof of payment for TOR %0D%0A and 5 working days after submission of proof of payment for certificates (Please send it to this email thread for faster transaction) %0D%0A %0D%0A- For Diploma%2C processing will take up to 1 month%2C depending on the multiple signatories.%0A%0A%E2%80%8B- For CAV%2C processing will take up to 1 month%2C for it will be forwarded and processed by CHED.%0A %0A Thank you and Stay safe!' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
+    // echo "<td><a href='actions.php?transactionID=" . $data['transactionid'] . "&state=7&type='sp'&landing=sdash' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='Set as For Payment'><i class='fa-solid fa-check'></i></a>
+    //       <a href='additems.php?landing=adash-onlineapp&state=5&transactionID=$data[transactionid]&type=spc' class='btn btn-sm  btn-pay m-1' data-toggle='tooltip' data-placement='top' title='Add Item'><i class='fa-solid fa-sack-dollar'></i></a><a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]&body=Good Day!%0D%0A%0D%0AWe have received and acknowledged your request.%0D%0A%0D%0ATotal Break down of your transaction is listed below:%0D%0A %0D%0A ". (!empty($data['summary']) ? $data['summary'] : '')." %0D%0A Total Price: PHP". (!empty($data['price']) ? $data['price'] : '').".00 %0D%0A%0D%0APayments can be made through this link.%0D%0A https://ptipages.paynamics.net/ceu/default.aspx %0D%0A%0D%0A *Please send us the proof of payment to this email address for us to proceed with your documents. %0D%0A %0D%0A Release date is 15 working days after submission of proof of payment for TOR %0D%0A and 5 working days after submission of proof of payment for certificates (Please send it to this email thread for faster transaction) %0D%0A %0D%0A Thank you and Stay safe!' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
       if (empty ($data['facebook'])) {
         echo "<a href='#' class='btn btn-sm  btn-secondary m-1 disabled' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook' disabled></i></a>";
       } else {
@@ -541,7 +546,6 @@ public function viewApproveTable(){
     $data->execute();
     $result = $data->fetchAll(PDO::FETCH_ASSOC);
   
-    
     echo "<h3 class='text-center p-3'> For Release Applications </h3>";
     echo "<table id='dataTable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
     echo "<thead class='thead-dark'>";
@@ -556,45 +560,31 @@ public function viewApproveTable(){
     echo "</thead>";
 
     foreach ($result as $data) {
-    $id = $data['transactionid'];
-
-    echo "<tr style='font-size: 13px'>";
-    echo "<td>$data[transactionid]</td>";
-    echo "<td>$data[fullname]</td>";
-    echo "<td>$data[course]</td>";
-    echo "<td>$data[dateapp]</td>";
-    echo "<td>$data[emailaddress]</td>";
-    if(empty($data['facebook'])){
-      echo "<td>No Data</td>";
-    }else{
-      echo "<td>$data[facebook]</td>";
-    }
-
-    echo "<td> ".str_replace('%0D%0A',' <br> ',str_replace('%0D%0A',' <br> ',$data['summary']) )."</td>";
-
-    echo "<td><button class='btn btn-sm btn-success m-1' type='button' data-bs-toggle='modal' data-bs-target='#release$id' data-id='$id'><i class='fa-solid fa-check'></i></button>";
-
-//     echo "<td><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>
-//   Launch demo modal
-// </button>";
-
-
-
-          include "modals.php";
-
-
-    // echo "<td><a href='actions.php?transactionID=".$data['transactionid']."&state=3&type=".$data['apptype']."' class='btn btn-sm  btn-success m-1' data-toggle='tooltip' data-placement='top' title='Set as Released'><i class='fa-solid fa-check'></i></a>";
-
-    echo "<a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request -  $data[transactionid]' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
-     if(empty($data['facebook'])){
-            echo "<a href='#' class='btn btn-sm  btn-secondary m-1 disabled' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook' disabled></i></a>";
-    }else{
-      echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
-          }                    
-    echo       "<a href='info.php?tID=".$data['transactionid']."&type=".$data['apptype']."' class='btn btn-sm  btn-warning m-1' target='_blank' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>
-                <a href='#' class='btn btn-sm btn-danger remove-request' data-bs-toggle='modal' data-bs-target='#confirmationModal' data-transaction-id='$data[transactionid]' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
-                    </td>";
-    }
+      $id = $data['transactionid'];
+      echo "<tr style='font-size: 13px'>";
+      echo "<td>$data[transactionid]</td>";
+      echo "<td>$data[fullname]</td>";
+      echo "<td>$data[course]</td>";
+      echo "<td>$data[dateapp]</td>";
+      echo "<td>$data[emailaddress]</td>";
+      if(empty($data['facebook'])){
+        echo "<td>No Data</td>";
+      }else{
+        echo "<td>$data[facebook]</td>";
+      }
+      echo "<td> ".str_replace('%0D%0A',' <br> ',str_replace('%0D%0A',' <br> ',$data['summary']) )."</td>";
+      echo "<td><button class='btn btn-sm btn-success m-1' type='button' data-bs-toggle='modal' data-bs-target='#release$id' data-id='$id'><i class='fa-solid fa-check'></i></button>";
+        include "modals.php";
+      echo "<a href='https://mail.google.com/mail/?view=cm&fs=1&to=$data[emailaddress]&su= $data[fullname] - CEU Document Request - $data[transactionid]' target='_blank' class='btn btn-sm  btn-google m-1' data-toggle='tooltip' data-placement='top' title='Open Gmail'><i class='fa-brands fa-google'></i></a>";
+      if(empty($data['facebook'])){
+        echo "<a href='#' class='btn btn-sm  btn-secondary m-1 disabled' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook' disabled></i></a>";
+      }else{
+        echo "<a href='https://www.messenger.com/t/$data[facebook]' target='__blank' class='btn btn-sm  btn-primary m-1' data-toggle='tooltip' data-placement='top' title='FB'><i class='fa-brands fa-facebook'></i></a>";
+      }                    
+      echo "<a href='info.php?tID=".$data['transactionid']."&type=".$data['apptype']."' class='btn btn-sm  btn-warning m-1' target='_blank' data-toggle='tooltip' data-placement='top' title='View Request Details'><i class='fa-solid fa-eye'></i></a>
+            <a href='#' class='btn btn-sm btn-danger remove-request' data-bs-toggle='modal' data-bs-target='#confirmationModal' data-transaction-id='$data[transactionid]' data-toggle='tooltip' data-placement='top' title='Remove Request'><i class='fa-solid fa-trash'></i></a>
+          </td>";
+      }
     echo "</table>";
   }
   
@@ -651,6 +641,7 @@ public function viewApproveTable(){
 
   public function kcej_tblaccts()
   {
+    $view = new view();
     $con = $this->con();
     $sql = "SELECT * FROM `tbl_accounts`";
     $data= $con->prepare($sql);
@@ -662,17 +653,40 @@ public function viewApproveTable(){
     echo "<thead class='thead-dark'>";
     echo "<th>Username</th>";
     echo "<th>Name</th>";
-    echo "<th>Groups</th>";
-    echo "<th>Status</th>";
+    // echo "<th>Groups</th>";
+    echo "<th>Account Status</th>";
+    echo "<th>Actions</th>";
 
     echo "</thead>";
 
     foreach ($result as $data) {
+    $id = $data['id'];
     echo "<tr style='font-size: 13px'>";
-    echo "<td>$data[username]</td>";
-    echo "<td>$data[name]</td>";
-    echo "<td>$data[groups]</td>";
-    echo "<td>(status here)</td>";
+    echo "<form>";
+      echo "<td>$data[username]</td>";
+      echo "<td>$data[name]</td>";
+      echo "<td>";
+        echo "<select class='form-select' name='groups'>
+                <option data-tokens=$data[groups] value=$data[groups]>".$view->groupTypeName($data['groups'])."</option>
+                <option disabled>_____________________</option>";
+                $view->groupType();
+        echo "</select>";
+      echo "</td>";
+      // echo "<td><select class='form-select' name='groups'>
+      //           <option data-tokens=$data[quote] value=$data[quote]>$data[quote]</option>
+      //           <option disabled>_____________________</option>
+      //           <option data-tokens=active value=active>Active</option>
+      //           <option data-tokens=inactive value=inactive>Inactive</option>
+      //         </td>";
+      echo "<td>
+              <button type='submit' class='btn btn-sm btn-success'>Save</button>
+            </td>";
+      // echo "<td>
+      //         <button type='submit' class='btn btn-sm btn-success'>Save</button>
+      //         <a href='#' class='btn btn-sm btn-danger' data-bs-toggle='modal' data-bs-target='#delUser$id' data-transaction-id='$id' data-toggle='tooltip' data-placement='top' title='Remove User'><i class='fa-solid fa-trash'></i> Delete</a>
+      //       </td>";
+      //       include "modals_accts.php";
+    echo "</form>";
     echo "</tr>";
     }
     echo "</table>";
