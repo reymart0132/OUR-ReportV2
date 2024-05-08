@@ -62,6 +62,7 @@ isUser($user->data()->groups);
 
                     <div class="item mt-3">
                         <a class="sub-btn" href="alldash-search"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
+                         <a class="sub-btn" href="ureports"><i class="fa-solid fa-chart-bar"></i> Reports </a>
                         <a class="sub-btn" href="udashboard"><i class="fa-solid fa-house"></i> Pending </a>
                     </div>
 

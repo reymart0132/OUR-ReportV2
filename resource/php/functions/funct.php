@@ -638,5 +638,24 @@ function kcej_clean($string){
    return nl2br(preg_replace('/[^A-Za-z0-9\-!@:., \'\n\r\/]/', '', $string));
 }
 
+function get_current_date(){
+    $currentYear = date('Y');
+    $currentMonth = date('m');
+
+    // Format the current year and month as "YYYY-MM"
+    $formattedDate = $currentYear . '-' . $currentMonth;
+
+    return $formattedDate; // Output: "YYYY-MM"
+}
+function get_current_date2(){
+    $currentYear = date('Y');
+    $currentMonth = date('m');
+
+    // Format the current year and month as "YYYY-MM"
+    $formattedDate = $currentMonth . '/' . $currentYear;
+
+    return $formattedDate; // Output: "YYYY-MM"
+}
+
 // 1 - ENCODER, 2 - VERIFIER, 3 - RELEASING, 4 - SPECIAL
  ?>

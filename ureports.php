@@ -1,10 +1,10 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
-isLogin();
+$table = new viewtable();
 $user = new user();
-$id = $user->data()->id;
-$table = new viewtable($id);
-isSPC($user->data()->groups);
+isLogin();
+isUser($user->data()->groups);
+$date = get_current_date();
 ?>
 
 <!DOCTYPE html>
@@ -57,33 +57,35 @@ isSPC($user->data()->groups);
                     <small>Current Date and Time</small> 
                     <?php include 'clock.php'; ?>
                     </a>
-
-                    <a class="list-group-item list-group-item-action fw-bold">
-                        <i class="fas fa-house me-2"></i> Menu</a>
                     
+                    <a class="list-group-item list-group-item-action fw-bold">
+                        <i class="fas fa-question-circle me-2"></i> Menu</a>
+                        
+                        
+                        
+                            
                     <div class="item mt-3">
                         <a class="sub-btn" href="alldash-search"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
-                        <a class="sub-btn" href="sreports"><i class="fa-solid fa-chart-bar"></i> Reports </a>
-                        <a class="sub-btn bg-selected" href="sdashboard.php"><i class="fa-solid fa-magnifying-glass"></i>Review </a>
+                        <a class="sub-btn bg-selected" href="ureports"><i class="fa-solid fa-chart-bar"></i> Reports </a>
+                        <a class="sub-btn" href="udashboard"><i class="fa-solid fa-house"></i> Pending </a>
                     </div>
                     
-                    <div class="item">
-                        <a class="sub-btn" href="sdashboardpayment.php"><i class="fa-solid fa-money-bill"></i> For Payment </a>
-                    </div>
-
                     <!-- <div class="item">
                         <a class="sub-btn" href="adash-onlineapp"><i class="fa-solid fa-globe"></i> Online Requests</a>
                     </div> -->
-
+                    
                     <div class="item">
-                        <a class="sub-btn" href="sdashboardsignature"><i class="fa-solid fa-star"></i> For Signature </a>
+                        <a class="sub-btn" href="udashboardfs"><i class="fa-solid fa-star"></i> For Signature </a>
                     </div>
+                    
+
 
                     <a class="list-group-item list-group-item-action fw-bold">
                         <i class="fas fa-link me-2"></i> Links</a>
                     <div class="item">
-                        <a href='switchgroup.php' class="btn btn-sm btn-info"><i class="fa-solid fa-arrow-right"></i> Regular Transaction</a>
+                        <a href='switchgroup.php' class="btn btn-sm btn-info"><i class="fa-solid fa-arrow-right"></i> Special Transaction</a>
                     </div>
+                    
 
                     <script type="text/javascript">
                         $(document).ready(function () {
@@ -132,19 +134,42 @@ isSPC($user->data()->groups);
                         </ul>
                     </div>
                 </nav>
-
+                
                 <div class="p-3">
 
                     <h1>Dashboard</h1>
-
+                    <form action="" method="GET">
+                        <?php
+                        if(empty($_GET['monthPicker'])){
+                        echo "<input type='month' id='monthPicker' name='monthPicker' value ='$date'>";
+                    }else{
+                            echo "<input type='month' id='monthPicker' name='monthPicker' value ='$_GET[monthPicker]'>";
+                        }
+                        ?>
+                        <input type ="submit" class="btn btn-sm btn-info" value="filter">
+                        <?php
+                        $current_file_name = basename($_SERVER['PHP_SELF']);
+                        echo '<a href="'.$current_file_name.'?alltime=1" class = "btn btn-sm btn-success">All-Time</a>';
+                        ?>
+                    </form>
                 </div>
 
                 <div class="container-fluid p-5">
                     <div class="row">
-                        <div class="col-md p-5 content">
-                            <?php $table->tbl_SPCassigned(); ?>
-
+                        <div class="col-md-4 border">
+                            <h6><b>Top Performer Special Docs</b></h6>
+                            <?php include_once'sdocsgraph.php';?>
                         </div>
+                        <div class="col-md-4 border">
+                            <h6><b>Top Performer Normal Docs</b></h6>
+                            <?php include_once'ndocsgraph.php';?>
+                        </div>
+                        <div class="col-md-4 border">
+                            <h6><b>Overall Top Performer Docs</b></h6>
+                            <?php include_once'odocsgraph.php';?>
+                            
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -199,7 +224,7 @@ isSPC($user->data()->groups);
             var reason = document.getElementById('reasonInput').value;
             
             // Perform the removal process (You might need AJAX or form submission here)
-            window.location.href = 'actions.php?transactionID=' + transactionId+'&state=4&type=sp&landing=sdash&info='+reason;
+            window.location.href = 'actions.php?transactionID=' + transactionId+'&state=4&type=reg&landing=udash&info='+reason;
             
             // Close the modal
             var modal = bootstrap.Modal.getInstance(confirmationModal);

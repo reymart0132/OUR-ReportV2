@@ -63,6 +63,7 @@ isSPC($user->data()->groups);
                     
                     <div class="item mt-3">
                         <a class="sub-btn" href="alldash-search"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
+                        <a class="sub-btn" href="sreports"><i class="fa-solid fa-chart-bar"></i> Reports </a>
                         <a class="sub-btn " href="sdashboard.php"><i class="fa-solid fa-magnifying-glass"></i>Review </a>
                     </div>
                     

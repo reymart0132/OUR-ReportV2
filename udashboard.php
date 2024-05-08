@@ -4,6 +4,7 @@ $table = new viewtable();
 $user = new user();
 isLogin();
 isUser($user->data()->groups);
+$date = get_current_date();
 ?>
 
 <!DOCTYPE html>
@@ -65,6 +66,7 @@ isUser($user->data()->groups);
                             
                     <div class="item mt-3">
                         <a class="sub-btn" href="alldash-search"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
+                        <a class="sub-btn" href="ureports"><i class="fa-solid fa-chart-bar"></i> Reports </a>
                         <a class="sub-btn bg-selected" href="udashboard"><i class="fa-solid fa-house"></i> Pending </a>
                     </div>
                     
@@ -132,11 +134,13 @@ isUser($user->data()->groups);
                         </ul>
                     </div>
                 </nav>
-
+                
                 <div class="p-3">
 
                     <h1>Dashboard</h1>
-
+                    <input type="month" id="monthPicker" name="monthPicker" value ="<?php echo $date; ?>">
+                    <input type ="submit" class="btn btn-sm btn-info" value="filter">
+                    <a class = "btn btn-sm btn-success">All-Time</a>
                 </div>
 
                 <div class="container-fluid p-5">
