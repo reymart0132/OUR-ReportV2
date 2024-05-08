@@ -162,7 +162,7 @@
                     <?php include_once'ndocsgraph.php';?>
                 </div>
                 <div class="col-md-4 border">
-                    <h6><b>Overall Top Performer Docs</b></h6>
+                    <h6><b>Overall Top Performer</b></h6>
                     <?php include_once'odocsgraph.php';?>
                 </div>
 
