@@ -137,7 +137,7 @@ function vald(){
                         $login = $user->login(Input::get('username'),Input::get('password'),$remember);
                         if($login){
                             if($user->data()->groups == 1){
-                                 Redirect::to('udashboard.php');
+                                 Redirect::to('ureports.php');
                                 echo $user->data()->groups;
                             }else if($user->data()->groups == 2){
                                  Redirect::to('adashboard.php');
@@ -146,7 +146,7 @@ function vald(){
                                 Redirect::to('rdashboard.php');
                                 echo $user->data()->groups;
                             } else if ($user->data()->groups == 4) {
-                                Redirect::to('sdashboard.php');
+                                Redirect::to('sreports.php');
                                 echo $user->data()->groups;
                             }else{
                                 loginError();
