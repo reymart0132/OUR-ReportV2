@@ -6,6 +6,7 @@
   isLogin();
   isRAdmin($user->data()->groups);
   $locker = new locker();
+  $date = get_current_date();
 ?>
 
 <!DOCTYPE html>
@@ -133,11 +134,39 @@
           
           <div class="p-3">
 
-              <h1>Dashboard</h1>
-
-          </div>
+               <h1>Dashboard</h1>
+                    <form action="" method="GET">
+                        <?php
+                        if(empty($_GET['monthPicker'])){
+                        echo "<input type='month' id='monthPicker' name='monthPicker' value ='$date'>";
+                    }else{
+                            echo "<input type='month' id='monthPicker' name='monthPicker' value ='$_GET[monthPicker]'>";
+                        }
+                        ?>
+                        <input type ="submit" class="btn btn-sm btn-info" value="filter">
+                        <?php
+                        $current_file_name = basename($_SERVER['PHP_SELF']);
+                        echo '<a href="'.$current_file_name.'?alltime=1" class = "btn btn-sm btn-success">All-Time</a>';
+                        ?>
+                    </form>
+                </div>
 
           <div class="container-fluid p-5">
+            <div class="row">
+                <div class="col-md-4 border">
+                    <h6><b>Top Performer Special Docs</b></h6>
+                    <?php include_once'sdocsgraph.php';?>
+                </div>
+                <div class="col-md-4 border">
+                    <h6><b>Top Performer Normal Docs</b></h6>
+                    <?php include_once'ndocsgraph.php';?>
+                </div>
+                <div class="col-md-4 border">
+                    <h6><b>Overall Top Performer Docs</b></h6>
+                    <?php include_once'odocsgraph.php';?>
+                </div>
+
+            </div>
             <!-- <div class="row"> -->
               <!-- <div class="col-md p-5 content container-fluid"> -->
                   <?php include 'charts.php'; ?>

@@ -1,11 +1,25 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
-$config = new config;
-$con = $config->con();
-$sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points FROM tbl_accounts a LEFT JOIN tbl_transaction t ON a.id = t.assignee WHERE (a.groups = 4 OR a.groups = 1) AND a.id NOT IN ('37','33') AND t.remarks IN ('RELEASED','FOR RELEASE') AND YEAR(t.dateapp) = SUBSTRING_INDEX('4/2024', '/', -1) AND MONTH(t.dateapp) = SUBSTRING_INDEX('4/2024', '/', 1) GROUP BY a.id ORDER BY total_points DESC";
-$dataStatement = $con->prepare($sql);
-$dataStatement->execute();
-$result = $dataStatement->fetchAll(PDO::FETCH_ASSOC);
+$configndocs = new config;
+$conndocs = $configndocs->con();
+if(empty($_GET['monthPicker'])){
+    $datendocs2 = get_current_date2();
+    }else{    
+     $ndate = $_GET['monthPicker'];
+    // Ensure the date format is compatible with strtotime
+    $formatted_ndate = date("m/Y", strtotime($ndate));
+    $datendocs2 = $formatted_ndate;
+}
+if(!empty($_GET['alltime'])){
+    $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points FROM tbl_accounts a LEFT JOIN tbl_transaction t ON a.id = t.assignee WHERE (a.groups = 4 OR a.groups = 1) AND a.id NOT IN ('37','33') AND t.remarks IN ('RELEASED','FOR RELEASE') GROUP BY a.id ORDER BY total_points DESC";
+
+}else{
+
+    $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points FROM tbl_accounts a LEFT JOIN tbl_transaction t ON a.id = t.assignee WHERE (a.groups = 4 OR a.groups = 1) AND a.id NOT IN ('37','33') AND t.remarks IN ('RELEASED','FOR RELEASE') AND YEAR(t.dateapp) = SUBSTRING_INDEX('$datendocs2', '/', -1) AND MONTH(t.dateapp) = SUBSTRING_INDEX('$datendocs2', '/', 1) GROUP BY a.id ORDER BY total_points DESC";
+}
+    $dataStatement = $conndocs->prepare($sql);
+    $dataStatement->execute();
+    $result = $dataStatement->fetchAll(PDO::FETCH_ASSOC);
 
 // Initialize an empty array to store data
 $graphData = array();
