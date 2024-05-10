@@ -34,7 +34,7 @@ foreach ($result as $row) {
 // HTML for the horizontal bar graph
 echo '<style>
     .bar-graph-table {
-        width: 500px;
+        width: 100%;
     }
     .bar-graph-table td {
         padding: 5px;

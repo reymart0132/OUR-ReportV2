@@ -133,39 +133,51 @@
           </nav>
           
           <div class="p-3">
-
-               <h1>Dashboard</h1>
+            <h1>Dashboard</h1>
+          </div>
+          <div class="container-fluid px-5 pt-2">
+            <div class="row">
+              <div class='col-lg-12 shadow'>
+                <div class='row ms-4 py-3'>
+                  <div class='col-lg-4 px-3 pt-3 mx-2'>
+                    Change Filter: 
                     <form action="" method="GET">
-                        <?php
+                      <?php
                         if(empty($_GET['monthPicker'])){
-                        echo "<input type='month' id='monthPicker' name='monthPicker' value ='$date'>";
-                    }else{
-                            echo "<input type='month' id='monthPicker' name='monthPicker' value ='$_GET[monthPicker]'>";
+                          echo "<input type='month' id='monthPicker' name='monthPicker' value ='$date'>";
+                        }else{
+                          echo "<input type='month' id='monthPicker' name='monthPicker' value ='$_GET[monthPicker]'>";
                         }
-                        ?>
-                        <input type ="submit" class="btn btn-sm btn-info" value="filter">
-                        <?php
+                      ?>
+                      <input type ="submit" class="btn btn-sm btn-info" value="Filter by Month">
+                      <?php
                         $current_file_name = basename($_SERVER['PHP_SELF']);
                         echo '<a href="'.$current_file_name.'?alltime=1" class = "btn btn-sm btn-success">All-Time</a>';
-                        ?>
+                      ?>
                     </form>
+                  </div>
                 </div>
-
-          <div class="container-fluid p-5">
-            <div class="row">
-                <div class="col-md-4 border">
+                <div class='row d-flex justify-content-center py-3'>
+                  <div class='col-lg-4 px-3 pb-3 me-2'>
                     <h6><b>Top Performer Special Docs</b></h6>
-                    <?php include_once'sdocsgraph.php';?>
-                </div>
-                <div class="col-md-4 border">
+                    <!-- <div class='ms-2'> -->
+                      <?php include_once'sdocsgraph.php';?>
+                    <!-- </div> -->
+                  </div>
+                  <div class='col-lg-4 p-3 mx-2'>
                     <h6><b>Top Performer Normal Docs</b></h6>
-                    <?php include_once'ndocsgraph.php';?>
-                </div>
-                <div class="col-md-4 border">
+                    <!-- <div class='mx-2'> -->
+                      <?php include_once'ndocsgraph.php';?>
+                    <!-- </div> -->
+                  </div>
+                  <div class='col-lg-3 p-3 ms-2'>
                     <h6><b>Overall Top Performer</b></h6>
-                    <?php include_once'odocsgraph.php';?>
+                    <!-- <div class='me-2'> -->
+                      <?php include_once'odocsgraph.php';?>
+                    <!-- </div> -->
+                  </div>
                 </div>
-
+              </div>
             </div>
             <!-- <div class="row"> -->
               <!-- <div class="col-md p-5 content container-fluid"> -->
