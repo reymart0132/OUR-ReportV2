@@ -5,15 +5,15 @@ echo "<div class='row'>
         <div class='col-lg-12 shadow'>
             <div class='row d-flex justify-content-center py-3'>
                 <div class='col-lg-4 p-3 mx-2'>
-                    <h5><b>Number of Transactions Received Today</b></h5>
+                    <h5><b><i class='fa-solid fa-file-import'></i> Number of Transactions Received Today</b></h5>
                     <canvas id='trans_received_type' style='width:100%;  height:150px;'></canvas>
                 </div>
                 <div class='col-lg-4 p-3 mx-2'>
-                    <h5><b>Transactions Received vs. Done Today</b></h5>
+                    <h5><b><i class='fa-solid fa-print'></i> Transactions Received vs. Done Today</b></h5>
                     <canvas id='trans_received_type2' style='width:100%; height:150px;'></canvas>
                 </div>
                 <div class='col-lg-3 p-3 mx-2'>
-                    <h6><b>Top 5 Most Requested Documents (All-Time)</b></h6>
+                    <h6><b><i class='fa-solid fa-file'></i> Top 5 Most Requested Documents (All-Time)</b></h6>
                     <ol>
                         "; $chart->mostReqDocName();
                     echo "</ol>
@@ -26,11 +26,11 @@ echo "<div class='row mt-3'>
         <div class='col-lg-12 shadow'>
             <div class='row d-flex justify-content-center py-3'>
                 <div class='col-lg-4 p-3 mx-2'>
-                    <h5><b>Encoders' Daily Finished Tasks Tally</b></h5>
+                    <h5><b><i class='fa-solid fa-check-double'></i> Encoders' Daily Finished Tasks Tally</b></h5>
                     <canvas id='tally' style='width:100%;  height:300px;'></canvas>
                 </div>
                 <div class='col-lg-7 p-3 mx-2'>
-                    <h5><b>Application Volume for the Past Week</b></h5>
+                    <h5><b><i class='fa-solid fa-arrow-trend-up'></i> Application Volume for the Past Week</b></h5>
                     <canvas id='history' style='width:100%;  height:300px;'></canvas>
                 </div>
             </div>
