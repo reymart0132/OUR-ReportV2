@@ -154,23 +154,33 @@ $date = get_current_date();
                     </form>
                 </div>
 
-                <div class="container-fluid p-5">
-                    <div class="row">
-                        <div class="col-md-4 border">
-                            <h6><b>Top Performer Special Docs</b></h6>
-                            <?php include_once'sdocsgraph.php';?>
-                        </div>
-                        <div class="col-md-4 border">
-                            <h6><b>Top Performer Normal Docs</b></h6>
-                            <?php include_once'ndocsgraph.php';?>
-                        </div>
-                        <div class="col-md-4 border">
-                            <h6><b>Overall Top Performer</b></h6>
-                            <?php include_once'odocsgraph.php';?>
-                            
-                        </div>
-
+                    <div class="container-fluid p-5">
+                        <div class="row">
+                            <div class='col-lg-12 shadow'>
+                                <div class='row d-flex justify-content-center py-3'>
+                                    <div class='col-lg-4 px-3 pb-3 me-2'>
+                                        <h6><b><i class="fa-solid fa-medal"></i> Top Performer Special Docs</b></h6>
+                                        <!-- <div class='ms-2'> -->
+                                        <?php include_once'sdocsgraph.php';?>
+                                        <!-- </div> -->
+                                    </div>
+                                    <div class='col-lg-4 px-3 pb-3 mx-2'>
+                                        <h6><b><i class="fa-solid fa-medal"></i> Top Performer Normal Docs</b></h6>
+                                        <!-- <div class='mx-2'> -->
+                                        <?php include_once'ndocsgraph.php';?>
+                                        <!-- </div> -->
+                                    </div>
+                                    <div class='col-lg-3 px-3 pb-3 ms-2'>
+                                        <h6><b> <i class="fa-solid fa-medal"></i> Overall Top Performer</b></h6>
+                                        <!-- <div class='me-2'> -->
+                                        <?php include_once'odocsgraph.php';?>
+                                        <!-- </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
                     </div>
+
                 </div>
             </div>
         </div>

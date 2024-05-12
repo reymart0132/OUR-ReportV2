@@ -140,7 +140,7 @@
               <div class='col-lg-12 shadow'>
                 <div class='row ms-4 py-3'>
                   <div class='col-lg-4 px-3 pt-3 mx-2'>
-                    Change Filter: 
+                    <i class="fa-solid fa-filter"></i> Change Filter: 
                     <form action="" method="GET">
                       <?php
                         if(empty($_GET['monthPicker'])){
@@ -159,19 +159,19 @@
                 </div>
                 <div class='row d-flex justify-content-center py-3'>
                   <div class='col-lg-4 px-3 pb-3 me-2'>
-                    <h6><b>Top Performer Special Docs</b></h6>
+                    <h6><b><i class="fa-solid fa-medal"></i> Top Performer Special Docs</b></h6>
                     <!-- <div class='ms-2'> -->
                       <?php include_once'sdocsgraph.php';?>
                     <!-- </div> -->
                   </div>
-                  <div class='col-lg-4 p-3 mx-2'>
-                    <h6><b>Top Performer Normal Docs</b></h6>
+                  <div class='col-lg-4 px-3 pb-3 mx-2'>
+                    <h6><b><i class="fa-solid fa-medal"></i> Top Performer Normal Docs</b></h6>
                     <!-- <div class='mx-2'> -->
                       <?php include_once'ndocsgraph.php';?>
                     <!-- </div> -->
                   </div>
-                  <div class='col-lg-3 p-3 ms-2'>
-                    <h6><b>Overall Top Performer</b></h6>
+                  <div class='col-lg-3 px-3 pb-3 ms-2'>
+                    <h6><b> <i class="fa-solid fa-medal"></i> Overall Top Performer</b></h6>
                     <!-- <div class='me-2'> -->
                       <?php include_once'odocsgraph.php';?>
                     <!-- </div> -->

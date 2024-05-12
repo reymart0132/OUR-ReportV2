@@ -51,7 +51,7 @@ class searchAllTable extends config{
       echo "<td>$data[course]</td>";
       echo "<td>$data[dateapp]</td>";
       echo "<td>$data[reason]</td>";
-      echo "<td>$data[remarks]</td>";
+      echo "<td>$data[remarks]"; if($data['remarks']=="REMOVED"){echo " - <i class='text-danger'>$data[info]</i></td>";}else{echo "</td>";}
       echo "<td>$assignee</td>";
       echo "<td>";
         $user = new user();
@@ -106,7 +106,7 @@ class searchAllTable extends config{
       echo "<td>$data0[course]</td>";
       echo "<td>$data0[dateapp]</td>";
       echo "<td>$data0[reason]</td>";
-      echo "<td>$data0[remarks]</td>";
+      echo "<td>$data0[remarks]"; if($data0['remarks']=="REMOVED"){echo " - <i class='text-danger'>$data0[info]</i></td>";}else{echo "</td>";}
       echo "<td>$assignee0</td>";
       echo "<td>";
         $user = new user();
