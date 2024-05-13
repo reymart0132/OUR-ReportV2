@@ -16,17 +16,17 @@ $sql = "SELECT remarks, COUNT(*) AS transaction_count
 FROM tbl_spctransaction 
 GROUP BY `remarks`";
 
-$sql2 = "SELECT AVG(datediff(`signeddate`,`dateapp`)) AS `cycletime` FROM `tbl_spctransaction`";
+$sql2 = "SELECT AVG(datediff(`signeddate`,`paymentdate`)) AS `cycletime` FROM `tbl_spctransaction`";
 }else{
 
 $sql = "SELECT remarks, COUNT(*) AS transaction_count
-FROM tbl_spctransaction WHERE YEAR(`dateapp`) = SUBSTRING_INDEX('$dateodocs2', '/', -1) 
-        AND MONTH(`dateapp`) = SUBSTRING_INDEX('$dateodocs2', '/', 1) 
+FROM tbl_spctransaction WHERE YEAR(`dateapp`) = SUBSTRING_INDEX('$datesdocsraw2', '/', -1) 
+        AND MONTH(`dateapp`) = SUBSTRING_INDEX('$datesdocsraw2', '/', 1) 
 GROUP BY `remarks`";
 
-$sql2 = "SELECT AVG(datediff(`signeddate`,`dateapp`)) AS `cycletime` FROM `tbl_spctransaction` WHERE `remarks` IN ('RELEASED', 'FOR RELEASE') 
-AND YEAR(`dateapp`) = SUBSTRING_INDEX('$dateodocs2', '/', -1) 
-AND MONTH(`dateapp`) = SUBSTRING_INDEX('$dateodocs2', '/', 1)";
+$sql2 = "SELECT AVG(datediff(`signeddate`,`paymentdate`)) AS `cycletime` FROM `tbl_spctransaction` WHERE `remarks` IN ('RELEASED', 'FOR RELEASE') 
+AND YEAR(`dateapp`) = SUBSTRING_INDEX('$datesdocsraw2', '/', -1) 
+AND MONTH(`dateapp`) = SUBSTRING_INDEX('$datesdocsraw2', '/', 1)";
 }
 
 
