@@ -657,5 +657,17 @@ function get_current_date2(){
     return $formattedDate; // Output: "YYYY-MM"
 }
 
+ function findCycleTime($sqlCon){ //regular month
+      $config = new config;
+      $con = $config->con();
+      $sql = $sqlCon;
+      $data = $con-> prepare($sql);
+      $data ->execute();
+      $rows =$data-> fetchAll(PDO::FETCH_OBJ);
+      $cycletime = $rows[0]->cycletime;
+
+      return $cycletime;
+  }
+
 // 1 - ENCODER, 2 - VERIFIER, 3 - RELEASING, 4 - SPECIAL
  ?>

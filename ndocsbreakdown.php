@@ -16,12 +16,18 @@ $sql = "SELECT remarks, COUNT(*) AS transaction_count
 FROM tbl_transaction 
 GROUP BY `remarks`";
 
+$sql2 = "SELECT AVG(datediff(`signeddate`,`dateapp`)) AS `cycletime` FROM `tbl_transaction`";
+
 }else{
 
 $sql = "SELECT remarks, COUNT(*) AS transaction_count
 FROM tbl_transaction WHERE YEAR(`dateapp`) = SUBSTRING_INDEX('$dateodocs2', '/', -1) 
         AND MONTH(`dateapp`) = SUBSTRING_INDEX('$dateodocs2', '/', 1) 
 GROUP BY `remarks`";
+
+$sql2 = "SELECT AVG(datediff(`signeddate`,`dateapp`)) AS `cycletime` FROM `tbl_transaction` WHERE `remarks` IN ('RELEASED', 'FOR RELEASE') 
+AND YEAR(`dateapp`) = SUBSTRING_INDEX('$dateodocs2', '/', -1) 
+AND MONTH(`dateapp`) = SUBSTRING_INDEX('$dateodocs2', '/', 1)";
 }
 
 
@@ -34,6 +40,7 @@ $arrayndocsraw = [];
 
 echo "<table class=' table table-sm'>
         <thead>
+            <tr><th>Average Cycle Time</th> <th><b class='text-danger'>".round(findCycleTime($sql2),3)." day/s</b></th></tr>
             <tr><th>Status</th><th>Transaction Count</th></tr>
         </thead>";
 foreach($result as $data){

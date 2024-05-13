@@ -179,6 +179,18 @@ $date = get_current_date();
                                     <?php include_once'odocsgraph.php';?>
                                     <!-- </div> -->
                                 </div>
+                                <div class='col-lg-4 px-3 pb-3 ms-2'>
+                                    <h6><b> <i class="fa-solid fa-check-to-slot"></i> Special Transaction Breakdown </b></h6>
+                                    <!-- <div class='me-2'> -->
+                                    <?php include_once'sdocsbreakdown.php';?>
+                                    <!-- </div> -->
+                                </div>
+                                <div class='col-lg-4 px-3 pb-3 ms-2'>
+                                    <h6><b> <i class="fa-solid fa-check-to-slot"></i> Normal Transaction Breakdown </b></h6>
+                                    <!-- <div class='me-2'> -->
+                                    <?php include_once'ndocsbreakdown.php';?>
+                                    <!-- </div> -->
+                                </div>
                             </div>
                         </div>
                     </div>    
