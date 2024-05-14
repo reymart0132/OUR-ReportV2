@@ -197,10 +197,16 @@
                     <!-- </div> -->
                   </div>
                 </div>
-                <div class='row d-flex justify-content-center py-3'>
-                  <div class='col-lg-12 px-3 pb-3 ms-2'>
+                <div class='row d-flex justify-content-center pt-3'>
+                  <div class='col-lg-12 px-3 ms-2'>
                     <!-- <h6><b> <i class="fa-solid fa-check-to-slot"></i> Normal Transaction Breakdown </b></h6> -->
                       <?php include_once'odocstbl.php';?>
+                  </div>
+                </div>
+                <div class='row d-flex justify-content-center pb-3'>
+                  <div class='col-lg-12 px-3 pb-3 ms-2'>
+                    <!-- <h6><b> <i class="fa-solid fa-check-to-slot"></i> Normal Transaction Breakdown </b></h6> -->
+                      <?php include_once'sdocstbl.php';?>
                   </div>
                 </div>
               </div>
@@ -275,6 +281,50 @@
                     text: 'Export to PDF',
                     titleAttr: 'Export to PDF',
                     title: 'Regular Transaction Report',
+                    orientation: 'landscape',
+                    pageSize: 'TABLOID',
+                    exportOptions: {
+                        columns: ':not(:last-child)',
+                    }
+                }
+            ]
+          });
+        });
+        </script>
+      <script type="text/javascript">
+        $(document).ready( function () {
+          $('#scholartable2').DataTable({
+            scrollX: true,
+            // scrollY: 500,
+            dom: 'frtipB',
+            paging: true,
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    className: 'btn btn-primary',
+                    text: 'Export to Excel',
+                    titleAttr: 'Export to Excel',
+                    title: 'Special Transaction Report',
+                    exportOptions: {
+                        columns: ':not(:last-child)',
+                    }
+                },
+                {
+                    extend: 'csvHtml5',
+                    className: 'btn btn-primary',
+                    text: 'Export to CSV',
+                    titleAttr: 'Export to CSV',
+                    title: 'Special Transaction Report',
+                    exportOptions: {
+                        columns: ':not(:last-child)',
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    className: 'btn btn-primary',
+                    text: 'Export to PDF',
+                    titleAttr: 'Export to PDF',
+                    title: 'Special Transaction Report',
                     orientation: 'landscape',
                     pageSize: 'TABLOID',
                     exportOptions: {

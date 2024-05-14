@@ -15,10 +15,10 @@ if(empty($_GET['monthPicker'])){
 }
 
 if(!empty($_GET['alltime'])){
-    $sql = "SELECT *, datediff(`signeddate`,`paymentdate`) AS `ctime` FROM tbl_transaction ORDER BY `dateapp` ASC";
+    $sql = "SELECT *, datediff(`signeddate`,`paymentdate`) AS `ctime` FROM tbl_spctransaction ORDER BY `dateapp` ASC";
 }else{
     $sql = "SELECT *, datediff(`signeddate`,`paymentdate`) AS `ctime`
-    FROM tbl_transaction WHERE YEAR(`dateapp`) = SUBSTRING_INDEX('$datesdocsraw2', '/', -1) AND MONTH(`dateapp`) = SUBSTRING_INDEX('$datesdocsraw2', '/', 1) ORDER BY `dateapp` ASC";
+    FROM tbl_spctransaction WHERE YEAR(`dateapp`) = SUBSTRING_INDEX('$datesdocsraw2', '/', -1) AND MONTH(`dateapp`) = SUBSTRING_INDEX('$datesdocsraw2', '/', 1) ORDER BY `dateapp` ASC";
 
     // $sql2 = "SELECT AVG(datediff(`signeddate`,`paymentdate`)) AS `cycletime` FROM `tbl_spctransaction` WHERE `remarks` IN ('RELEASED', 'FOR RELEASE') 
     // AND YEAR(`dateapp`) = SUBSTRING_INDEX('$datesdocsraw2', '/', -1) 
@@ -29,9 +29,9 @@ $dataStatement = $consdocsraw->prepare($sql);
 $dataStatement->execute();
 $result = $dataStatement->fetchAll(PDO::FETCH_ASSOC);
     echo "<hr>";
-    echo "<h5 class='text-center mt-4'><i class='fa-solid fa-graduation-cap'></i> Regular Transactions <b>".$titledate."</b></h5>";
+    echo "<h5 class='text-center mt-4'><i class='fa-solid fa-graduation-cap'></i> Special Transactions <b>".$titledate."</b></h5>";
     echo "<div class='table-responsive pb-3'>";
-    echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display nowrap'  style='font-size: 12px'>";
+    echo "<table id='scholartable2' class='table table-bordered table-sm table-striped table-hover shadow display nowrap'  style='font-size: 12px'>";
     echo "<thead class='thead-dark'>";
     echo "<th>Transaction ID</th>";
     echo "<th>Student Number</th>";
