@@ -14,26 +14,34 @@
   <head>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-2.0.7/b-3.0.2/b-html5-3.0.2/datatables.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="resource/css/styledash.css" type="text/css">
     <script src="https://kit.fontawesome.com/03ca298d2d.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">
+    <script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
 
     <title>Dashboard</title>
     <link rel="icon" type="image/x-icon" href="resource/img/ceu.png" />
   </head>
   <body>
-    <div class="loader-container">
+    <!-- <div class="loader-container">
         <div class="loader-logo"></div>
         <div class="loader-bar">
             <div class="progress"></div>
         </div>
         <div class="loader-text">Loading 0%</div>
-    </div>
+    </div> -->
     <header>
       <div class="d-flex" id="wrapper">
         <div class="bg-white" id="sidebar-wrapper">
@@ -189,6 +197,12 @@
                     <!-- </div> -->
                   </div>
                 </div>
+                <div class='row d-flex justify-content-center py-3'>
+                  <div class='col-lg-12 px-3 pb-3 ms-2'>
+                    <!-- <h6><b> <i class="fa-solid fa-check-to-slot"></i> Normal Transaction Breakdown </b></h6> -->
+                      <?php include_once'odocstbl.php';?>
+                  </div>
+                </div>
               </div>
             </div>
             <!-- <div class="row"> -->
@@ -202,19 +216,74 @@
       </div>
      </div>
     </header>
-
+    
       <?php include 'chart-control.php'; ?>
       <script type="text/javascript">
         var el = document.getElementById("wrapper")
         var toggleButton = document.getElementById("menu-toggle")
-
+        
         toggleButton.onclick = function(){
           el.classList.toggle("toggled")
         }
       </script>
-      <script src="resource/js/loader.js"></script>
+
+      <!-- <script src="resource/js/loader.js"></script> -->
       <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-     
+      <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+
+      <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/dataTables.buttons.min.js"></script>
+      <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jszip.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"crossorigin="anonymous"></script>
+      <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/pdfmake.min.js"></script>
+      <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/vfs_fonts.js"></script>
+      <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/buttons.html5.min.js"></script>
+      <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/buttons.print.min.js"></script>
+
+      <script type="text/javascript">
+        $(document).ready( function () {
+          $('#scholartable').DataTable({
+            scrollX: true,
+            // scrollY: 500,
+            dom: 'frtipB',
+            paging: true,
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    className: 'btn btn-primary',
+                    text: 'Export to Excel',
+                    titleAttr: 'Export to Excel',
+                    title: 'Regular Transaction Report',
+                    exportOptions: {
+                        columns: ':not(:last-child)',
+                    }
+                },
+                {
+                    extend: 'csvHtml5',
+                    className: 'btn btn-primary',
+                    text: 'Export to CSV',
+                    titleAttr: 'Export to CSV',
+                    title: 'Regular Transaction Report',
+                    exportOptions: {
+                        columns: ':not(:last-child)',
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    className: 'btn btn-primary',
+                    text: 'Export to PDF',
+                    titleAttr: 'Export to PDF',
+                    title: 'Regular Transaction Report',
+                    orientation: 'landscape',
+                    pageSize: 'TABLOID',
+                    exportOptions: {
+                        columns: ':not(:last-child)',
+                    }
+                }
+            ]
+          });
+        });
+        </script>
     </body>
 </html>
