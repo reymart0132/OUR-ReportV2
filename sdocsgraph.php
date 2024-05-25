@@ -2,7 +2,6 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
 $configsdocs = new config;
 $consdocs = $configsdocs->con();
-isLogin();
 if(empty($_GET['monthPicker'])){
     $datesdocs2 = get_current_date2();
     }else{    
@@ -18,7 +17,7 @@ FROM tbl_accounts A
 LEFT JOIN (
     SELECT assignee, COUNT(*)*2 AS transaction_count 
     FROM tbl_spctransaction ST 
-    WHERE remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT','FOR RELEASE') 
+    WHERE remarks NOT IN ('PENDING', 'FOR ASSIGNMENT') 
     GROUP BY assignee
     ) ST ON A.id = ST.assignee 
     WHERE (A.groups = 4 OR A.groups = 1) 
@@ -31,7 +30,7 @@ LEFT JOIN (
     LEFT JOIN (
         SELECT assignee, COUNT(*)*2 AS transaction_count 
         FROM tbl_spctransaction ST 
-        WHERE remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT','FOR RELEASE') 
+        WHERE remarks NOT IN ( 'PENDING', 'FOR ASSIGNMENT') 
         AND YEAR(ST.dateapp) = SUBSTRING_INDEX('$datesdocs2', '/', -1) 
         AND MONTH(ST.dateapp) = SUBSTRING_INDEX('$datesdocs2', '/', 1) 
         GROUP BY assignee

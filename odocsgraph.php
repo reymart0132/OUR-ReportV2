@@ -2,7 +2,6 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
 $configodocs = new config;
 $conodocs = $configodocs->con();
-isLogin();
 if(empty($_GET['monthPicker'])){
     $dateodocs2 = get_current_date2();
     }else{    
@@ -26,7 +25,7 @@ LEFT JOIN (
     FROM 
         tbl_spctransaction ST 
     WHERE 
-        remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT','FOR RELEASE') 
+        remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT') 
     GROUP BY 
         assignee
 ) ST1 ON A.id = ST1.assignee
@@ -37,7 +36,7 @@ LEFT JOIN (
     FROM 
         tbl_transaction 
     WHERE 
-        remarks IN ('RELEASED','FOR RELEASE') 
+        remarks IN ('RELEASED') 
     GROUP BY 
         assignee
 ) ST2 ON A.id = ST2.assignee
@@ -63,7 +62,7 @@ LEFT JOIN (
     FROM 
         tbl_spctransaction ST 
     WHERE 
-        remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT','FOR RELEASE') 
+        remarks NOT IN ('PENDING', 'FOR ASSIGNMENT') 
         AND YEAR(ST.dateapp) = SUBSTRING_INDEX('$dateodocs2', '/', -1) 
         AND MONTH(ST.dateapp) = SUBSTRING_INDEX('$dateodocs2', '/', 1) 
     GROUP BY 

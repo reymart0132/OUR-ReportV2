@@ -64,8 +64,8 @@ $locker->formLockerCheck();
                                 <select class="form-select" id="status" name="status" required>
                                     <option value="Undergraduate">Non-Degree Holder</option>
                                     <option value="Graduate">Bachelor's Degree Holder</option>
-                                    <option value="Masters">Masters Degree Holder</option>
-                                    <option value="PHD">Doctorate Degree Holder</option>
+                                    <option value="Masters">Masters Degree Holder (Graduate School)</option>
+                                    <option value="PHD">Doctorate Degree Holder (Graduate School)</option>
                                 </select>
                             </div>
                             <hr class="my-4">

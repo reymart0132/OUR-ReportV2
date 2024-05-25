@@ -2,7 +2,6 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
 $configndocs = new config;
 $conndocs = $configndocs->con();
-isLogin();
 if(empty($_GET['monthPicker'])){
     $datendocs2 = get_current_date2();
     }else{    
