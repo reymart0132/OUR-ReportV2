@@ -638,6 +638,10 @@ function kcej_clean($string){
    return nl2br(preg_replace('/[^A-Za-z0-9\-!@:., \'\n\r\/]/', '', $string));
 }
 
+function kcej_clean_name($string){
+    return preg_replace("/[^A-Za-z0-9.-]/",' ',$string);
+}
+
 function get_current_date(){
     $currentYear = date('Y');
     $currentMonth = date('m');

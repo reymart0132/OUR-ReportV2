@@ -191,7 +191,7 @@
         <script type="text/javascript">
           $(document).ready( function () {
             $('#scholartable').DataTable({
-              "ordering": false,
+              "ordering": true,
               "searching": false
             });
           });
@@ -199,7 +199,7 @@
         <script type="text/javascript">
           $(document).ready( function () {
             $('#scholartable2').DataTable({
-              "ordering": false,
+              "ordering": true,
               "searching": false
             });
           });

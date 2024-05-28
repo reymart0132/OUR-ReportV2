@@ -206,7 +206,7 @@
         <script type="text/javascript">
           $(document).ready( function () {
             $('#scholartable2').DataTable({
-              "ordering": false,
+              "ordering": true,
               "searching": false
             });
           });

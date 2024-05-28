@@ -17,9 +17,9 @@ class view extends config{
                         <td class='px-2 py-1 d-none'>q$row[id]</td>
                         <td class='px-2 py-1'>
                             <div><b>".strtoupper($row['appliedfor'])."</b></div>
-                            <div class='notes text-danger'><small><em>$row[notes]</em></small</div>
+                            <div class='notes text-danger'><small><em><b>$row[notes]</b></em></small</div>
                         </td>
-                        <td class='px-2 py-1'><small>$row[price].00</small></td>
+                        <td class='px-2 py-1'><small><b>$row[price].00</b></small></td>
                         <td class='px-2 py-1'><input type='number' name='item$x' class='form-control' value='0' onchange='updateTotal()'></td>
                         <td class='px-2 py-1 d-none'><small>$row[point]</small></td>
 
