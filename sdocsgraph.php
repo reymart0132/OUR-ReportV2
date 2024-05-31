@@ -17,7 +17,7 @@ FROM tbl_accounts A
 LEFT JOIN (
     SELECT assignee, COUNT(*)*2 AS transaction_count 
     FROM tbl_spctransaction ST 
-    WHERE remarks NOT IN ('PENDING', 'FOR ASSIGNMENT') 
+    WHERE remarks IN ('RELEASED','FOR RELEASE')
     GROUP BY assignee
     ) ST ON A.id = ST.assignee 
     WHERE (A.groups = 4 OR A.groups = 1) 
@@ -30,7 +30,7 @@ LEFT JOIN (
     LEFT JOIN (
         SELECT assignee, COUNT(*)*2 AS transaction_count 
         FROM tbl_spctransaction ST 
-        WHERE remarks NOT IN ( 'PENDING', 'FOR ASSIGNMENT') 
+        WHERE remarks IN ('RELEASED','FOR RELEASE')
         AND YEAR(ST.dateapp) = SUBSTRING_INDEX('$datesdocs2', '/', -1) 
         AND MONTH(ST.dateapp) = SUBSTRING_INDEX('$datesdocs2', '/', 1) 
         GROUP BY assignee

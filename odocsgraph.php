@@ -25,7 +25,7 @@ LEFT JOIN (
     FROM 
         tbl_spctransaction ST 
     WHERE 
-        remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT') 
+        remarks IN ('RELEASED','FOR RELEASE')
     GROUP BY 
         assignee
 ) ST1 ON A.id = ST1.assignee
@@ -36,7 +36,7 @@ LEFT JOIN (
     FROM 
         tbl_transaction 
     WHERE 
-        remarks IN ('RELEASED') 
+        remarks IN ('RELEASED','FOR RELEASE')
     GROUP BY 
         assignee
 ) ST2 ON A.id = ST2.assignee
@@ -62,7 +62,7 @@ LEFT JOIN (
     FROM 
         tbl_spctransaction ST 
     WHERE 
-        remarks NOT IN ('PENDING', 'FOR ASSIGNMENT') 
+        remarks IN ('RELEASED','FOR RELEASE')
         AND YEAR(ST.dateapp) = SUBSTRING_INDEX('$dateodocs2', '/', -1) 
         AND MONTH(ST.dateapp) = SUBSTRING_INDEX('$dateodocs2', '/', 1) 
     GROUP BY 
