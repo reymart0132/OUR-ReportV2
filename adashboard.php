@@ -163,11 +163,12 @@
                         echo '<a href="'.$current_file_name.'?alltime=1" class = "btn btn-sm btn-success">All-Time</a>';
 
                         if(!empty($_GET['alltime'])){
-                          $year = "All Time";
+                          $dispdate = "All Time";
                         }elseif(!empty($_GET['monthPicker'])){
                           $year = $_GET['monthPicker'];
+                          $dispdate = date("- F Y",strtotime($year));
                         }else{
-                          $year = "";
+                          $dispdate = date(" F Y");
                         }
                       ?>
                     </form>
@@ -175,31 +176,31 @@
                 </div>
                 <div class='row d-flex justify-content-center py-3'>
                   <div class='col-lg-4 px-3 pb-3 me-2'>
-                    <h6><b><i class="fa-solid fa-medal"></i> Top Performer Special Docs <?php echo $year; ?></b></h6>
+                    <h6><b><i class="fa-solid fa-medal"></i> Top Performer Special Docs <?php echo " - ".$dispdate; ?></b></h6>
                     <!-- <div class='ms-2'> -->
                       <?php include_once'sdocsgraph.php';?>
                     <!-- </div> -->
                   </div>
                   <div class='col-lg-4 px-3 pb-3 mx-2'>
-                    <h6><b><i class="fa-solid fa-medal"></i> Top Performer Normal Docs</b></h6>
+                    <h6><b><i class="fa-solid fa-medal"></i> Top Performer Normal Docs <?php echo " - ".$dispdate; ?></b></h6>
                     <!-- <div class='mx-2'> -->
                       <?php include_once'ndocsgraph.php';?>
                     <!-- </div> -->
                   </div>
                   <div class='col-lg-3 px-3 pb-3 ms-2'>
-                    <h6><b> <i class="fa-solid fa-medal"></i> Overall Top Performer</b></h6>
+                    <h6><b> <i class="fa-solid fa-medal"></i> Overall Top Performer <?php echo " - ".$dispdate; ?></b></h6>
                     <!-- <div class='me-2'> -->
                       <?php include_once'odocsgraph.php';?>
                     <!-- </div> -->
                   </div>
                   <div class='col-lg-4 px-3 pb-3 ms-2'>
-                    <h6><b> <i class="fa-solid fa-check-to-slot"></i> Special Transaction Breakdown </b></h6>
+                    <h6><b> <i class="fa-solid fa-check-to-slot"></i> Special Transaction Breakdown <?php echo " - ".$dispdate; ?></b></h6>
                     <!-- <div class='me-2'> -->
                       <?php include_once'sdocsbreakdown.php';?>
                     <!-- </div> -->
                   </div>
                   <div class='col-lg-4 px-3 pb-3 ms-2'>
-                    <h6><b> <i class="fa-solid fa-check-to-slot"></i> Normal Transaction Breakdown </b></h6>
+                    <h6><b> <i class="fa-solid fa-check-to-slot"></i> Normal Transaction Breakdown <?php echo " - ".$dispdate; ?></b></h6>
                     <!-- <div class='me-2'> -->
                       <?php include_once'ndocsbreakdown.php';?>
                     <!-- </div> -->

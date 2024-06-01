@@ -63,8 +63,8 @@ LEFT JOIN (
         tbl_spctransaction ST 
     WHERE 
         remarks IN ('RELEASED','FOR RELEASE')
-        AND YEAR(ST.dateapp) = SUBSTRING_INDEX('$dateodocs2', '/', -1) 
-        AND MONTH(ST.dateapp) = SUBSTRING_INDEX('$dateodocs2', '/', 1) 
+        AND YEAR(ST.signeddate) = SUBSTRING_INDEX('$dateodocs2', '/', -1) 
+        AND MONTH(ST.signeddate) = SUBSTRING_INDEX('$dateodocs2', '/', 1) 
     GROUP BY 
         assignee
 ) ST1 ON A.id = ST1.assignee
@@ -76,8 +76,8 @@ LEFT JOIN (
         tbl_transaction 
     WHERE 
         remarks IN ('RELEASED','FOR RELEASE') 
-        AND YEAR(dateapp) = SUBSTRING_INDEX('$dateodocs2', '/', -1) 
-        AND MONTH(dateapp) = SUBSTRING_INDEX('$dateodocs2', '/', 1) 
+        AND YEAR(signeddate) = SUBSTRING_INDEX('$dateodocs2', '/', -1) 
+        AND MONTH(signeddate) = SUBSTRING_INDEX('$dateodocs2', '/', 1) 
     GROUP BY 
         assignee
 ) ST2 ON A.id = ST2.assignee
@@ -123,13 +123,17 @@ echo '<style>
 echo '<table class=" table table-sm bar-graph-table" cellspacing="0">';
 foreach ($graphData as $id => $overall_ranking) {
     // Calculate the width of each bar based on the total points
-    $bar_width = ($overall_ranking / max($graphData)) * 100;
-    echo '<tr>';
-    echo '<td width= "30%" style="font-size:80%; white-space: nowrap;">' . findassignee($id) . ':</td>';
-    echo '<td>';
-    echo '<div class="bar" style="width: ' . $bar_width . '%; text-align:center; font-size:80%;">' . round($overall_ranking,2) . ' pts </div>';
-    echo '</td>';
-    echo '</tr>';
+    if($overall_ranking == 0){
+        $bar_width = 0;
+    }else{
+        $bar_width = ($overall_ranking / max($graphData)) * 100;
+        echo '<tr>';
+        echo '<td width= "30%" style="font-size:80%; white-space: nowrap;">' . findassignee($id) . ':</td>';
+        echo '<td>';
+        echo '<div class="bar" style="width: ' . $bar_width . '%; text-align:center; font-size:80%;">' . round($overall_ranking,2) . ' pts </div>';
+        echo '</td>';
+        echo '</tr>';
+    }
 }
 echo '</table>';
 

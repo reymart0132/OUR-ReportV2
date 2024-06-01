@@ -5,7 +5,7 @@ $consdocsraw = $configsdocsraw->con();
 isLogin();
 if(empty($_GET['monthPicker'])){
     $datesdocsraw2 = get_current_date2();
-    $titledate = " - All-Time";
+    // $titledate = " - All-Time";
 }else{    
     $ndate = $_GET['monthPicker'];
     // Ensure the date format is compatible with strtotime
@@ -29,7 +29,7 @@ $dataStatement = $consdocsraw->prepare($sql);
 $dataStatement->execute();
 $result = $dataStatement->fetchAll(PDO::FETCH_ASSOC);
     echo "<hr>";
-    echo "<h5 class='text-center mt-4'><i class='fa-solid fa-graduation-cap'></i> Special Transactions <b>".$titledate."</b></h5>";
+    echo "<h5 class='text-center mt-4'><i class='fa-solid fa-graduation-cap'></i> Special Transactions <b></b></h5>";
     echo "<div class='table-responsive pb-3'>";
     echo "<table id='scholartable2' class='table table-bordered table-sm table-striped table-hover shadow display nowrap'  style='font-size: 12px'>";
     echo "<thead class='thead-dark'>";
