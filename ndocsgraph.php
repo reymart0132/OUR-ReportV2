@@ -61,6 +61,7 @@ echo '<style>
         height: 20px; /* Set a fixed height for the bars */
         line-height: 20px; /* Center the text vertically */
         color: #FFF;
+        opacity: 70%;
     }
 </style>';
 echo '<table class=" table table-sm bar-graph-table" cellspacing="0">';
