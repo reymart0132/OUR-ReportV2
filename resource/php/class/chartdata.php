@@ -289,7 +289,7 @@ class chartdata extends config{
 
     public function encoderIdREG(){
         $con = $this->con();
-        $sql = "SELECT * FROM `tbl_accounts` WHERE `groups` = '1' ORDER BY `id` ASC";
+        $sql = "SELECT * FROM `tbl_accounts` WHERE `groups` = '1' OR `groups` = '4' ORDER BY `id` ASC";
         $data= $con->prepare($sql);
         $data->execute();
         $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -301,7 +301,7 @@ class chartdata extends config{
 
     public function encoderIdSP(){
         $con = $this->con();
-        $sql = "SELECT * FROM `tbl_accounts` WHERE `groups` = '4' ORDER BY `id` ASC";
+        $sql = "SELECT * FROM `tbl_accounts` WHERE `groups` = '4' OR `groups` = '1' ORDER BY `id` ASC";
         $data= $con->prepare($sql);
         $data->execute();
         $result = $data->fetchAll(PDO::FETCH_ASSOC);

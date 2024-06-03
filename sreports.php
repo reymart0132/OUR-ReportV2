@@ -17,20 +17,21 @@ $date = get_current_date();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="resource/css/kcej_styles.css" type="text/css">
+    <link rel="stylesheet" href="resource/css/styledash.css" type="text/css">
     <script src="https://kit.fontawesome.com/03ca298d2d.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="vendor/css/dataTables.css">
-    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jquery.dataTables.js"></script>
-    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jszip.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/pdfmake.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/vfs_fonts.js"></script>
-    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/buttons.html5.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/buttons.print.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">
+    <script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
+
 
     <title>Dashboard</title>
     <link rel="icon" type="image/x-icon" href="resource/img/ceu.png" />
@@ -156,40 +157,61 @@ $date = get_current_date();
                                     <?php
                                         $current_file_name = basename($_SERVER['PHP_SELF']);
                                         echo '<a href="'.$current_file_name.'?alltime=1" class = "btn btn-sm btn-success">All-Time</a>';
+
+                                        if(!empty($_GET['alltime'])){
+                                            $dispdate = "All Time";
+                                        }elseif(!empty($_GET['monthPicker'])){
+                                            $year = $_GET['monthPicker'];
+                                            $dispdate = date(" F Y",strtotime($year));
+                                        }else{
+                                            $dispdate = date(" F Y");
+                                        }
                                     ?>
                                     </form>
                                 </div>
                             </div>
                             <div class='row d-flex justify-content-center py-3'>
                                 <div class='col-lg-4 px-3 pb-3 me-2'>
-                                    <h6><b><i class="fa-solid fa-medal"></i> Top Performer Special Docs</b></h6>
+                                    <h6><b><i class="fa-solid fa-medal"></i> Top Performer Special Docs <?php echo " - ".$dispdate; ?></b></h6>
                                     <!-- <div class='ms-2'> -->
                                     <?php include_once'sdocsgraph.php';?>
                                     <!-- </div> -->
                                 </div>
                                 <div class='col-lg-4 px-3 pb-3 mx-2'>
-                                    <h6><b><i class="fa-solid fa-medal"></i> Top Performer Normal Docs</b></h6>
+                                    <h6><b><i class="fa-solid fa-medal"></i> Top Performer Normal Docs <?php echo " - ".$dispdate; ?></b></h6>
                                     <!-- <div class='mx-2'> -->
                                     <?php include_once'ndocsgraph.php';?>
                                     <!-- </div> -->
                                 </div>
                                 <div class='col-lg-3 px-3 pb-3 ms-2'>
-                                    <h6><b> <i class="fa-solid fa-medal"></i> Overall Top Performer</b></h6>
+                                    <h6><b> <i class="fa-solid fa-medal"></i> Overall Top Performer <?php echo " - ".$dispdate; ?></b></h6>
                                     <!-- <div class='me-2'> -->
                                     <?php include_once'odocsgraph.php';?>
                                     <!-- </div> -->
                                 </div>
                                 <div class='col-lg-4 px-3 pb-3 ms-2'>
-                                    <h6><b> <i class="fa-solid fa-check-to-slot"></i> Special Transaction Breakdown </b></h6>
+                                    <h6><b> <i class="fa-solid fa-check-to-slot"></i> Special Transaction Breakdown <?php echo " - ".$dispdate; ?></b></h6>
                                     <!-- <div class='me-2'> -->
                                     <?php include_once'sdocsbreakdown.php';?>
                                     <!-- </div> -->
                                 </div>
                                 <div class='col-lg-4 px-3 pb-3 ms-2'>
-                                    <h6><b> <i class="fa-solid fa-check-to-slot"></i> Normal Transaction Breakdown </b></h6>
+                                    <h6><b> <i class="fa-solid fa-check-to-slot"></i> Normal Transaction Breakdown <?php echo " - ".$dispdate; ?></b></h6>
                                     <!-- <div class='me-2'> -->
                                     <?php include_once'ndocsbreakdown.php';?>
                                     <!-- </div> -->
+                                </div>
+                            </div>
+                            <div class='row d-flex justify-content-center pt-3'>
+                                <div class='col-lg-12 px-3 ms-2'>
+                                    <!-- <h6><b> <i class="fa-solid fa-check-to-slot"></i> Normal Transaction Breakdown </b></h6> -->
+                                    <?php include_once'odocstbl.php';?>
+                                </div>
+                            </div>
+                            <div class='row d-flex justify-content-center pb-3'>
+                                <div class='col-lg-12 px-3 pb-3 ms-2'>
+                                    <!-- <h6><b> <i class="fa-solid fa-check-to-slot"></i> Normal Transaction Breakdown </b></h6> -->
+                                    <?php include_once'sdocstbl.php';?>
                                 </div>
                             </div>
                         </div>
@@ -218,6 +240,107 @@ $date = get_current_date();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/pdfmake.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/vfs_fonts.js"></script>
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/buttons.html5.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/buttons.print.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready( function () {
+          $('#scholartable').DataTable({
+            scrollX: true,
+            // scrollY: 500,
+            dom: 'frtipB',
+            paging: true,
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    className: 'btn btn-primary',
+                    text: 'Export to Excel',
+                    titleAttr: 'Export to Excel',
+                    title: 'Regular Transaction Report',
+                    exportOptions: {
+                        columns: ':not(:last-child)',
+                    }
+                },
+                {
+                    extend: 'csvHtml5',
+                    className: 'btn btn-primary',
+                    text: 'Export to CSV',
+                    titleAttr: 'Export to CSV',
+                    title: 'Regular Transaction Report',
+                    exportOptions: {
+                        columns: ':not(:last-child)',
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    className: 'btn btn-primary',
+                    text: 'Export to PDF',
+                    titleAttr: 'Export to PDF',
+                    title: 'Regular Transaction Report',
+                    orientation: 'landscape',
+                    pageSize: 'TABLOID',
+                    exportOptions: {
+                        columns: ':not(:last-child)',
+                    }
+                }
+            ]
+          });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready( function () {
+          $('#scholartable2').DataTable({
+            scrollX: true,
+            // scrollY: 500,
+            dom: 'frtipB',
+            paging: true,
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    className: 'btn btn-primary',
+                    text: 'Export to Excel',
+                    titleAttr: 'Export to Excel',
+                    title: 'Special Transaction Report',
+                    exportOptions: {
+                        columns: ':not(:last-child)',
+                    }
+                },
+                {
+                    extend: 'csvHtml5',
+                    className: 'btn btn-primary',
+                    text: 'Export to CSV',
+                    titleAttr: 'Export to CSV',
+                    title: 'Special Transaction Report',
+                    exportOptions: {
+                        columns: ':not(:last-child)',
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    className: 'btn btn-primary',
+                    text: 'Export to PDF',
+                    titleAttr: 'Export to PDF',
+                    title: 'Special Transaction Report',
+                    orientation: 'landscape',
+                    pageSize: 'TABLOID',
+                    exportOptions: {
+                        columns: ':not(:last-child)',
+                    }
+                }
+            ]
+          });
+        });
+    </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
           // Get the modal
