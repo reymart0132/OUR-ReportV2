@@ -166,7 +166,7 @@
                           $dispdate = "All Time";
                         }elseif(!empty($_GET['monthPicker'])){
                           $year = $_GET['monthPicker'];
-                          $dispdate = date("- F Y",strtotime($year));
+                          $dispdate = date(" F Y",strtotime($year));
                         }else{
                           $dispdate = date(" F Y");
                         }

@@ -277,7 +277,7 @@ function datevalidation($email)
 {
     $config = new config;
     $con = $config->con();
-    $sql = "SELECT * FROM `tbl_transaction` WHERE `emailaddress`='$email' AND DATE(`dateapp`) = CURRENT_DATE()";
+    $sql = "SELECT * FROM `tbl_transaction` WHERE `emailaddress`='$email' AND `remarks` NOT IN ('REMOVED') AND DATE(`dateapp`) = CURRENT_DATE()";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchAll(PDO::FETCH_OBJ);
