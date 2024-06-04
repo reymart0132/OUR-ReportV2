@@ -18,6 +18,7 @@ function Success(){
             </button>
         </div>';
     }
+
 function loginError(){
         echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
                 <b>Error!</b> Invalid username/Password
@@ -26,6 +27,7 @@ function loginError(){
                 </button>
             </div>';
         }
+
 function curpassError(){
         echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
                 <b>Error!</b> Invalid Current Password
@@ -123,52 +125,52 @@ function vald(){
             }
         }
 
-        function logd(){
-            if(Input::exists()){
-                if(Token::check(Input::get('token'))){
-                    $validate = new Validate();
-                    $validation = $validate->check($_POST,array(
-                        'username' => array('required'=>true),
-                        'password'=> array('required'=>true)
-                    ));
-                    if($validation->passed()){
-                        $user = new user();
-                        $remember = (Input::get('remember') ==='on') ? true :false;
-                        $login = $user->login(Input::get('username'),Input::get('password'),$remember);
-                        if($login){
-                            if($user->data()->groups == 1){
-                                 Redirect::to('ureports.php');
-                                echo $user->data()->groups;
-                            }else if($user->data()->groups == 2){
-                                 Redirect::to('adashboard.php');
-                                echo $user->data()->groups;
-                            } else if ($user->data()->groups == 3) {
-                                Redirect::to('rdashboard.php');
-                                echo $user->data()->groups;
-                            } else if ($user->data()->groups == 4) {
-                                Redirect::to('sreports.php');
-                                echo $user->data()->groups;
-                            }else{
-                                loginError();
-                            }
-                        }else{
-                            loginError();
-                        }
+function logd(){
+    if(Input::exists()){
+        if(Token::check(Input::get('token'))){
+            $validate = new Validate();
+            $validation = $validate->check($_POST,array(
+                'username' => array('required'=>true),
+                'password'=> array('required'=>true)
+            ));
+            if($validation->passed()){
+                $user = new user();
+                $remember = (Input::get('remember') ==='on') ? true :false;
+                $login = $user->login(Input::get('username'),Input::get('password'),$remember);
+                if($login){
+                    if($user->data()->groups == 1){
+                            Redirect::to('ureports.php');
+                        echo $user->data()->groups;
+                    }else if($user->data()->groups == 2){
+                            Redirect::to('adashboard.php');
+                        echo $user->data()->groups;
+                    } else if ($user->data()->groups == 3) {
+                        Redirect::to('rdashboard.php');
+                        echo $user->data()->groups;
+                    } else if ($user->data()->groups == 4) {
+                        Redirect::to('sreports.php');
+                        echo $user->data()->groups;
                     }else{
-                        foreach($validation->errors() as $error){
-                            echo $error.'<br />';
-                        }
+                        loginError();
                     }
+                }else{
+                    loginError();
+                }
+            }else{
+                foreach($validation->errors() as $error){
+                    echo $error.'<br />';
                 }
             }
         }
+    }
+}
 
-        function isLogin(){
-            $user = new user();
-            if(!$user->isLoggedIn()){
-                Redirect::to('login.php');
-            }
-        }
+function isLogin(){
+    $user = new user();
+    if(!$user->isLoggedIn()){
+        Redirect::to('login.php');
+    }
+}
 
 function profilePic(){
     $view = new view();
@@ -273,8 +275,7 @@ function changeP(){
     }
 }
 
-function datevalidation($email)
-{
+function datevalidation($email){
     $config = new config;
     $con = $config->con();
     $sql = "SELECT * FROM `tbl_transaction` WHERE `emailaddress`='$email' AND `remarks` NOT IN ('REMOVED') AND DATE(`dateapp`) = CURRENT_DATE()";
@@ -288,8 +289,23 @@ function datevalidation($email)
         return false;
     }
 }
-function getEmail($transactionID)
-{
+
+function datevalidation2($email){
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT * FROM `tbl_spctransaction` WHERE `emailaddress`='$email' AND `remarks` NOT IN ('REMOVED') AND DATE(`dateapp`) = CURRENT_DATE()";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_OBJ);
+
+    if (count($rows) == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function getEmail($transactionID){
     $config = new config;
     $con = $config->con();
     $sql = "SELECT * FROM `tbl_transaction` WHERE `transactionid` = '$transactionID'";
@@ -299,8 +315,8 @@ function getEmail($transactionID)
     return $rows[0]['emailaddress'];
     
 }
-function getEmail2($transactionID)
-{
+
+function getEmail2($transactionID){
     $config = new config;
     $con = $config->con();
     $sql = "SELECT * FROM `tbl_spctransaction` WHERE `transactionid` = '$transactionID'";
@@ -311,8 +327,7 @@ function getEmail2($transactionID)
     
 }
 
-function kcej_getAssignee($assignee)
-{
+function kcej_getAssignee($assignee){
     $config = new config;
     $con = $config->con();
     $sql = "SELECT * FROM `tbl_accounts` WHERE `id` = '$assignee'";
@@ -327,8 +342,7 @@ function kcej_getAssignee($assignee)
     }
 }
 
-function kcej_getAssigneeEmail($assignee)
-{
+function kcej_getAssigneeEmail($assignee){
     $config = new config;
     $con = $config->con();
     $sql = "SELECT * FROM `tbl_accounts` WHERE `name` = '$assignee'";
@@ -343,8 +357,7 @@ function kcej_getAssigneeEmail($assignee)
     }
 }
 
-function kcej_getTransactionAssignName($transactionID, $type)
-{
+function kcej_getTransactionAssignName($transactionID, $type){
     $config = new config;
     $con = $config->con();
     if($type == "reg"){
@@ -360,8 +373,7 @@ function kcej_getTransactionAssignName($transactionID, $type)
     return $assigneeName;
 }
 
-function kcej_getTransactionClientName($transactionID, $type)
-{
+function kcej_getTransactionClientName($transactionID, $type){
     $config = new config;
     $con = $config->con();
     if($type == "reg"){
@@ -381,8 +393,7 @@ function kcej_getTransactionClientName($transactionID, $type)
     }
 }
 
-function findAssignee($id)
-{
+function findAssignee($id){
     $config = new config;
     $con = $config->con();
     $sql = "SELECT * FROM `tbl_accounts` where `id` = '$id'";
@@ -396,12 +407,7 @@ function findAssignee($id)
     }
 }
 
-
-
-
-
-function getAssigneeChart()
-{
+function getAssigneeChart(){
     $config = new config;
     $con = $config->con();
     $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points FROM tbl_accounts a LEFT JOIN tbl_transaction t ON a.id = t.assignee AND t.remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT', 'FOR RELEASE') WHERE (a.groups = 4 OR a.groups = 1) AND a.id NOT IN ('37','33') GROUP BY a.id ORDER BY total_points ASC";
@@ -417,8 +423,8 @@ function getAssigneeChart()
     $dataset.="]";
     return $dataset;
 }
-function getAssigneeChart2()
-{
+
+function getAssigneeChart2(){
     $config = new config;
     $con = $config->con();
     $sql = "SELECT A.id, COALESCE(ST.transaction_count, 0) AS transaction_count FROM tbl_accounts A LEFT JOIN ( SELECT assignee, COUNT(*) AS transaction_count FROM tbl_spctransaction WHERE remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT','FOR RELEASE') GROUP BY assignee ) ST ON A.id = ST.assignee WHERE (A.groups = 4 OR A.groups = 1) AND A.id NOT IN ('37',33) ORDER BY transaction_count ASC";
@@ -434,8 +440,8 @@ function getAssigneeChart2()
     $dataset.="]";
     return $dataset;
 }
-function getnextAssigneeChartQ()
-{
+
+function getnextAssigneeChartQ(){
     $config = new config;
     $con = $config->con();
     // $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points FROM tbl_accounts a LEFT JOIN tbl_transaction t ON a.id = t.assignee AND t.remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT', 'FOR RELEASE') WHERE a.groups = 1 GROUP BY a.id ORDER BY total_points ASC";
@@ -449,8 +455,8 @@ function getnextAssigneeChartQ()
     $assignee = $rows[0]['id'];
     return $assignee;
 }
-function getnextAssigneeChart2Q()
-{
+
+function getnextAssigneeChart2Q(){
     $config = new config;
     $con = $config->con();
     $sql = "SELECT A.id, COALESCE(ST.transaction_count, 0) AS transaction_count FROM tbl_accounts A LEFT JOIN ( SELECT assignee, COUNT(*) AS transaction_count FROM tbl_spctransaction WHERE remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT','FOR RELEASE') GROUP BY assignee ) ST ON A.id = ST.assignee WHERE (A.groups = 4 OR A.groups = 1) AND A.id NOT IN ('37','33') ORDER BY transaction_count ASC";
@@ -460,8 +466,8 @@ function getnextAssigneeChart2Q()
     $assignee = $rows[0]['id'];
     return $assignee;
 }
-function getnextAssigneeChart()
-{
+
+function getnextAssigneeChart(){
     $config = new config;
     $con = $config->con();
     $sql = "SELECT a.id, COALESCE(SUM(t.points), 0) AS total_points FROM tbl_accounts a LEFT JOIN tbl_transaction t ON a.id = t.assignee AND t.remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT', 'FOR RELEASE') WHERE (a.groups = 4 OR a.groups = 1) AND a.id NOT IN ('37','33') GROUP BY a.id ORDER BY total_points ASC";
@@ -471,8 +477,8 @@ function getnextAssigneeChart()
     $assignee = findAssignee($rows[0]['id']);
     return $assignee;
 }
-function getnextAssigneeChart2()
-{
+
+function getnextAssigneeChart2(){
     $config = new config;
     $con = $config->con();
     $sql = "SELECT A.id, COALESCE(ST.transaction_count, 0) AS transaction_count FROM tbl_accounts A LEFT JOIN ( SELECT assignee, COUNT(*) AS transaction_count FROM tbl_spctransaction WHERE remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT','FOR RELEASE') GROUP BY assignee ) ST ON A.id = ST.assignee WHERE (A.groups = 4 OR A.groups = 1) AND A.id NOT IN ('37','33') ORDER BY transaction_count ASC";
@@ -483,26 +489,7 @@ function getnextAssigneeChart2()
     return $assignee;
 }
 
-
-
-function datevalidation2($email)
-{
-    $config = new config;
-    $con = $config->con();
-    $sql = "SELECT * FROM `tbl_spctransaction` WHERE `emailaddress`='$email' AND DATE(`dateapp`) = CURRENT_DATE()";
-    $data = $con->prepare($sql);
-    $data->execute();
-    $rows = $data->fetchAll(PDO::FETCH_OBJ);
-
-    if (count($rows) == 0) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function CheckError($error)
-{
+function CheckError($error){
     if ($error == 'MultipleTrans') {
         echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
               <b>Error!</b> Multiple transactions detected. You can only create <b>1 transaction per day only.</b>
@@ -534,8 +521,7 @@ function CheckError($error)
     }
 }
 
-function replaceNWithTilde($inputString)
-{
+function replaceNWithTilde($inputString){
     // Define search and replace arrays
     $search = array('ñ', 'Ñ');
     $replace = array('n', 'N');
@@ -546,7 +532,7 @@ function replaceNWithTilde($inputString)
     return $outputString;
 }
 
-function getRandomPastelColor() {
+function getRandomPastelColor(){
     // Generate random pastel color
     $hue = rand(0, 360);
     $saturation = rand(70, 100); // 70-100 for pastel
@@ -564,11 +550,7 @@ function isRAdmin($user){
     }
 }
 
-
-
-
-function isUser($user)
-{
+function isUser($user){
     if ($user === '4') {
         header("Location: sdashboard.php");
         exit(); // Stop script execution after sending the header
@@ -578,10 +560,9 @@ function isUser($user)
     } else {
         // Additional code for the 'else' condition, if needed
     }
-
 }
-function isSPC($user)
-{
+
+function isSPC($user){
     if ($user === '1') {
         header("Location: udashboard.php");
         exit(); // Stop script execution after sending the header
@@ -648,9 +629,9 @@ function get_current_date(){
 
     // Format the current year and month as "YYYY-MM"
     $formattedDate = $currentYear . '-' . $currentMonth;
-
     return $formattedDate; // Output: "YYYY-MM"
 }
+
 function get_current_date2(){
     $currentYear = date('Y');
     $currentMonth = date('m');
@@ -661,7 +642,7 @@ function get_current_date2(){
     return $formattedDate; // Output: "YYYY-MM"
 }
 
- function findCycleTime($sqlCon){ //regular month
+function findCycleTime($sqlCon){ //regular month
       $config = new config;
       $con = $config->con();
       $sql = $sqlCon;
@@ -669,7 +650,6 @@ function get_current_date2(){
       $data ->execute();
       $rows =$data-> fetchAll(PDO::FETCH_OBJ);
       $cycletime = $rows[0]->cycletime;
-
       return $cycletime;
   }
 

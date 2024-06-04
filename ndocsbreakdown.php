@@ -30,8 +30,6 @@ AND YEAR(`dateapp`) = SUBSTRING_INDEX('$datendocsraw2', '/', -1)
 AND MONTH(`dateapp`) = SUBSTRING_INDEX('$datendocsraw2', '/', 1)";
 }
 
-
-
 $dataStatement = $conndocsraw->prepare($sql);
 $dataStatement->execute();
 $result = $dataStatement->fetchAll(PDO::FETCH_ASSOC);

@@ -48,7 +48,7 @@ $result = $dataStatement->fetchAll(PDO::FETCH_ASSOC);
     echo "<th>Date Confirmed</th>";
     echo "<th>Payment Date</th>";
     echo "<th>Signed Date</th>";
-    echo "<th class='text-primary fw-bolder'>Cycle Time</th>";
+    echo "<th class='text-primary fw-bolder'>Cycle Time (days)</th>";
     echo "<th>Release Date</th>";
     echo "<th>Released By</th>";
     echo "<th>Releasing Notes</th>";
@@ -80,13 +80,13 @@ $result = $dataStatement->fetchAll(PDO::FETCH_ASSOC);
       echo "<td>$data0[signeddate]</td>";
       echo "<td class='text-primary fw-bolder text-center'>";
         if($data0['ctime'] == "0"){
-            echo sprintf("%02d", intval($data0['ctime'] + 1))." day";
+            echo sprintf("%02d", intval($data0['ctime'] + 1));
         }
         elseif($data0['ctime'] == "1"){
-            echo sprintf("%02d", intval($data0['ctime']))." day";
+            echo sprintf("%02d", intval($data0['ctime']));
         }
         elseif($data0['ctime'] > "0"){
-            echo sprintf("%02d", intval($data0['ctime'] ))." days";
+            echo sprintf("%02d", intval($data0['ctime'] ));
         }else{
             // display nothing
         }
