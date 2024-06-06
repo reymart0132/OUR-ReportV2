@@ -6,7 +6,7 @@ if (!empty($_SESSION['info'])) {
     $stdn = $_SESSION['info']['studentNumber'];
     $yearGraduated = $_SESSION['info']['yearGraduated'];
     $status = $_SESSION['info']['status'];
-    $fullname = replaceNWithTilde($_SESSION['info']['fullName']);
+    $fullname = kcej_clean_name(replaceNWithTilde($_SESSION['info']['fullName']));
     $course = $_SESSION['info']['course'];
     $reason = $_SESSION['info']['reason'];
     $contactNumber = $_SESSION['info']['contactNumber'];

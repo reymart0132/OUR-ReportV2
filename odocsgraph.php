@@ -2,7 +2,6 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ord/resource/php/class/core/init.php';
 $configodocs = new config;
 $conodocs = $configodocs->con();
-isLogin();
 if(empty($_GET['monthPicker'])){
     $dateodocs2 = get_current_date2();
     }else{    
@@ -26,7 +25,7 @@ LEFT JOIN (
     FROM 
         tbl_spctransaction ST 
     WHERE 
-        remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT','FOR RELEASE') 
+        remarks IN ('RELEASED','FOR RELEASE')
     GROUP BY 
         assignee
 ) ST1 ON A.id = ST1.assignee
@@ -37,7 +36,7 @@ LEFT JOIN (
     FROM 
         tbl_transaction 
     WHERE 
-        remarks IN ('RELEASED','FOR RELEASE') 
+        remarks IN ('RELEASED','FOR RELEASE')
     GROUP BY 
         assignee
 ) ST2 ON A.id = ST2.assignee
@@ -63,9 +62,9 @@ LEFT JOIN (
     FROM 
         tbl_spctransaction ST 
     WHERE 
-        remarks NOT IN ('RELEASED', 'PENDING', 'FOR ASSIGNMENT','FOR RELEASE') 
-        AND YEAR(ST.dateapp) = SUBSTRING_INDEX('$dateodocs2', '/', -1) 
-        AND MONTH(ST.dateapp) = SUBSTRING_INDEX('$dateodocs2', '/', 1) 
+        remarks IN ('RELEASED','FOR RELEASE')
+        AND YEAR(ST.signeddate) = SUBSTRING_INDEX('$dateodocs2', '/', -1) 
+        AND MONTH(ST.signeddate) = SUBSTRING_INDEX('$dateodocs2', '/', 1) 
     GROUP BY 
         assignee
 ) ST1 ON A.id = ST1.assignee
@@ -77,8 +76,8 @@ LEFT JOIN (
         tbl_transaction 
     WHERE 
         remarks IN ('RELEASED','FOR RELEASE') 
-        AND YEAR(dateapp) = SUBSTRING_INDEX('$dateodocs2', '/', -1) 
-        AND MONTH(dateapp) = SUBSTRING_INDEX('$dateodocs2', '/', 1) 
+        AND YEAR(signeddate) = SUBSTRING_INDEX('$dateodocs2', '/', -1) 
+        AND MONTH(signeddate) = SUBSTRING_INDEX('$dateodocs2', '/', 1) 
     GROUP BY 
         assignee
 ) ST2 ON A.id = ST2.assignee
@@ -119,18 +118,23 @@ echo '<style>
         height: 20px; /* Set a fixed height for the bars */
         line-height: 20px; /* Center the text vertically */
         color: #FFF;
+        opacity: 70%;
     }
 </style>';
 echo '<table class=" table table-sm bar-graph-table" cellspacing="0">';
 foreach ($graphData as $id => $overall_ranking) {
     // Calculate the width of each bar based on the total points
-    $bar_width = ($overall_ranking / max($graphData)) * 100;
-    echo '<tr>';
-    echo '<td width= "30%" style="font-size:80%; white-space: nowrap;">' . findassignee($id) . ':</td>';
-    echo '<td>';
-    echo '<div class="bar" style="width: ' . $bar_width . '%; text-align:center; font-size:80%;">' . round($overall_ranking,2) . ' pts </div>';
-    echo '</td>';
-    echo '</tr>';
+    if($overall_ranking == 0){
+        $bar_width = 0;
+    }else{
+        $bar_width = ($overall_ranking / max($graphData)) * 100;
+        echo '<tr>';
+        echo '<td width= "30%" style="font-size:80%; white-space: nowrap;">' . findassignee($id) . ':</td>';
+        echo '<td>';
+        echo '<div class="bar" style="width: ' . $bar_width . '%; text-align:center; font-size:80%;">' . round($overall_ranking,2) . ' pts </div>';
+        echo '</td>';
+        echo '</tr>';
+    }
 }
 echo '</table>';
 

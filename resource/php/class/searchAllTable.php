@@ -14,7 +14,7 @@ class searchAllTable extends config{
 
     $upkey = strtoupper($this->key);
     $con = $this->con();
-    $sql = "SELECT * FROM `tbl_transaction` WHERE UPPER(`fullname`) LIKE '%$upkey%' OR UPPER(`transactionid`) LIKE '%$upkey%'";
+    $sql = "SELECT * FROM `tbl_transaction` WHERE UPPER(`fullname`) LIKE '%$upkey%' OR UPPER(`transactionid`) LIKE '%$upkey%' ORDER BY `dateapp` DESC";
     $data= $con->prepare($sql);
     $data->execute();
     $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -70,7 +70,7 @@ class searchAllTable extends config{
     }
   echo "</table></div>";
 
-    $sql0 = "SELECT * FROM `tbl_spctransaction` WHERE UPPER(`fullname`) LIKE '%$upkey%' OR UPPER(`transactionid`) LIKE '%$upkey%'";
+    $sql0 = "SELECT * FROM `tbl_spctransaction` WHERE UPPER(`fullname`) LIKE '%$upkey%' OR UPPER(`transactionid`) LIKE '%$upkey%' ORDER BY `dateapp` DESC";
     $data0= $con->prepare($sql0);
     $data0->execute();
     $result0 = $data0->fetchAll(PDO::FETCH_ASSOC);
